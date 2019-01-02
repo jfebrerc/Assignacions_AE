@@ -1,5 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Gestio.Assignacio_EA;
-
 import Biblioteques.Arrays;
 import Biblioteques.Auxiliar;
 import Biblioteques.IO;
@@ -14,105 +18,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-
-public class Registrar_assignacio {
-    private JList llistaEmpleats;
-    private JList llistaAtraccions;
-    private JTextField dataText;
-    private JButton assignarButton;
-    private JButton cancelarButton;
-    private JTextField buscarEmpleats;
-    private JTextField buscarAtraccions;
-    private JPanel registrarAssignacio;
-    private JButton seleccionarEmpleat;
-    private JButton seleccionarAtraccio;
-    private JLabel empleatSeleccionat;
-    private JLabel atraccioSeleccionada;
-    private static JFrame frame_menuRegistrarAssignacio = new JFrame("registrarAssignacio");
+/**
+ *
+ * @author Usuari
+ */
+public class Registrar_assignacio extends javax.swing.JFrame {
     int seleccio_empleat = -1;
     int seleccio_atraccio = -1;
-
+    /**
+     * Creates new form Registrar_assignacio
+     */
     public Registrar_assignacio() {
-        llistaAtraccions.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                super.componentResized(e);
-                Auxiliar.llistar_Atraccions(buscarAtraccions, llistaAtraccions);
-            }
-        });
-        llistaEmpleats.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                super.componentResized(e);
-                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
-            }
-        });
-        seleccionarEmpleat.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Object indiceE=llistaEmpleats.getSelectedValue();
-                IO.imprimirTI("Contingut: "+ (indiceE));
-                if (indiceE == null){
-                    JOptionPane.showMessageDialog(frame_menuRegistrarAssignacio, "Selecciona un empleat");
-                }else {
-                    try {
-                        empleatSeleccionat.setText("Empleat seleccionat: " + Arrays.arrayPersones.get(Arrays.arrayPersones.indexOf(indiceE)).getNom());
-                        seleccio_empleat = Arrays.arrayPersones.indexOf(indiceE);
-                    }catch (Exception error){
-                        IO.imprimirTI("Error al llistar empleats a assignacions: " + error);
-                    }
-                }
-            }
-        });
-
-        seleccionarAtraccio.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Object indiceA=llistaAtraccions.getSelectedValue();
-                IO.imprimirTI("Contingut: "+ (indiceA));
-                if (indiceA == null){
-                    JOptionPane.showMessageDialog(frame_menuRegistrarAssignacio, "Selecciona una atraccio");
-                }else {
-                    try {
-                        atraccioSeleccionada.setText("Atraccio seleccionada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.indexOf(indiceA)).getNom());
-                        seleccio_atraccio = Atraccio.arrayAtraccio.indexOf(indiceA);
-                    }catch (Exception error){
-                        IO.imprimirTI("Error al llistar atraccions a assignacions: " + error);
-                    }
-                }
-            }
-        });
-        cancelarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame_menuRegistrarAssignacio.setVisible(false);
-                Menu_assignacio.Menu_assignacio();
-            }
-        });
-        assignarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (seleccio_empleat==-1 || seleccio_atraccio==-1 || dataText.toString().isEmpty()){
-                    JOptionPane.showMessageDialog(frame_menuRegistrarAssignacio, "Error: Hi ha algun camp per a omplir");
-                    IO.imprimirTI("Se ha intentat registrar una assignacio en algun camp buit");
-                }else {
-                    try {
-                        Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), dataText.getText()));
-                        IO.imprimirTI("Size: " + Arrays.arrayAssignacio.size());
-                        IO.imprimirTI(Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).toString());
-                        IO.imprimirTI("Se ha registrat una assignacio");
-                        JOptionPane.showMessageDialog(frame_menuRegistrarAssignacio, "Assignacio creada correctament");
-                        seleccio_empleat = -1;
-                        seleccio_atraccio = -1;
-                        dataText.setText("");
-                        empleatSeleccionat.setText("");
-                        atraccioSeleccionada.setText("");
-                    }catch (Exception error){
-                        IO.imprimirTI("Error al assignar: " + error);
-                    }
-                }
-            }
-        });
+        initComponents();
         buscarEmpleats.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -131,13 +48,320 @@ public class Registrar_assignacio {
         });
     }
 
-    public static void Menu_assignacio(){
-        frame_menuRegistrarAssignacio.setContentPane(new Registrar_assignacio().registrarAssignacio);
-        frame_menuRegistrarAssignacio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame_menuRegistrarAssignacio.pack();
-        frame_menuRegistrarAssignacio.setVisible(true);
-        frame_menuRegistrarAssignacio.setLocationRelativeTo(null);
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        buscarEmpleats = new javax.swing.JTextField();
+        seleccionarEmpleat = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        llistaEmpleats = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
+        buscarAtraccions = new javax.swing.JTextField();
+        seleccionarAtraccio = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        llistaAtraccions = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        dataText = new javax.swing.JTextField();
+        assignarButton = new javax.swing.JButton();
+        cancelarButton = new javax.swing.JButton();
+        empleatSeleccionat = new javax.swing.JLabel();
+        atraccioSeleccionada = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jLabel1.setText("REGISTRAR ASSIGINACIÓ");
+
+        jLabel2.setText("Empleats");
+
+        buscarEmpleats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarEmpleatsActionPerformed(evt);
+            }
+        });
+
+        seleccionarEmpleat.setText("Seleccionar");
+        seleccionarEmpleat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionarEmpleatActionPerformed(evt);
+            }
+        });
+
+        llistaEmpleats.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(llistaEmpleats);
+
+        jLabel3.setText("Atraccions");
+
+        seleccionarAtraccio.setText("Seleccionar");
+        seleccionarAtraccio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionarAtraccioActionPerformed(evt);
+            }
+        });
+
+        llistaAtraccions.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(llistaAtraccions);
+
+        jLabel4.setText("Data:");
+
+        assignarButton.setText("Assignar");
+        assignarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignarButtonActionPerformed(evt);
+            }
+        });
+
+        cancelarButton.setText("Cancelar");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
+
+        empleatSeleccionat.setText("  ");
+
+        atraccioSeleccionada.setText("  ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(459, 459, 459)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2)))
+                        .addGap(0, 511, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(seleccionarAtraccio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(atraccioSeleccionada)
+                                .addGap(218, 218, 218))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(assignarButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelarButton)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buscarEmpleats, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(seleccionarEmpleat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(empleatSeleccionat)
+                .addGap(271, 271, 271))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarEmpleats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seleccionarEmpleat)
+                    .addComponent(empleatSeleccionat))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seleccionarAtraccio)
+                    .addComponent(atraccioSeleccionada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignarButton)
+                    .addComponent(cancelarButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void buscarEmpleatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleatsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarEmpleatsActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Auxiliar.llistar_Atraccions(buscarAtraccions, llistaAtraccions);
+        Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void seleccionarEmpleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarEmpleatActionPerformed
+        Object indiceE=llistaEmpleats.getSelectedValue();
+                IO.imprimirTI("Contingut: "+ (indiceE));
+                if (indiceE == null){
+                    JOptionPane.showMessageDialog(this, "Selecciona un empleat");
+                }else {
+                    try {
+                        empleatSeleccionat.setText("Empleat seleccionat: " + Arrays.arrayPersones.get(Arrays.arrayPersones.indexOf(indiceE)).getNom());
+                        seleccio_empleat = Arrays.arrayPersones.indexOf(indiceE);
+                    }catch (Exception error){
+                        IO.imprimirTI("Error al llistar empleats a assignacions: " + error);
+                    }
+                }
+    }//GEN-LAST:event_seleccionarEmpleatActionPerformed
+
+    private void seleccionarAtraccioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarAtraccioActionPerformed
+        Object indiceA=llistaAtraccions.getSelectedValue();
+                IO.imprimirTI("Contingut: "+ (indiceA));
+                if (indiceA == null){
+                    JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
+                }else {
+                    try {
+                        atraccioSeleccionada.setText("Atraccio seleccionada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.indexOf(indiceA)).getNom());
+                        seleccio_atraccio = Atraccio.arrayAtraccio.indexOf(indiceA);
+                    }catch (Exception error){
+                        IO.imprimirTI("Error al llistar atraccions a assignacions: " + error);
+                    }
+                }
+    }//GEN-LAST:event_seleccionarAtraccioActionPerformed
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        this.setVisible(false);
+        Menu_assignacio menuAS = new Menu_assignacio();
+        menuAS.setVisible(true);
+    }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void assignarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignarButtonActionPerformed
+        if (seleccio_empleat==-1 || seleccio_atraccio==-1 || dataText.toString().isEmpty()){
+                    JOptionPane.showMessageDialog(this, "Error: Hi ha algun camp per a omplir");
+                    IO.imprimirTI("Se ha intentat registrar una assignacio en algun camp buit");
+                }else {
+                    try {
+                        Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), dataText.getText()));
+                        IO.imprimirTI("Size: " + Arrays.arrayAssignacio.size());
+                        IO.imprimirTI(Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).toString());
+                        IO.imprimirTI("Se ha registrat una assignacio");
+                        JOptionPane.showMessageDialog(this, "Assignacio creada correctament");
+                        seleccio_empleat = -1;
+                        seleccio_atraccio = -1;
+                        dataText.setText("");
+                        empleatSeleccionat.setText("");
+                        atraccioSeleccionada.setText("");
+                    }catch (Exception error){
+                        IO.imprimirTI("Error al assignar: " + error);
+                    }
+                }
+    }//GEN-LAST:event_assignarButtonActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Registrar_assignacio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Registrar_assignacio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Registrar_assignacio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Registrar_assignacio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Registrar_assignacio().setVisible(true);
+            }
+        });
     }
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton assignarButton;
+    private javax.swing.JLabel atraccioSeleccionada;
+    private javax.swing.JTextField buscarAtraccions;
+    private javax.swing.JTextField buscarEmpleats;
+    private javax.swing.JButton cancelarButton;
+    private javax.swing.JTextField dataText;
+    private javax.swing.JLabel empleatSeleccionat;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> llistaAtraccions;
+    private javax.swing.JList<String> llistaEmpleats;
+    private javax.swing.JButton seleccionarAtraccio;
+    private javax.swing.JButton seleccionarEmpleat;
+    // End of variables declaration//GEN-END:variables
 }

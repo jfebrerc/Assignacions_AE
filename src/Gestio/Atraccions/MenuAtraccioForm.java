@@ -149,7 +149,8 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        Main.main.mostrar_menu_principal();
+        Main.main main = new Main.main();
+        main.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
