@@ -49,29 +49,29 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="buscarAssign" min="-2" pref="201" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="buscarAssign" min="-2" pref="259" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="BUIDARButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Component id="CARREGARButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Component id="ELIMINARButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="584" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="dataText" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="MODIFICARButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dataText" min="-2" pref="181" max="-2" attributes="0"/>
+                                  <EmptySpace pref="476" max="32767" attributes="0"/>
+                                  <Component id="MODIFICARButton" min="-2" pref="115" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="BUIDARButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="BUIDARButton1" min="-2" pref="115" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="ENREREButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Component id="ENREREButton" min="-2" pref="115" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -93,16 +93,16 @@
                       <Component id="ELIMINARButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="227" max="-2" attributes="0"/>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="319" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="BUIDARButton1" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="MODIFICARButton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="ENREREButton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="dataText" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="MODIFICARButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BUIDARButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ENREREButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
