@@ -69,6 +69,11 @@ public class Menu_empleats extends javax.swing.JFrame {
         });
 
         enrereButton.setText("Enrere");
+        enrereButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enrereButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,6 +153,12 @@ public class Menu_empleats extends javax.swing.JFrame {
                     gestioEmp.setVisible(true);
                 }
     }//GEN-LAST:event_llistarEmpleatsButtonActionPerformed
+
+    private void enrereButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereButtonActionPerformed
+        this.setVisible(false);
+        Main.main main = new Main.main();
+        main.setVisible(true);
+    }//GEN-LAST:event_enrereButtonActionPerformed
 
 
     /**
