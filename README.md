@@ -1,5 +1,5 @@
 # Assignacions_AE
-Asignacions de empleats a zones amb els canvis proposats
+Asignacions de empleats a atraccions amb els canvis proposats
 
 
 #TODO_EMPLEATS
