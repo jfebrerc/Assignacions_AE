@@ -23,6 +23,7 @@ public class Menu_empleats extends javax.swing.JFrame {
     /**
      * Creates new form Menu_empleats
      */
+    public final int EMPLEATS_TEST = 100;
     public Menu_empleats() {
         initComponents();
     }
@@ -135,7 +136,7 @@ public class Menu_empleats extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarEmpleatButtonActionPerformed
 
     private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
-        for (int i=0; i<100;i++){
+        for (int i=0; i<EMPLEATS_TEST;i++){
                     Arrays.arrayPersones.add(new Empleat("nom"+(i+1), "cognom"+(i+1),"dni"+(i+1),"nomina"+(i+1)));
                 }
                 for (Persona p : Arrays.arrayPersones){
