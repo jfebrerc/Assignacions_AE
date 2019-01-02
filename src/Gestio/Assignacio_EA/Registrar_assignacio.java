@@ -46,6 +46,22 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
             }
         });
+        buscarAtraccions.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+            }
+        });
     }
 
     /**
@@ -157,7 +173,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel2)))
-                        .addGap(0, 511, Short.MAX_VALUE))
+                        .addGap(0, 535, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,8 +187,8 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(seleccionarAtraccio)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(atraccioSeleccionada)
-                                .addGap(218, 218, 218))))
+                                .addComponent(atraccioSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(270, 270, 270))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel4)
@@ -190,7 +206,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 .addComponent(seleccionarEmpleat)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(empleatSeleccionat)
-                .addGap(271, 271, 271))
+                .addGap(295, 295, 295))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
