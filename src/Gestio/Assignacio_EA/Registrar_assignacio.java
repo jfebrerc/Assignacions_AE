@@ -83,8 +83,6 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         buscarAtraccions = new javax.swing.JTextField();
         seleccionarAtraccio = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        llistaAtraccions = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
         dataText = new javax.swing.JTextField();
         assignarButton = new javax.swing.JButton();
@@ -93,6 +91,8 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         atraccioSeleccionada = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -126,13 +126,6 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 seleccionarAtraccioActionPerformed(evt);
             }
         });
-
-        llistaAtraccions.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(llistaAtraccions);
 
         jLabel4.setText("Data:");
 
@@ -173,36 +166,31 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     );
     jScrollPane3.setViewportView(jTable1);
 
+    jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+
+        },
+        new String [] {
+            "ID", "Nom", "Tipus", "Data Innauguracio", "Altura Min", "Accessibilitat", "Express"
+        }
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false, false, false, false, false, false, false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    }
+    );
+    jScrollPane1.setViewportView(jTable2);
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane3)
-                .addComponent(jScrollPane2)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2))
-                    .addGap(0, 0, Short.MAX_VALUE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buscarEmpleats, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(seleccionarEmpleat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(empleatSeleccionat, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(atraccioSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addContainerGap())
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap(944, Short.MAX_VALUE)
             .addComponent(jLabel4)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,16 +200,42 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(19, 19, 19))
         .addGroup(jPanel1Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane3)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(atraccioSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(buscarEmpleats, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(seleccionarEmpleat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(empleatSeleccionat, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+        .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(604, 604, 604)
             .addComponent(jLabel1)
-            .addContainerGap(634, Short.MAX_VALUE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane1)
+            .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(14, 14, 14)
             .addComponent(jLabel1)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel2)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -237,8 +251,8 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(atraccioSeleccionada))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane2)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -262,17 +276,18 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())
     );
 
     pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Auxiliar.llistar_Atraccions(buscarAtraccions, llistaAtraccions);
+        //Auxiliar.llistar_Atraccions(buscarAtraccions, llistaAtraccions);
         //Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
         Auxiliar.llistar_empleats_taula(buscarEmpleats, jTable1);
+        Auxiliar.llistar_atraccions_taula(buscarEmpleats, jTable2);
     }//GEN-LAST:event_formWindowOpened
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
@@ -304,7 +319,41 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     }//GEN-LAST:event_assignarButtonActionPerformed
 
     private void seleccionarAtraccioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarAtraccioActionPerformed
-        Object indiceA=llistaAtraccions.getSelectedValue();
+        Object elementmodificat = null;
+        try{
+            elementmodificat = jTable2.getValueAt(jTable2.getSelectedRow(), 0);
+        }catch (Exception e){
+            IO.imprimirTI("Error seleccio null");
+        }
+        if (elementmodificat == null){
+            JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
+        }else{
+            String element = (String)elementmodificat;
+            IO.imprimirTI("Seleccio: " + element);
+            seleccio_atraccio = -1;
+            boolean trobat = false;
+            for (int i = 0; i<Atraccio.arrayAtraccio.size() && trobat == false; i++){
+                try{
+                    if(element.equals(Atraccio.arrayAtraccio.get(i).getIdA())){
+                    seleccio_atraccio = i;
+                    trobat = true;
+                }
+                }catch(Exception e){
+                    IO.imprimirTI("Error: " + e);
+                }
+
+            }
+            if (seleccio_atraccio ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
+            else {
+                try{
+                    atraccioSeleccionada.setText("Atracció seleccionada: " + Atraccio.arrayAtraccio.get(seleccio_atraccio).getNom());
+                }catch (Exception error){
+                    IO.imprimirTI("Error al seleccionar empleat assignacio: " + error);
+                }
+                
+            }
+            }
+        /*Object indiceA=llistaAtraccions.getSelectedValue();
         IO.imprimirTI("Contingut: "+ (indiceA));
         if (indiceA == null){
             JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
@@ -315,7 +364,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             }catch (Exception error){
                 IO.imprimirTI("Error al llistar atraccions a assignacions: " + error);
             }
-        }
+        }*/
     }//GEN-LAST:event_seleccionarAtraccioActionPerformed
 
     private void seleccionarEmpleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarEmpleatActionPerformed
@@ -419,10 +468,10 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JList<String> llistaAtraccions;
+    private javax.swing.JTable jTable2;
     private javax.swing.JButton seleccionarAtraccio;
     private javax.swing.JButton seleccionarEmpleat;
     // End of variables declaration//GEN-END:variables

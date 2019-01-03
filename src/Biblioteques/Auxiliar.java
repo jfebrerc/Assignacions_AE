@@ -57,6 +57,18 @@ public class Auxiliar {
             }
         }
     }
+    
+    public static void llistar_atraccions_taula(JTextField textBusqueda, JTable jTable2){
+        DefaultTableModel tabla = (DefaultTableModel) jTable2.getModel();
+        tabla.setRowCount (0);
+        Iterator<Atraccio> iteradorModificar = Atraccio.arrayAtraccio.iterator();
+        while(iteradorModificar.hasNext()){
+            Atraccio atraccio_aux = iteradorModificar.next();
+            if (atraccio_aux.getNom().toLowerCase().contains(textBusqueda.getText().toLowerCase())){
+                    tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
+                }
+            }
+    }
 
     /**FUNCIO PER A CARREGAR DADES ALS DIFERENTS CAMPS DE TEXT PER A MODIFICAR-LES*/
     public static int carregar_dades_empleats(JList llistaEmpleats, JFrame frame_llistaEmpleats, JTextField nomText, JTextField cognomsText, JTextField dniText, JTextField nominaText, int seleccio){
@@ -158,6 +170,55 @@ public class Auxiliar {
         }
         llistaAtraccions.setModel(d1m);
     }
+    public static void llistar_assignacio_taula(JTextField textBusqueda, JTable jTable1){
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        tabla.setRowCount (0);
+        Iterator<Assignacio> iteratorAssign = Arrays.arrayAssignacio.iterator();
+        while(iteratorAssign.hasNext()){
+            Assignacio assign_aux = iteratorAssign.next();
+            if (assign_aux.getEmpleat().getNom().toLowerCase().contains(textBusqueda.getText().toLowerCase())){
+                    tabla.addRow(new Object[] {assign_aux.getId(),assign_aux.getEmpleat().getNom(),assign_aux.getEmpleat().getCognom1(),assign_aux.getEmpleat().getDNI(),assign_aux.getAtraccio().getNom(),assign_aux.getData()});
+                }
+            }
+    }
+    
+    public static int carregar_dades_assign_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField dataText){
+        //int elements [];
+        //frame.getContentPane().add(carregar);
+        //elements = jTable1.getSelectedRows();
+        Object elementmodificat = null;
+        try{
+            elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        }catch (Exception e){
+            IO.imprimirTI("Error seleccio null");
+        }
+        if (elementmodificat == null){
+            JOptionPane.showMessageDialog(frame, "Selecciona una assignació");
+        }else{
+            int element = (int)elementmodificat;
+            seleccio = -1;
+            boolean trobat = false;
+            for (int i = 0; i<Arrays.arrayAssignacio.size() && trobat == false; i++){
+                try{
+                    if(element == Arrays.arrayAssignacio.get(i).getId()){
+                    seleccio = i;
+                    trobat = true;
+                }
+                }catch(Exception e){
+                    IO.imprimirTI("Error: " + e);
+                }
+
+            }
+            if (seleccio ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
+            else {
+            dataText.setText(Arrays.arrayAssignacio.get(seleccio).getData());
+            }
+            IO.imprimirTI("Seleccio: " + seleccio);
+          }
+
+        return seleccio;
+    }
+
 
     public static void log(String s) {
         TimeZone tz = TimeZone.getTimeZone("CET"); // or PST, MID, etc ...

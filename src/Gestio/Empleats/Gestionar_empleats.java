@@ -160,6 +160,11 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -337,6 +342,12 @@ public class Gestionar_empleats extends javax.swing.JFrame {
        // Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats); //Llistar empleats al entrar al jframe
         Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if(evt.getClickCount()==2 && evt.getButton() == MouseEvent.BUTTON1){
+            seleccio = Auxiliar.carregar_dades_empleats_taula(CARREGARButton, seleccio, this, jTable1, nomText, cognomsText, dniText, nominaText);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

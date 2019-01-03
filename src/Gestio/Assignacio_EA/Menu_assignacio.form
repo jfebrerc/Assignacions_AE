@@ -27,16 +27,17 @@
               <EmptySpace pref="159" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="GESTIONARASSIGNACIONSButton" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
                           <Component id="REGISTRARASSIGNACIOButton" min="-2" pref="196" max="-2" attributes="0"/>
                           <Component id="ENREREButton" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
+                          <Component id="TESTButton" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -51,7 +52,9 @@
               <Component id="REGISTRARASSIGNACIOButton" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="GESTIONARASSIGNACIONSButton" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace pref="150" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="TESTButton" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
               <Component id="ENREREButton" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
@@ -86,6 +89,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ENREREButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="TESTButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TEST"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TESTButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -6,17 +6,21 @@
 package Gestio.Assignacio_EA;
 
 import Biblioteques.Arrays;
+import Classes.Assignacio;
+import Classes.Atraccio;
+import Classes.Empleat;
 import Gestio.Empleats.Menu_empleats;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 /**
  *
  * @author Usuari
  */
 public class Menu_assignacio extends javax.swing.JFrame {
-
+    public final int TEST = 50;
     /**
      * Creates new form Menu_assignacio
      */
@@ -39,6 +43,7 @@ public class Menu_assignacio extends javax.swing.JFrame {
         REGISTRARASSIGNACIOButton = new javax.swing.JButton();
         GESTIONARASSIGNACIONSButton = new javax.swing.JButton();
         ENREREButton = new javax.swing.JButton();
+        TESTButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +70,13 @@ public class Menu_assignacio extends javax.swing.JFrame {
             }
         });
 
+        TESTButton.setText("TEST");
+        TESTButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TESTButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,14 +85,15 @@ public class Menu_assignacio extends javax.swing.JFrame {
                 .addContainerGap(159, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(193, 193, 193))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(GESTIONARASSIGNACIONSButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(REGISTRARASSIGNACIOButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ENREREButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(157, 157, 157))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(193, 193, 193))))
+                            .addComponent(ENREREButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TESTButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(157, 157, 157))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +104,9 @@ public class Menu_assignacio extends javax.swing.JFrame {
                 .addComponent(REGISTRARASSIGNACIOButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(GESTIONARASSIGNACIONSButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(TESTButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(ENREREButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -116,6 +131,18 @@ public class Menu_assignacio extends javax.swing.JFrame {
         Main.main principal = new Main.main();
         principal.setVisible(true);
     }//GEN-LAST:event_ENREREButtonActionPerformed
+
+    private void TESTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TESTButtonActionPerformed
+        Random rand = new Random();
+        
+        for (int i=0; i<TEST;i++){
+            int data1 = rand.nextInt((31 - 1) + 1) + 1;
+            int data2 = rand.nextInt((12 - 1) + 1) + 1;
+            int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
+            Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(i), Atraccio.arrayAtraccio.get(i), String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3)));
+        }
+        JOptionPane.showMessageDialog(this, "Elements de prova carregats correctament");
+    }//GEN-LAST:event_TESTButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +183,7 @@ public class Menu_assignacio extends javax.swing.JFrame {
     private javax.swing.JButton ENREREButton;
     private javax.swing.JButton GESTIONARASSIGNACIONSButton;
     private javax.swing.JButton REGISTRARASSIGNACIOButton;
+    private javax.swing.JButton TESTButton;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,6 +19,10 @@ public class Assignacio { //Comentaris al marge per als atributs
     }
 
     /** GETTERS */
+    public int getId(){
+        return id;
+    }
+    
     public Empleat getEmpleat() {
         return empleat;
     }

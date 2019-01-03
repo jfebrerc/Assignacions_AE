@@ -160,7 +160,6 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
                     trobat = true;
                 }
             }
-
     }//GEN-LAST:event_cercarButtonActionPerformed
 
     /**
