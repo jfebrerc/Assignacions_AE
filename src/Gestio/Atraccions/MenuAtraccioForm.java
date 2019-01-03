@@ -5,8 +5,13 @@
  */
 package Gestio.Atraccions;
 
+import Biblioteques.Arrays;
 import Gestio.*;
 import Classes.Atraccio;
+import Classes.Empleat;
+import Classes.Persona;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +22,7 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
     /**
      * Creates new form MenuAtraccioForm
      */
+    public final int ATRACCIONS_TEST = 100;
     public MenuAtraccioForm() {
         initComponents();
         setLocationRelativeTo(null);
@@ -38,6 +44,7 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        testButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +86,13 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
             }
         });
 
+        testButton.setText("Test");
+        testButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,7 +104,8 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(testButton, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(153, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,12 +128,14 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(testButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton4, jButton5, jButton6, jButton7});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton4, jButton6, jButton7});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,6 +169,21 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
         Main.main main = new Main.main();
         main.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
+        Random rand = new Random(); 
+        for (int i=0; i<ATRACCIONS_TEST;i++){
+                   int data1 = rand.nextInt((31 - 1) + 1) + 1;
+                   int data2 = rand.nextInt((12 - 1) + 1) + 1;
+                   int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
+                    Atraccio.arrayAtraccio.add(new Atraccio("NomAtraccio"+(i+1),"TipusAtraccio"+(i+1),String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3),"AlturaMinima"+(i+1),"Accessibilitat"+(i+1),"Express"+(i+1)));
+
+                }
+                for (Atraccio a : Atraccio.arrayAtraccio){
+                    System.out.println(a);
+                }
+                JOptionPane.showMessageDialog(this, "Atraccions de prova carregades correctament");
+    }//GEN-LAST:event_testButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,5 +227,6 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton testButton;
     // End of variables declaration//GEN-END:variables
 }

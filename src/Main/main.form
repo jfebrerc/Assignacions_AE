@@ -30,11 +30,12 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="144" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="SORTIRButton" min="-2" pref="196" max="-2" attributes="0"/>
-                  <Component id="GESTIOASIGGNACIONSButton" min="-2" pref="196" max="-2" attributes="0"/>
-                  <Component id="GESTIOZONESButton" min="-2" pref="196" max="-2" attributes="0"/>
-                  <Component id="GESTIOEMPLEATSButton" min="-2" pref="196" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="TESTButton" max="32767" attributes="0"/>
+                  <Component id="SORTIRButton" alignment="1" pref="196" max="32767" attributes="0"/>
+                  <Component id="GESTIOASIGGNACIONSButton" alignment="1" pref="196" max="32767" attributes="0"/>
+                  <Component id="GESTIOZONESButton" alignment="1" pref="196" max="32767" attributes="0"/>
+                  <Component id="GESTIOEMPLEATSButton" alignment="1" pref="196" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
           </Group>
@@ -51,7 +52,9 @@
               <Component id="GESTIOZONESButton" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="GESTIOASIGGNACIONSButton" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace pref="52" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="TESTButton" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Component id="SORTIRButton" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -94,6 +97,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SORTIRButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="TESTButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TEST"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TESTButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

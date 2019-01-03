@@ -7,17 +7,20 @@ package Main;
 import Biblioteques.Arrays;
 import Classes.Assignacio;
 import Classes.Atraccio;
+import Classes.Empleat;
+import Classes.Persona;
 import Gestio.Atraccions.MenuAtraccioForm;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 /**
  *
  * @author Usuari
  */
 public class main extends javax.swing.JFrame {
-
+    public final int TEST = 100;
     /**
      * Creates new form main
      */
@@ -41,6 +44,7 @@ public class main extends javax.swing.JFrame {
         GESTIOZONESButton = new javax.swing.JButton();
         GESTIOASIGGNACIONSButton = new javax.swing.JButton();
         SORTIRButton = new javax.swing.JButton();
+        TESTButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +78,13 @@ public class main extends javax.swing.JFrame {
             }
         });
 
+        TESTButton.setText("TEST");
+        TESTButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TESTButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,11 +95,12 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(144, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SORTIRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GESTIOASIGGNACIONSButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GESTIOZONESButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(GESTIOEMPLEATSButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(TESTButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SORTIRButton, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                    .addComponent(GESTIOASIGGNACIONSButton, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                    .addComponent(GESTIOZONESButton, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                    .addComponent(GESTIOEMPLEATSButton, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
                 .addGap(132, 132, 132))
         );
         layout.setVerticalGroup(
@@ -102,7 +114,9 @@ public class main extends javax.swing.JFrame {
                 .addComponent(GESTIOZONESButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(GESTIOASIGGNACIONSButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TESTButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(SORTIRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -135,6 +149,21 @@ public class main extends javax.swing.JFrame {
     private void SORTIRButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SORTIRButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_SORTIRButtonActionPerformed
+
+    private void TESTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TESTButtonActionPerformed
+        Random rand = new Random(); 
+        for (int i=0; i<TEST;i++){
+                   int data1 = rand.nextInt((31 - 1) + 1) + 1;
+                   int data2 = rand.nextInt((12 - 1) + 1) + 1;
+                   int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
+                    Atraccio.arrayAtraccio.add(new Atraccio("NomAtraccio"+(i+1),"TipusAtraccio"+(i+1),String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3),"AlturaMinima"+(i+1),"Accessibilitat"+(i+1),"Express"+(i+1)));
+
+                }
+        for (int i=0; i<TEST;i++){
+                    Arrays.arrayPersones.add(new Empleat("nom"+(i+1), "cognom"+(i+1),"dni"+(i+1),"nomina"+(i+1)));
+                }
+                JOptionPane.showMessageDialog(this, "Elements de prova carregats correctament");
+    }//GEN-LAST:event_TESTButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +205,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton GESTIOEMPLEATSButton;
     private javax.swing.JButton GESTIOZONESButton;
     private javax.swing.JButton SORTIRButton;
+    private javax.swing.JButton TESTButton;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

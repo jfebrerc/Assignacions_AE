@@ -35,33 +35,33 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         buscarEmpleats.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+                Auxiliar.llistar_empleats_taula(buscarEmpleats, jTable1);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+                Auxiliar.llistar_empleats_taula(buscarEmpleats, jTable1);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+              Auxiliar.llistar_empleats_taula(buscarEmpleats, jTable1);
             }
         });
         buscarAtraccions.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+                //Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+                //Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+                //Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
             }
         });
     }
@@ -80,8 +80,6 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         buscarEmpleats = new javax.swing.JTextField();
         seleccionarEmpleat = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        llistaEmpleats = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         buscarAtraccions = new javax.swing.JTextField();
         seleccionarAtraccio = new javax.swing.JButton();
@@ -93,6 +91,8 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
         empleatSeleccionat = new javax.swing.JLabel();
         atraccioSeleccionada = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -117,13 +117,6 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 seleccionarEmpleatActionPerformed(evt);
             }
         });
-
-        llistaEmpleats.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(llistaEmpleats);
 
         jLabel3.setText("Atraccions");
 
@@ -161,151 +154,126 @@ public class Registrar_assignacio extends javax.swing.JFrame {
 
         atraccioSeleccionada.setText("  ");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buscarEmpleats, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(seleccionarEmpleat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(empleatSeleccionat)
-                .addGap(295, 295, 295))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(459, 459, 459)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2)))
-                        .addGap(0, 535, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(atraccioSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(270, 270, 270)))))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarEmpleats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(seleccionarEmpleat, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(empleatSeleccionat))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(atraccioSeleccionada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nom", "Cognom", "DNI", "Nomina"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        }
+    );
+    jScrollPane3.setViewportView(jTable1);
+
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane3)
+                .addComponent(jScrollPane2)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2))
+                    .addGap(0, 0, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
-        );
+                        .addComponent(buscarEmpleats, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seleccionarEmpleat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(empleatSeleccionat, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(atraccioSeleccionada, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addContainerGap())
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel4)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(27, 27, 27)
+            .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(26, 26, 26)
+            .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(19, 19, 19))
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(604, 604, 604)
+            .addComponent(jLabel1)
+            .addContainerGap(634, Short.MAX_VALUE))
+    );
+    jPanel1Layout.setVerticalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(14, 14, 14)
+            .addComponent(jLabel1)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jLabel2)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buscarEmpleats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(seleccionarEmpleat, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(empleatSeleccionat))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel3)
+            .addGap(1, 1, 1)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(atraccioSeleccionada))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jScrollPane2)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap())))
+    );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
+    );
 
-        pack();
+    pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buscarEmpleatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleatsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarEmpleatsActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         Auxiliar.llistar_Atraccions(buscarAtraccions, llistaAtraccions);
-        Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+        //Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+        Auxiliar.llistar_empleats_taula(buscarEmpleats, jTable1);
     }//GEN-LAST:event_formWindowOpened
-
-    private void seleccionarEmpleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarEmpleatActionPerformed
-        Object indiceE=llistaEmpleats.getSelectedValue();
-                IO.imprimirTI("Contingut: "+ (indiceE));
-                if (indiceE == null){
-                    JOptionPane.showMessageDialog(this, "Selecciona un empleat");
-                }else {
-                    try {
-                        empleatSeleccionat.setText("Empleat seleccionat: " + Arrays.arrayPersones.get(Arrays.arrayPersones.indexOf(indiceE)).getNom());
-                        seleccio_empleat = Arrays.arrayPersones.indexOf(indiceE);
-                    }catch (Exception error){
-                        IO.imprimirTI("Error al llistar empleats a assignacions: " + error);
-                    }
-                }
-    }//GEN-LAST:event_seleccionarEmpleatActionPerformed
-
-    private void seleccionarAtraccioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarAtraccioActionPerformed
-        Object indiceA=llistaAtraccions.getSelectedValue();
-                IO.imprimirTI("Contingut: "+ (indiceA));
-                if (indiceA == null){
-                    JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
-                }else {
-                    try {
-                        atraccioSeleccionada.setText("Atraccio seleccionada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.indexOf(indiceA)).getNom());
-                        seleccio_atraccio = Atraccio.arrayAtraccio.indexOf(indiceA);
-                    }catch (Exception error){
-                        IO.imprimirTI("Error al llistar atraccions a assignacions: " + error);
-                    }
-                }
-    }//GEN-LAST:event_seleccionarAtraccioActionPerformed
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         this.setVisible(false);
@@ -315,25 +283,93 @@ public class Registrar_assignacio extends javax.swing.JFrame {
 
     private void assignarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignarButtonActionPerformed
         if (seleccio_empleat==-1 || seleccio_atraccio==-1 || dataText.toString().isEmpty()){
-                    JOptionPane.showMessageDialog(this, "Error: Hi ha algun camp per a omplir");
-                    IO.imprimirTI("Se ha intentat registrar una assignacio en algun camp buit");
-                }else {
-                    try {
-                        Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), dataText.getText()));
-                        IO.imprimirTI("Size: " + Arrays.arrayAssignacio.size());
-                        IO.imprimirTI(Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).toString());
-                        IO.imprimirTI("Se ha registrat una assignacio");
-                        JOptionPane.showMessageDialog(this, "Assignacio creada correctament");
-                        seleccio_empleat = -1;
-                        seleccio_atraccio = -1;
-                        dataText.setText("");
-                        empleatSeleccionat.setText("");
-                        atraccioSeleccionada.setText("");
-                    }catch (Exception error){
-                        IO.imprimirTI("Error al assignar: " + error);
-                    }
-                }
+            JOptionPane.showMessageDialog(this, "Error: Hi ha algun camp per a omplir");
+            IO.imprimirTI("Se ha intentat registrar una assignacio en algun camp buit");
+        }else {
+            try {
+                Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), dataText.getText()));
+                IO.imprimirTI("Size: " + Arrays.arrayAssignacio.size());
+                IO.imprimirTI(Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).toString());
+                IO.imprimirTI("Se ha registrat una assignacio");
+                JOptionPane.showMessageDialog(this, "Assignacio creada correctament");
+                seleccio_empleat = -1;
+                seleccio_atraccio = -1;
+                dataText.setText("");
+                empleatSeleccionat.setText("");
+                atraccioSeleccionada.setText("");
+            }catch (Exception error){
+                IO.imprimirTI("Error al assignar: " + error);
+            }
+        }
     }//GEN-LAST:event_assignarButtonActionPerformed
+
+    private void seleccionarAtraccioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarAtraccioActionPerformed
+        Object indiceA=llistaAtraccions.getSelectedValue();
+        IO.imprimirTI("Contingut: "+ (indiceA));
+        if (indiceA == null){
+            JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
+        }else {
+            try {
+                atraccioSeleccionada.setText("Atraccio seleccionada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.indexOf(indiceA)).getNom());
+                seleccio_atraccio = Atraccio.arrayAtraccio.indexOf(indiceA);
+            }catch (Exception error){
+                IO.imprimirTI("Error al llistar atraccions a assignacions: " + error);
+            }
+        }
+    }//GEN-LAST:event_seleccionarAtraccioActionPerformed
+
+    private void seleccionarEmpleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarEmpleatActionPerformed
+        Object elementmodificat = null;
+        try{
+            elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        }catch (Exception e){
+            IO.imprimirTI("Error seleccio null");
+        }
+        if (elementmodificat == null){
+            JOptionPane.showMessageDialog(this, "Selecciona un empleat");
+        }else{
+            int element = (int)elementmodificat;
+            IO.imprimirTI("Seleccio: " + element);
+            seleccio_empleat = -1;
+            boolean trobat = false;
+            for (int i = 0; i<Arrays.arrayPersones.size() && trobat == false; i++){
+                try{
+                    if(element == Arrays.arrayPersones.get(i).getId()){
+                    seleccio_empleat = i;
+                    trobat = true;
+                }
+                }catch(Exception e){
+                    IO.imprimirTI("Error: " + e);
+                }
+
+            }
+            if (seleccio_empleat ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
+            else {
+                try{
+                    empleatSeleccionat.setText("Empleat seleccionat: " + Arrays.arrayPersones.get(seleccio_empleat).getNom());
+                }catch (Exception error){
+                    IO.imprimirTI("Error al seleccionar empleat assignacio: " + error);
+                }
+                
+            }
+            }
+        /* Object indiceE=llistaEmpleats.getSelectedValue();
+        IO.imprimirTI("Contingut: "+ (indiceE));
+        if (indiceE == null){
+            JOptionPane.showMessageDialog(this, "Selecciona un empleat");
+        }else {
+            try {
+                empleatSeleccionat.setText("Empleat seleccionat: " + Arrays.arrayPersones.get(Arrays.arrayPersones.indexOf(indiceE)).getNom());
+                seleccio_empleat = Arrays.arrayPersones.indexOf(indiceE);
+            }catch (Exception error){
+                IO.imprimirTI("Error al llistar empleats a assignacions: " + error);
+            }
+        }*/
+    }//GEN-LAST:event_seleccionarEmpleatActionPerformed
+
+    private void buscarEmpleatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleatsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarEmpleatsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,10 +419,10 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JList<String> llistaAtraccions;
-    private javax.swing.JList<String> llistaEmpleats;
     private javax.swing.JButton seleccionarAtraccio;
     private javax.swing.JButton seleccionarEmpleat;
     // End of variables declaration//GEN-END:variables

@@ -113,7 +113,7 @@ public class Auxiliar {
                 }
 
             }
-            if (seleccio ==-1) JOptionPane.showMessageDialog(null, "no s'ha pogut modificar");
+            if (seleccio ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
             else {
             nomText.setText(Arrays.arrayPersones.get(seleccio).getNom());
             cognomsText.setText(Arrays.arrayPersones.get(seleccio).getCognom1());
