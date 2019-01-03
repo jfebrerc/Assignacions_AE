@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Biblioteques.Auxiliar;
+import java.io.IOException;
 /**
  *
  * @author Usuari
@@ -179,13 +180,14 @@ public class Registrar_empleat extends javax.swing.JFrame {
                         IO.imprimirTI(((Empleat) Arrays.arrayPersones.get(Arrays.arrayPersones.size()-1)).toString());
                         IO.imprimirTI("Se ha registrat un empleat");
                         JOptionPane.showMessageDialog(this, "Se ha donat de alta correctament a " + ((Empleat) Arrays.arrayPersones.get(Arrays.arrayPersones.size()-1)).getNom());
-                        Auxiliar.log("Empleat registrat: " + ((Empleat) Arrays.arrayPersones.get(Arrays.arrayPersones.size()-1)).getNom() + " " + ((Empleat) Arrays.arrayPersones.get(Arrays.arrayPersones.size()-1)).getDNI());
+                        Auxiliar.log("Empleat registrat: " + ((Empleat) Arrays.arrayPersones.get(Arrays.arrayPersones.size()-1)).getNom() + " " + ((Empleat) Arrays.arrayPersones.get(Arrays.arrayPersones.size()-1)).getCognom1() + " " + ((Empleat) Arrays.arrayPersones.get(Arrays.arrayPersones.size()-1)).getDNI());
                         this.setVisible(false);
                         Menu_empleats menuE = new Menu_empleats();
                         menuE.setVisible(true);
                         IO.imprimirTI("-------------------------------------------------------------------------");
                     } catch (Exception error) {
-                        IO.imprimirTI("Error: "+error);
+                        IO.imprimirTI("Error al registrar empleat: "+error);
+                        Auxiliar.log("Error al registrar un empleat: " + error);
                     }
                 }
     }//GEN-LAST:event_REGISTRARButtonActionPerformed

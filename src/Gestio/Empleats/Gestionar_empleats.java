@@ -7,6 +7,7 @@ package Gestio.Empleats;
 import Biblioteques.Arrays;
 import Biblioteques.Auxiliar;
 import Biblioteques.IO;
+import Classes.Atraccio;
 import Classes.Empleat;
 import Classes.Persona;
 
@@ -15,6 +16,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.*;
 import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Usuari
@@ -33,17 +35,17 @@ public class Gestionar_empleats extends javax.swing.JFrame {
         textBusqueda.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats);
+                Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats);
+                Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats);
+                Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
             }
         });
     }
@@ -64,8 +66,6 @@ public class Gestionar_empleats extends javax.swing.JFrame {
         CARREGARButton = new javax.swing.JButton();
         ELIMINARButton = new javax.swing.JButton();
         ENREREButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        llistaEmpleats = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -76,6 +76,8 @@ public class Gestionar_empleats extends javax.swing.JFrame {
         nominaText = new javax.swing.JTextField();
         modificarButton = new javax.swing.JButton();
         BUIDARButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -120,18 +122,6 @@ public class Gestionar_empleats extends javax.swing.JFrame {
             }
         });
 
-        llistaEmpleats.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        llistaEmpleats.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                llistaEmpleatsMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(llistaEmpleats);
-
         jLabel2.setText("Nom:");
 
         jLabel3.setText("Cognom:");
@@ -154,6 +144,24 @@ public class Gestionar_empleats extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nom", "Cognom", "DNI", "Nomina"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,8 +169,7 @@ public class Gestionar_empleats extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
@@ -177,23 +184,24 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(modificarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BUIDARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BUIDARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(440, 440, 440))
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(textBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(llimpiarButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(4, 4, 4)
                         .addComponent(CARREGARButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ELIMINARButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ENREREButton)
-                        .addGap(0, 369, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(440, 440, 440))
+                        .addContainerGap(383, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,12 +212,12 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(llimpiarButton)
-                    .addComponent(CARREGARButton)
                     .addComponent(ELIMINARButton)
-                    .addComponent(ENREREButton))
+                    .addComponent(ENREREButton)
+                    .addComponent(CARREGARButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(BUIDARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,7 +238,7 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nominaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))))
-                .addContainerGap())
+                .addGap(421, 421, 421))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,7 +251,7 @@ public class Gestionar_empleats extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, Short.MAX_VALUE)
         );
 
         pack();
@@ -254,39 +262,37 @@ public class Gestionar_empleats extends javax.swing.JFrame {
     }//GEN-LAST:event_textBusquedaActionPerformed
 
     private void CARREGARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CARREGARButtonActionPerformed
-        seleccio = Auxiliar.carregar_dades_empleats(llistaEmpleats, this, nomText, cognomsText, dniText, nominaText, seleccio);
+        //seleccio = Auxiliar.carregar_dades_empleats(llistaEmpleats, this, nomText, cognomsText, dniText, nominaText, seleccio);
+        seleccio = Auxiliar.carregar_dades_empleats_taula(CARREGARButton, seleccio, this, jTable1, nomText, cognomsText, dniText, nominaText);
     }//GEN-LAST:event_CARREGARButtonActionPerformed
 
     private void ELIMINARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ELIMINARButtonActionPerformed
-        Object indices2=llistaEmpleats.getSelectedValue();
-                IO.imprimirTI("Contingut: "+ (indices2));
-                if (indices2 == null){
+                int elements [] = null;
+                int dialogResult = -1;
+                try{
+                    elements = jTable1.getSelectedRows();
+                    int dialogButton = JOptionPane.YES_NO_OPTION;
+                    dialogResult = JOptionPane.showConfirmDialog(null, "Estas segur de que vols eliminar el empleat " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getNom() + "?", "CONFIRMACIO", dialogButton);
+                    IO.imprimirTI("Element eliminar: " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getNom());
+                }catch (Exception error){
                     JOptionPane.showMessageDialog(this, "Selecciona un empleat");
-                }else {
-                    try{
-                        int dialogButton = JOptionPane.YES_NO_OPTION;
-                        int dialogResult = JOptionPane.showConfirmDialog(null, "Estas segur de que vols eliminar el empleat " + Arrays.arrayPersones.get(Arrays.arrayPersones.indexOf(indices2)).getNom() + "?", "CONFIRMACIO", dialogButton);
-                        if(dialogResult == 0) {
-                            IO.imprimirTI("Opcio 'SI'");
-                            IO.imprimirTI("Posicio: " + Arrays.arrayPersones.indexOf(indices2));
-                            posicio = Arrays.arrayPersones.indexOf(indices2);
-                            IO.imprimirTI("Se ha eliminat el empleat: " + Arrays.arrayPersones.get(posicio));
-                            Arrays.arrayPersones.remove(indices2);
-                            Auxiliar.log("Empleat eliminat: " + ((Empleat) Arrays.arrayPersones.get(posicio)).getNom() + " " + ((Empleat) Arrays.arrayPersones.get(posicio)).getDNI());
-                            posicio = -1;
+                }
+                    if(dialogResult == 0) {
+                        try{
+                            Auxiliar.log("Empleat eliminat: " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getNom() + " " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getDNI());
+                            Arrays.arrayPersones.remove(elements[0]);
                             seleccio = -1;
                             nomText.setText("");
                             cognomsText.setText("");
                             dniText.setText("");
                             nominaText.setText("");
-                            Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats);
-                        }else {
-                            IO.imprimirTI("Opcio 'NO'");
+                            Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
+                        }catch (Exception e){
+                            IO.imprimirTI("Error al eliminar: " + e);
                         }
-                }catch (Exception error){
-                        IO.imprimirTI("Error al eliminar empleat: " + error);
+                        
                     }
-            }
+                 Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
     }//GEN-LAST:event_ELIMINARButtonActionPerformed
 
     private void llimpiarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llimpiarButtonActionPerformed
@@ -304,16 +310,17 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Carrega un empleat per a modificar");
                 }else {
                     try {
-                        String anticNom=nomText.getText();
+                        String anticNom=Arrays.arrayPersones.get(seleccio).getNom();
                         Arrays.arrayPersones.get(seleccio).setNom(nomText.getText());
                         Arrays.arrayPersones.get(seleccio).setCognom1(cognomsText.getText());
                         Arrays.arrayPersones.get(seleccio).setDNI(dniText.getText());
                         ((Empleat)Arrays.arrayPersones.get(seleccio)).setNomina(nominaText.getText());
-                        Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats);
+                        Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
                         JOptionPane.showMessageDialog(this, "Empleat " + Arrays.arrayPersones.get(seleccio).getNom()  +  " modificat correctament");
                         Auxiliar.log("Empleat modificat: " + anticNom + " a: " + Arrays.arrayPersones.get(seleccio).getNom());
                     } catch (Exception error) {
                         IO.imprimirTI("Error al modificar: " + error);
+                        Auxiliar.log("Error al modificar empleat: " + error);
                     }
                 }
     }//GEN-LAST:event_modificarButtonActionPerformed
@@ -326,21 +333,10 @@ public class Gestionar_empleats extends javax.swing.JFrame {
         nominaText.setText("");
     }//GEN-LAST:event_BUIDARButtonActionPerformed
 
-    private void llistaEmpleatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llistaEmpleatsMouseClicked
-        if(evt.getClickCount()==2 && evt.getButton() == MouseEvent.BUTTON1){
-            seleccio = Auxiliar.carregar_dades_empleats(llistaEmpleats, this, nomText, cognomsText, dniText, nominaText, seleccio);
-        }
-    }//GEN-LAST:event_llistaEmpleatsMouseClicked
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats); //Llistar empleats al entrar al jframe
+       // Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats); //Llistar empleats al entrar al jframe
+        Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
     }//GEN-LAST:event_formWindowOpened
-    private void LlistarPanelActionPerformed(java.awt.event.ActionEvent evt){
-        //super.componentResized(evt);
-        Auxiliar.llistar_empleats(textBusqueda, llistaEmpleats); //Llistar empleats al entrar al jframe
-    }
-    
-    
 
     /**
      * @param args the command line arguments
@@ -390,9 +386,9 @@ public class Gestionar_empleats extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton llimpiarButton;
-    private javax.swing.JList<String> llistaEmpleats;
     private javax.swing.JButton modificarButton;
     private javax.swing.JTextField nomText;
     private javax.swing.JTextField nominaText;
