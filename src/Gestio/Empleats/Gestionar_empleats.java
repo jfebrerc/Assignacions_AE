@@ -325,7 +325,7 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                         ((Empleat)Arrays.arrayPersones.get(seleccio)).setNomina(nominaText.getText());
                         Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
                         JOptionPane.showMessageDialog(this, "Empleat " + Arrays.arrayPersones.get(seleccio).getNom()  +  " modificat correctament");
-                        Auxiliar.log("Empleat modificat: " + anticNom + " | " + anticCognom + " | " + anticDNI + " | " + antigaNomina + " | " + "\n A: " + Arrays.arrayPersones.get(seleccio).getNom() + " | " + Arrays.arrayPersones.get(seleccio).getCognom1() + " | "+ Arrays.arrayPersones.get(seleccio).getDNI() + " | "+ ((Empleat)Arrays.arrayPersones.get(seleccio)).getNomina());
+                        Auxiliar.log("Empleat modificat: " + anticNom + " | " + anticCognom + " | " + anticDNI + " | " + antigaNomina + " | " + "\nA: " + Arrays.arrayPersones.get(seleccio).getNom() + " | " + Arrays.arrayPersones.get(seleccio).getCognom1() + " | "+ Arrays.arrayPersones.get(seleccio).getDNI() + " | "+ ((Empleat)Arrays.arrayPersones.get(seleccio)).getNomina());
                     } catch (Exception error) {
                         IO.imprimirTI("Error al modificar: " + error);
                         Auxiliar.log("Error al modificar empleat: " + error);

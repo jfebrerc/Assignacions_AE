@@ -235,4 +235,19 @@ public class Auxiliar {
             IO.imprimirT("Error la registrar logs: " + e);
         }
     }
+    public static void logError(String s) {
+        TimeZone tz = TimeZone.getTimeZone("CET"); // or PST, MID, etc ...
+        Date now = new Date();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+        df.setTimeZone(tz);
+        String currentTime = df.format(now);
+        try{
+            FileWriter aWriter = new FileWriter("C:\\Users\\Usuari\\logError.txt", true);
+            aWriter.write(currentTime + " - " + s + "\n");
+            aWriter.flush();
+            aWriter.close();
+        }catch(Exception e){
+            IO.imprimirT("Error la registrar logs: " + e);
+        }
+    }
 }

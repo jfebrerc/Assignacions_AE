@@ -307,6 +307,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 IO.imprimirTI(Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).toString());
                 IO.imprimirTI("Se ha registrat una assignacio");
                 JOptionPane.showMessageDialog(this, "Assignacio creada correctament");
+                Auxiliar.log("Assignació registrada: " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getNom() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getCognom1() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getDNI() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getAtraccio().getNom() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getData());
                 seleccio_empleat = -1;
                 seleccio_atraccio = -1;
                 dataText.setText("");
