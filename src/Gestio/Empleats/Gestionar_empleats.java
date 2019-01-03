@@ -316,13 +316,16 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                 }else {
                     try {
                         String anticNom=Arrays.arrayPersones.get(seleccio).getNom();
+                        String anticCognom=Arrays.arrayPersones.get(seleccio).getCognom1();
+                        String anticDNI=Arrays.arrayPersones.get(seleccio).getDNI();
+                        String antigaNomina=((Empleat)Arrays.arrayPersones.get(seleccio)).getNomina();
                         Arrays.arrayPersones.get(seleccio).setNom(nomText.getText());
                         Arrays.arrayPersones.get(seleccio).setCognom1(cognomsText.getText());
                         Arrays.arrayPersones.get(seleccio).setDNI(dniText.getText());
                         ((Empleat)Arrays.arrayPersones.get(seleccio)).setNomina(nominaText.getText());
                         Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
                         JOptionPane.showMessageDialog(this, "Empleat " + Arrays.arrayPersones.get(seleccio).getNom()  +  " modificat correctament");
-                        Auxiliar.log("Empleat modificat: " + anticNom + " a: " + Arrays.arrayPersones.get(seleccio).getNom());
+                        Auxiliar.log("Empleat modificat: " + anticNom + " | " + anticCognom + " | " + anticDNI + " | " + antigaNomina + " | " + "\n A: " + Arrays.arrayPersones.get(seleccio).getNom() + " | " + Arrays.arrayPersones.get(seleccio).getCognom1() + " | "+ Arrays.arrayPersones.get(seleccio).getDNI() + " | "+ ((Empleat)Arrays.arrayPersones.get(seleccio)).getNomina());
                     } catch (Exception error) {
                         IO.imprimirTI("Error al modificar: " + error);
                         Auxiliar.log("Error al modificar empleat: " + error);
