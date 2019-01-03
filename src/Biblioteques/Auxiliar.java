@@ -106,7 +106,7 @@ public class Auxiliar {
     public static void log(String s) throws IOException {
         TimeZone tz = TimeZone.getTimeZone("CET"); // or PST, MID, etc ...
         Date now = new Date();
-        DateFormat df = new SimpleDateFormat("yyyy.mm.dd hh:mm:ss a");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
         df.setTimeZone(tz);
         String currentTime = df.format(now);
         FileWriter aWriter = new FileWriter("C:\\Users\\Usuari\\log.txt", true);
