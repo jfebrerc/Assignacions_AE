@@ -9,6 +9,7 @@ import Classes.Atraccio;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Biblioteques.Auxiliar;
 
 /**
  *
@@ -162,6 +163,7 @@ public class EliminarAtraccioForm extends javax.swing.JFrame {
         int input = JOptionPane.showOptionDialog(null, "Vols eliminar aquesta atraccio?", "Alerta!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, null, null);
             if(input == JOptionPane.OK_OPTION)
             {
+             Auxiliar.log("Atraccio eliminada: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio());
              Atraccio.arrayAtraccio.remove(elements[0]);
             }
         

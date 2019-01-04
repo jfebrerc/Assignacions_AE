@@ -304,7 +304,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                     if(dialogResult == 0) {
                         try{
                             //Auxiliar.log("Empleat eliminat: " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getNom() + " " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getDNI());
-                            Auxiliar.log("Assignacio eliminada: " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getCognom1()  + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getDNI() + " --> " + Arrays.arrayAssignacio.get(elements[0]).getAtraccio().getNom());
+                            Auxiliar.log("Assignacio eliminada: " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getCognom1()  + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(elements[0]).getData() + " --> " + Arrays.arrayAssignacio.get(elements[0]).getAtraccio().getNom());
                             Arrays.arrayAssignacio.remove(elements[0]);
                             seleccio = -1;
                             dataText.setText("");

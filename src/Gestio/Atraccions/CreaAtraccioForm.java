@@ -7,6 +7,7 @@ package Gestio.Atraccions;
 
 import Classes.Atraccio;
 import javax.swing.JOptionPane;
+import Biblioteques.Auxiliar;
 
 /**
  *
@@ -153,7 +154,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,6 +207,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
         
         Atraccio.arrayAtraccio.add(new Atraccio(nomAtraccio.getText(),tipusAtraccio.getText(),dataInnauguracio.getText(),alturaMin.getText(),accessibilitat.getText(),Express.getText()));
         JOptionPane.showMessageDialog(this, "Atraccio registrada correctament");
+        Auxiliar.log("Atraccio registrada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getNom() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccesExpress());
         nomAtraccio.setText("");
         tipusAtraccio.setText("");
         dataInnauguracio.setText("");

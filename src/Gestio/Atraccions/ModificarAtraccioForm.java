@@ -9,6 +9,7 @@ import Classes.Atraccio;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Biblioteques.Auxiliar;
 
 /**
  *
@@ -276,6 +277,13 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
         AlturaMin.getText();
         Accessibilitat.getText();
         Express.getText();
+        //String anticNom=Arrays.arrayPersones.get(seleccio).getNom();
+        String anticNom = Atraccio.arrayAtraccio.get(elements[0]).getNom();
+        String anticTipus = Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio();
+        String anticDataI = Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio();
+        String anticAlturamin = Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin();
+        String anticAcces = Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat();
+        String anticExpress = Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress();
         
         Atraccio.arrayAtraccio.get(elements[0]).setNom(Nom.getText());
         Atraccio.arrayAtraccio.get(elements[0]).setTipuisAtraccio(Tipus.getText());
@@ -283,6 +291,8 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
         Atraccio.arrayAtraccio.get(elements[0]).setAlturaMin(AlturaMin.getText());
         Atraccio.arrayAtraccio.get(elements[0]).setAccessibilitat(Accessibilitat.getText());
         Atraccio.arrayAtraccio.get(elements[0]).setAccesExpress(Express.getText());
+        
+        Auxiliar.log("Atraccio modificada: " + anticNom + " | " + anticTipus + " | " + anticDataI + " | " + anticAlturamin + " | " + anticAcces + " | " + anticExpress + "\nA: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress());
         
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         tabla.setRowCount (0);
