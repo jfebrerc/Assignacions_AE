@@ -8,6 +8,8 @@ package Gestio.Atraccions;
 import Biblioteques.Auxiliar;
 import Classes.Atraccio;
 import java.util.Iterator;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +25,22 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Llistar Atraccio");
+        textCercar.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
+            }
+        });
     }
 
     /**

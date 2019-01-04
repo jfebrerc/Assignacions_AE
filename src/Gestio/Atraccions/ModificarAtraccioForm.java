@@ -10,6 +10,8 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Biblioteques.Auxiliar;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -26,6 +28,22 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Llistar Atraccio");
+        textCercar.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
+            }
+        });
     }
 
     /**
