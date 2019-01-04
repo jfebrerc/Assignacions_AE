@@ -8,6 +8,7 @@ package Gestio.Atraccions;
 import Classes.Atraccio;
 import javax.swing.JOptionPane;
 import Biblioteques.Auxiliar;
+import Biblioteques.IO;
 
 /**
  *
@@ -54,7 +55,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel1.setText("Nova Atracció");
+        jLabel1.setText("Registrar atracció");
 
         nomAtraccio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,84 +114,92 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("nomAtraccio");
+        jLabel3.setText("Nom: ");
 
-        jLabel4.setText("tipusAtraccio");
+        jLabel4.setText("Tipus:");
 
-        jLabel5.setText("dataInnauguracio");
+        jLabel5.setText("Data innauguració: ");
 
-        jLabel6.setText("alturaMinima");
+        jLabel6.setText("Altura mínima:");
 
-        jLabel7.setText("accessibilitat");
+        jLabel7.setText("Accessibilitat");
 
-        jLabel8.setText("accesExpress");
+        jLabel8.setText("Access  Express");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CrearButton)
-                .addGap(18, 18, 18)
-                .addComponent(ClearButton)
-                .addGap(18, 18, 18)
-                .addComponent(CancelButton)
-                .addGap(60, 60, 60))
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(alturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dataInnauguracio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tipusAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nomAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addContainerGap(343, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipusAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(alturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataInnauguracio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(144, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(CrearButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(ClearButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(CancelButton)
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(279, 279, 279))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(93, 93, 93)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(nomAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(tipusAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(dataInnauguracio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(alturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(nomAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tipusAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(dataInnauguracio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(alturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CrearButton)
                     .addComponent(ClearButton)
-                    .addComponent(CancelButton))
-                .addContainerGap())
+                    .addComponent(CancelButton)))
         );
 
         pack();
@@ -198,22 +207,30 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
     
     
     private void CrearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearButtonActionPerformed
-        nomAtraccio.getText();   
-        tipusAtraccio.getText();
-        dataInnauguracio.getText();
-        alturaMin.getText();
-        accessibilitat.getText();
-        Express.getText();
+        if (nomAtraccio.getText().isEmpty() || tipusAtraccio.getText().isEmpty() || dataInnauguracio.getText().isEmpty() || alturaMin.getText().isEmpty() || accessibilitat.getText().isEmpty() || Express.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(this, "Error: Hi ha algun camp per a omplir");
+                    IO.imprimirTI("Se ha intentat registrar una  en algun camp buit");
+                }else {
+            try{
+                nomAtraccio.getText();   
+                tipusAtraccio.getText();
+                dataInnauguracio.getText();
+                alturaMin.getText();
+                accessibilitat.getText();
+                Express.getText();
+
+                Atraccio.arrayAtraccio.add(new Atraccio(nomAtraccio.getText(),tipusAtraccio.getText(),dataInnauguracio.getText(),alturaMin.getText(),accessibilitat.getText(),Express.getText()));
+                JOptionPane.showMessageDialog(this, "Atraccio registrada correctament");
+                Auxiliar.log("Atraccio registrada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getNom() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccesExpress());
+                this.setVisible(false);
+                MenuAtraccioForm menuA = new MenuAtraccioForm();
+                menuA.setVisible(true);
+            }catch (Exception e){
+                //log error
+                IO.imprimirTI("Error al registrar atraccio: " + e);
+            }
+        }
         
-        Atraccio.arrayAtraccio.add(new Atraccio(nomAtraccio.getText(),tipusAtraccio.getText(),dataInnauguracio.getText(),alturaMin.getText(),accessibilitat.getText(),Express.getText()));
-        JOptionPane.showMessageDialog(this, "Atraccio registrada correctament");
-        Auxiliar.log("Atraccio registrada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getNom() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccesExpress());
-        nomAtraccio.setText("");
-        tipusAtraccio.setText("");
-        dataInnauguracio.setText("");
-        alturaMin.setText("");
-        accessibilitat.setText("");
-        Express.setText("");
     }//GEN-LAST:event_CrearButtonActionPerformed
 
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed

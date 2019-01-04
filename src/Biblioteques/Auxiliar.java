@@ -59,15 +59,19 @@ public class Auxiliar {
     }
     
     public static void llistar_atraccions_taula(JTextField textBusqueda, JTable jTable2){
+        String cercaUsuari = textBusqueda.getText().toLowerCase();
+        boolean trobat = false;
         DefaultTableModel tabla = (DefaultTableModel) jTable2.getModel();
         tabla.setRowCount (0);
         Iterator<Atraccio> iteradorModificar = Atraccio.arrayAtraccio.iterator();
         while(iteradorModificar.hasNext()){
             Atraccio atraccio_aux = iteradorModificar.next();
-            if (atraccio_aux.getNom().toLowerCase().contains(textBusqueda.getText().toLowerCase())){
-                    tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
-                }
+            String atraccio_final = atraccio_aux.toString().toLowerCase();
+            if (atraccio_final.indexOf(cercaUsuari) != -1){
+                tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
+                trobat = true;
             }
+        }
     }
 
     /**FUNCIO PER A CARREGAR DADES ALS DIFERENTS CAMPS DE TEXT PER A MODIFICAR-LES*/

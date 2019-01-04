@@ -21,7 +21,7 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
      * Creates new form LlistarAtraccioForm
      */
     int elements [];
-    int posicio;
+    int posicio = -1;
     public ModificarAtraccioForm() {
         initComponents();
         setLocationRelativeTo(null);
@@ -136,19 +136,6 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 451, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(473, 473, 473))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Carregar)
-                                .addGap(18, 18, 18)
-                                .addComponent(Modifica)
-                                .addGap(18, 18, 18)
-                                .addComponent(Enrrere)
-                                .addGap(204, 204, 204))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -180,51 +167,61 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
                                 .addComponent(textCercar, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(cercarButton)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 509, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(355, 355, 355)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Carregar)
+                .addGap(18, 18, 18)
+                .addComponent(Modifica)
+                .addGap(18, 18, 18)
+                .addComponent(Enrrere)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
                 .addGap(9, 9, 9)
+                .addComponent(jLabel1)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textCercar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cercarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(cercarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textCercar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(Tipus, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DataIn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AlturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Enrrere)
-                            .addComponent(Modifica)
-                            .addComponent(Carregar)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(Tipus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(DataIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AlturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Enrrere)
+                    .addComponent(Modifica)
+                    .addComponent(Carregar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,93 +234,69 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
     }//GEN-LAST:event_EnrrereActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount (0);
-        Iterator<Atraccio> iteradorModificar = Atraccio.arrayAtraccio.iterator();
-        while(iteradorModificar.hasNext()){
-            Atraccio atraccio_aux = iteradorModificar.next();
-        //for(int i = 0; i< Atraccio.getTotalAtraccions();i++){
-            tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
-        }
+        Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
     }//GEN-LAST:event_formWindowOpened
 
     private void CarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarregarActionPerformed
-        getContentPane().add(Carregar);
-        elements = jTable1.getSelectedRows();
-        Object elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-        posicio = -1;
-        boolean trobat = false;
-        for (int i = 0; i<Atraccio.arrayAtraccio.size() && trobat == false; i++){
-            if(Atraccio.arrayAtraccio.get(i).getIdA().equals(elementmodificat)){
-                posicio = i;
-                trobat = true;
+        try{
+            getContentPane().add(Carregar);
+            elements = jTable1.getSelectedRows();
+            Object elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            posicio = -1;
+            boolean trobat = false;
+            for (int i = 0; i<Atraccio.arrayAtraccio.size() && trobat == false; i++){
+                if(Atraccio.arrayAtraccio.get(i).getIdA().equals(elementmodificat)){
+                    posicio = i;
+                    trobat = true;
+                }
             }
+            if (posicio ==-1) JOptionPane.showMessageDialog(null, "no s'hapogut modificar");
+            else {
+            Nom.setText(Atraccio.arrayAtraccio.get(posicio).getNom());
+            Tipus.setText(Atraccio.arrayAtraccio.get(posicio).getTipusAtraccio());
+            DataIn.setText(Atraccio.arrayAtraccio.get(posicio).getDataInauguracio());
+            AlturaMin.setText(Atraccio.arrayAtraccio.get(posicio).getAlturaMin());
+            Accessibilitat.setText(Atraccio.arrayAtraccio.get(posicio).getAccessibilitat());
+            Express.setText(Atraccio.arrayAtraccio.get(posicio).getAccesExpress());
         }
-        if (posicio ==-1) JOptionPane.showMessageDialog(null, "no s'hapogut modificar");
-        else {
-        Nom.setText(Atraccio.arrayAtraccio.get(posicio).getNom());
-        Tipus.setText(Atraccio.arrayAtraccio.get(posicio).getTipusAtraccio());
-        DataIn.setText(Atraccio.arrayAtraccio.get(posicio).getDataInauguracio());
-        AlturaMin.setText(Atraccio.arrayAtraccio.get(posicio).getAlturaMin());
-        Accessibilitat.setText(Atraccio.arrayAtraccio.get(posicio).getAccessibilitat());
-        Express.setText(Atraccio.arrayAtraccio.get(posicio).getAccesExpress());
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Selecciona una atraccio");
         }
+        
     }//GEN-LAST:event_CarregarActionPerformed
 
     private void ModificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificaActionPerformed
-        Nom.getText();
+        /*Nom.getText();
         Tipus.getText();
         DataIn.getText();   
         AlturaMin.getText();
         Accessibilitat.getText();
-        Express.getText();
-        //String anticNom=Arrays.arrayPersones.get(seleccio).getNom();
-        String anticNom = Atraccio.arrayAtraccio.get(elements[0]).getNom();
-        String anticTipus = Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio();
-        String anticDataI = Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio();
-        String anticAlturamin = Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin();
-        String anticAcces = Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat();
-        String anticExpress = Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress();
-        
-        Atraccio.arrayAtraccio.get(elements[0]).setNom(Nom.getText());
-        Atraccio.arrayAtraccio.get(elements[0]).setTipuisAtraccio(Tipus.getText());
-        Atraccio.arrayAtraccio.get(elements[0]).setDataInnauguracio(DataIn.getText());
-        Atraccio.arrayAtraccio.get(elements[0]).setAlturaMin(AlturaMin.getText());
-        Atraccio.arrayAtraccio.get(elements[0]).setAccessibilitat(Accessibilitat.getText());
-        Atraccio.arrayAtraccio.get(elements[0]).setAccesExpress(Express.getText());
-        
-        Auxiliar.log("Atraccio modificada: " + anticNom + " | " + anticTipus + " | " + anticDataI + " | " + anticAlturamin + " | " + anticAcces + " | " + anticExpress + "\nA: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress());
-        
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount (0);
-        Iterator<Atraccio> iteradorModificar = Atraccio.arrayAtraccio.iterator();
-        while(iteradorModificar.hasNext()){
-            Atraccio atraccio_aux = iteradorModificar.next();
-        //for(int i = 0; i< Atraccio.getTotalAtraccions();i++){
-            tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
+        Express.getText();*/
+        if(posicio == -1){
+            JOptionPane.showMessageDialog(null, "Carrega una atraccio");
+        }else{
+            String anticNom = Atraccio.arrayAtraccio.get(elements[0]).getNom();
+            String anticTipus = Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio();
+            String anticDataI = Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio();
+            String anticAlturamin = Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin();
+            String anticAcces = Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat();
+            String anticExpress = Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress();
+
+            Atraccio.arrayAtraccio.get(elements[0]).setNom(Nom.getText());
+            Atraccio.arrayAtraccio.get(elements[0]).setTipuisAtraccio(Tipus.getText());
+            Atraccio.arrayAtraccio.get(elements[0]).setDataInnauguracio(DataIn.getText());
+            Atraccio.arrayAtraccio.get(elements[0]).setAlturaMin(AlturaMin.getText());
+            Atraccio.arrayAtraccio.get(elements[0]).setAccessibilitat(Accessibilitat.getText());
+            Atraccio.arrayAtraccio.get(elements[0]).setAccesExpress(Express.getText());
+            Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
+            Auxiliar.log("Atraccio modificada: " + anticNom + " | " + anticTipus + " | " + anticDataI + " | " + anticAlturamin + " | " + anticAcces + " | " + anticExpress + "\nA: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress());
         }
     }//GEN-LAST:event_ModificaActionPerformed
 
     private void cercarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercarButtonActionPerformed
        //Coger el campo compararlo con los elementos que estan almacenados (no se si con el nombre o con todos los posibles campos) una vez los comparas los sacas en la tabla
        //despues de eso saber como coger el objeto y cargar sus datos en los text fields.
-        String cercaUsuari = textCercar.getText();
-        boolean trobat = false;
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount (0);
-        Iterator<Atraccio> iteradorModificar = Atraccio.arrayAtraccio.iterator();
-        while(iteradorModificar.hasNext()){
-            Atraccio atraccio_aux = iteradorModificar.next();
-            String atraccio_final = atraccio_aux.toString();
-            if (atraccio_final.indexOf(cercaUsuari) != -1){
-        //for(int i = 0; i< Atraccio.getTotalAtraccions();i++){
-                tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
-                trobat = true;
-            }
-        }
-        
-       
-       
+        Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
     }//GEN-LAST:event_cercarButtonActionPerformed
 
     /**

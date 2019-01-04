@@ -5,6 +5,7 @@
  */
 package Gestio.Atraccions;
 
+import Biblioteques.Auxiliar;
 import Classes.Atraccio;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
@@ -52,11 +53,11 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nom", "Tipus", "Data Innauguracio", "Altura Min", "Accessibilitat", "Express"
+                "ID", "Nom", "Tipus", "Data Innauguracio", "Altura Min", "Accessibilitat", "Express"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -66,7 +67,7 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel1.setText("Llistat d'Atraccions");
+        jLabel1.setText("Llistat d'atraccions");
 
         Enrrere.setText("Enrrere");
         Enrrere.addActionListener(new java.awt.event.ActionListener() {
@@ -90,35 +91,31 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 461, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(473, 473, 473))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Enrrere)
-                                .addGap(207, 207, 207))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(363, 363, 363))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textCercar, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cercarButton)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Enrrere)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(textCercar, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cercarButton))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 903, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textCercar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cercarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Enrrere)
                 .addContainerGap())
         );
@@ -133,33 +130,13 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
     }//GEN-LAST:event_EnrrereActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount (0);
-        Iterator<Atraccio> iteradorLlistar = Atraccio.arrayAtraccio.iterator();
-        while(iteradorLlistar.hasNext()){
-            Atraccio atraccio_aux = iteradorLlistar.next();
-        //for(int i = 0; i< Atraccio.getTotalAtraccions();i++){
-            tabla.addRow(new Object[] {atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
-        }
+        Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
     }//GEN-LAST:event_formWindowOpened
 
     private void cercarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercarButtonActionPerformed
         //Coger el campo compararlo con los elementos que estan almacenados (no se si con el nombre o con todos los posibles campos) una vez los comparas los sacas en la tabla
         //despues de eso saber como coger el objeto y cargar sus datos en los text fields.
-        String cercaUsuari = textCercar.getText();
-        boolean trobat = false;
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount (0);
-        Iterator<Atraccio> iteradorModificar = Atraccio.arrayAtraccio.iterator();
-        while(iteradorModificar.hasNext()){
-            Atraccio atraccio_aux = iteradorModificar.next();
-            String atraccio_final = atraccio_aux.toString();
-            if (atraccio_final.indexOf(cercaUsuari) != -1){
-                //for(int i = 0; i< Atraccio.getTotalAtraccions();i++){
-                    tabla.addRow(new Object[] {atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
-                    trobat = true;
-                }
-            }
+        Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
     }//GEN-LAST:event_cercarButtonActionPerformed
 
     /**

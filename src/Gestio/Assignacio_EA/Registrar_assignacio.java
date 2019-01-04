@@ -51,17 +51,17 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         buscarAtraccions.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                //Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+                Auxiliar.llistar_atraccions_taula(buscarAtraccions, jTable2);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                //Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+                Auxiliar.llistar_atraccions_taula(buscarAtraccions, jTable2);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                //Auxiliar.llistar_empleats(buscarEmpleats, llistaEmpleats);
+                Auxiliar.llistar_atraccions_taula(buscarAtraccions, jTable2);
             }
         });
     }
