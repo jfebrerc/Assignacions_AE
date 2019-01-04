@@ -298,6 +298,7 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                             Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
                         }catch (Exception e){
                             IO.imprimirTI("Error al eliminar: " + e);
+                            Auxiliar.logError("Error al eliminar empleat: " + e);
                         }  
                         } 
                     }

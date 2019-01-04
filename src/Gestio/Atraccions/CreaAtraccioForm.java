@@ -228,6 +228,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
             }catch (Exception e){
                 //log error
                 IO.imprimirTI("Error al registrar atraccio: " + e);
+                Auxiliar.logError("Error al registrar una atraccio: " + e);
             }
         }
         

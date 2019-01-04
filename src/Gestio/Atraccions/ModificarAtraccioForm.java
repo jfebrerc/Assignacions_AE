@@ -10,6 +10,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Biblioteques.Auxiliar;
+import Biblioteques.IO;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -27,7 +28,7 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
     public ModificarAtraccioForm() {
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Llistar Atraccio");
+        setTitle("Modificar Atraccio");
         textCercar.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -279,6 +280,7 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
         }
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Selecciona una atraccio");
+            Auxiliar.logError("Error al carregar dades en Atraccio-->ModificarAtraccioForm: " + e);
         }
         
     }//GEN-LAST:event_CarregarActionPerformed
@@ -293,21 +295,26 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
         if(posicio == -1){
             JOptionPane.showMessageDialog(null, "Carrega una atraccio");
         }else{
-            String anticNom = Atraccio.arrayAtraccio.get(elements[0]).getNom();
-            String anticTipus = Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio();
-            String anticDataI = Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio();
-            String anticAlturamin = Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin();
-            String anticAcces = Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat();
-            String anticExpress = Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress();
+            try{
+                String anticNom = Atraccio.arrayAtraccio.get(elements[0]).getNom();
+                String anticTipus = Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio();
+                String anticDataI = Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio();
+                String anticAlturamin = Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin();
+                String anticAcces = Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat();
+                String anticExpress = Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress();
 
-            Atraccio.arrayAtraccio.get(elements[0]).setNom(Nom.getText());
-            Atraccio.arrayAtraccio.get(elements[0]).setTipuisAtraccio(Tipus.getText());
-            Atraccio.arrayAtraccio.get(elements[0]).setDataInnauguracio(DataIn.getText());
-            Atraccio.arrayAtraccio.get(elements[0]).setAlturaMin(AlturaMin.getText());
-            Atraccio.arrayAtraccio.get(elements[0]).setAccessibilitat(Accessibilitat.getText());
-            Atraccio.arrayAtraccio.get(elements[0]).setAccesExpress(Express.getText());
-            Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
-            Auxiliar.log("Atraccio modificada: " + anticNom + " | " + anticTipus + " | " + anticDataI + " | " + anticAlturamin + " | " + anticAcces + " | " + anticExpress + "\nA: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress());
+                Atraccio.arrayAtraccio.get(elements[0]).setNom(Nom.getText());
+                Atraccio.arrayAtraccio.get(elements[0]).setTipuisAtraccio(Tipus.getText());
+                Atraccio.arrayAtraccio.get(elements[0]).setDataInnauguracio(DataIn.getText());
+                Atraccio.arrayAtraccio.get(elements[0]).setAlturaMin(AlturaMin.getText());
+                Atraccio.arrayAtraccio.get(elements[0]).setAccessibilitat(Accessibilitat.getText());
+                Atraccio.arrayAtraccio.get(elements[0]).setAccesExpress(Express.getText());
+                Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
+                Auxiliar.log("Atraccio modificada: " + anticNom + " | " + anticTipus + " | " + anticDataI + " | " + anticAlturamin + " | " + anticAcces + " | " + anticExpress + "\nA: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress());
+            }catch (Exception e){
+                IO.imprimirTI("Error al modificar atraccio: " + e);
+                Auxiliar.logError("Error al modificar atraccio: " + e);
+            }
         }
     }//GEN-LAST:event_ModificaActionPerformed
 

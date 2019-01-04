@@ -9,6 +9,8 @@ import Biblioteques.Arrays;
 import Classes.Empleat;
 import Classes.Persona;
 import Main.main;
+import Biblioteques.Auxiliar;
+import Biblioteques.IO;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -133,13 +135,19 @@ public class Menu_empleats extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarEmpleatButtonActionPerformed
 
     private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
-        for (int i=0; i<EMPLEATS_TEST;i++){
+        try{
+            for (int i=0; i<EMPLEATS_TEST;i++){
                     Arrays.arrayPersones.add(new Empleat("nom"+(i+1), "cognom"+(i+1),"dni"+(i+1),"nomina"+(i+1)));
                 }
                 for (Persona p : Arrays.arrayPersones){
                     System.out.println(p);
                 }
                 JOptionPane.showMessageDialog(this, "Empleats de prova carregats correctament");
+        }catch (Exception e){
+            IO.imprimirTI("Error al carregar empleats de prova");
+            Auxiliar.logError("Error al carregar elements de prova des de Menu_empleats: " + e);
+        }
+        
     }//GEN-LAST:event_testButtonActionPerformed
 
     private void llistarEmpleatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llistarEmpleatsButtonActionPerformed

@@ -183,6 +183,7 @@ public class EliminarAtraccioForm extends javax.swing.JFrame {
                     //IO.imprimirTI("Element eliminar: " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getNom());
                 }catch (Exception error){
                     JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
+                    Auxiliar.logError("Erro al seleccionar atraccio (atraccio-->eliminar): " + error);
                 }
                     if(dialogResult == 0) {
                         if(Atraccio.arrayAtraccio.get(elements[0]).getAssignat()){
@@ -195,44 +196,13 @@ public class EliminarAtraccioForm extends javax.swing.JFrame {
                             Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
                             }catch (Exception e){
                                 IO.imprimirTI("Error al eliminar: " + e);
+                                Auxiliar.logError("Error al eliminar una atraccio: " + e);
                             } 
                         }
                         
                         
                     }
                  Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
-        /*int elements [] = null;
-        int input = 0;
-        try{
-            elements = jTable1.getSelectedRows();
-            input = JOptionPane.showOptionDialog(null, "Vols eliminar " + Atraccio.arrayAtraccio.get(elements[0]).getNom() +"?", "Alerta!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, null, null);
-
-            IO.imprimirTI(" elements: " + elements);
-        }catch (Exception er){
-            
-        }
-        if (elements == null){
-            JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
-
-        }else{
-            elements = jTable1.getSelectedRows();
-            if(input == JOptionPane.OK_OPTION)
-            {
-             Auxiliar.log("Atraccio eliminada: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio());
-             Atraccio.arrayAtraccio.remove(elements[0]);
-             Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
-            }
-        }*/
-        
-        
-        /*DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount (0);
-        Iterator<Atraccio> iteradorEliminar = Atraccio.arrayAtraccio.iterator();
-        while(iteradorEliminar.hasNext()){
-            Atraccio atraccio_aux = iteradorEliminar.next();
-        //for(int i = 0; i< Atraccio.getTotalAtraccions();i++){
-            tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
-        }*/
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void cercarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercarButtonActionPerformed

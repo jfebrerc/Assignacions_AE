@@ -12,6 +12,7 @@ import Classes.Empleat;
 import Classes.Persona;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import Biblioteques.Auxiliar;
 
 /**
  *
@@ -183,8 +184,9 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
-        Random rand = new Random(); 
-        for (int i=0; i<ATRACCIONS_TEST;i++){
+        try{
+          Random rand = new Random(); 
+          for (int i=0; i<ATRACCIONS_TEST;i++){
                    int data1 = rand.nextInt((31 - 1) + 1) + 1;
                    int data2 = rand.nextInt((12 - 1) + 1) + 1;
                    int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
@@ -194,7 +196,12 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
                 for (Atraccio a : Atraccio.arrayAtraccio){
                     System.out.println(a);
                 }
-                JOptionPane.showMessageDialog(this, "Atraccions de prova carregades correctament");
+                JOptionPane.showMessageDialog(this, "Atraccions de prova carregades correctament");  
+        }catch (Exception e){
+            Auxiliar.logError("Error al carregar elements de prova en MenuAtraccioForm: " + e);
+        }
+        
+        
     }//GEN-LAST:event_testButtonActionPerformed
 
     /**

@@ -47,35 +47,45 @@ public class Auxiliar {
         llistaEmpleats.setModel(d1m);
     }
     public static void llistar_empleats_taula(JTextField textBusqueda, JTable jTable1){
-        String cercaUsuari = textBusqueda.getText().toLowerCase();
-        boolean trobat = false;
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount (0);
-        Iterator<Persona> iteradorPersones = Arrays.arrayPersones.iterator();
-        while(iteradorPersones.hasNext()){
-            Persona p = iteradorPersones.next();
-            String persona_cerca = p.toString().toLowerCase();
-            if (p instanceof Empleat && persona_cerca.indexOf(cercaUsuari) != -1){
-                tabla.addRow(new Object[] {p.getId(),p.getNom(),p.getCognom1(),p.getDNI(),((Empleat)p).getNomina()});
-                trobat = true;
+        try{
+            String cercaUsuari = textBusqueda.getText().toLowerCase();
+            boolean trobat = false;
+            DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+            tabla.setRowCount (0);
+            Iterator<Persona> iteradorPersones = Arrays.arrayPersones.iterator();
+            while(iteradorPersones.hasNext()){
+                Persona p = iteradorPersones.next();
+                String persona_cerca = p.toString().toLowerCase();
+                if (p instanceof Empleat && persona_cerca.indexOf(cercaUsuari) != -1){
+                    tabla.addRow(new Object[] {p.getId(),p.getNom(),p.getCognom1(),p.getDNI(),((Empleat)p).getNomina()});
+                    trobat = true;
+                }
             }
+        }catch (Exception e){
+            logError("Error al llistar llistar empleats en jTable: " + e);
         }
+        
     }
     
     public static void llistar_atraccions_taula(JTextField textBusqueda, JTable jTable2){
-        String cercaUsuari = textBusqueda.getText().toLowerCase();
-        boolean trobat = false;
-        DefaultTableModel tabla = (DefaultTableModel) jTable2.getModel();
-        tabla.setRowCount (0);
-        Iterator<Atraccio> iteradorModificar = Atraccio.arrayAtraccio.iterator();
-        while(iteradorModificar.hasNext()){
-            Atraccio atraccio_aux = iteradorModificar.next();
-            String atraccio_final = atraccio_aux.toString().toLowerCase();
-            if (atraccio_final.indexOf(cercaUsuari) != -1){
-                tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
-                trobat = true;
+        try{
+            String cercaUsuari = textBusqueda.getText().toLowerCase();
+            boolean trobat = false;
+            DefaultTableModel tabla = (DefaultTableModel) jTable2.getModel();
+            tabla.setRowCount (0);
+            Iterator<Atraccio> iteradorModificar = Atraccio.arrayAtraccio.iterator();
+            while(iteradorModificar.hasNext()){
+                Atraccio atraccio_aux = iteradorModificar.next();
+                String atraccio_final = atraccio_aux.toString().toLowerCase();
+                if (atraccio_final.indexOf(cercaUsuari) != -1){
+                    tabla.addRow(new Object[] {atraccio_aux.getIdA(),atraccio_aux.getNom(),atraccio_aux.getTipusAtraccio(),atraccio_aux.getDataInauguracio(),atraccio_aux.getAlturaMin(),atraccio_aux.getAccessibilitat(),atraccio_aux.getAccesExpress()});
+                    trobat = true;
+                }
             }
+        }catch (Exception e){
+            logError("Error al llistar llistar atraccions en jTable: " + e);
         }
+        
     }
 
     /**FUNCIO PER A CARREGAR DADES ALS DIFERENTS CAMPS DE TEXT PER A MODIFICAR-LES*/
@@ -106,9 +116,6 @@ public class Auxiliar {
         return seleccio;
     }
     public static int carregar_dades_empleats_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField nomText, JTextField cognomsText, JTextField dniText, JTextField nominaText){
-        //int elements [];
-        //frame.getContentPane().add(carregar);
-        //elements = jTable1.getSelectedRows();
         Object elementmodificat = null;
         try{
             elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
@@ -127,20 +134,26 @@ public class Auxiliar {
                     if(element == Arrays.arrayPersones.get(i).getId()){
                     seleccio = i;
                     trobat = true;
+                    IO.imprimirT("Seleccio: " + seleccio);
                 }
                 }catch(Exception e){
                     IO.imprimirTI("Error: " + e);
+                    logError("Error al seleccionar un empleat a carregar: " + e);
                 }
 
             }
             if (seleccio ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
             else {
-            nomText.setText(Arrays.arrayPersones.get(seleccio).getNom());
-            cognomsText.setText(Arrays.arrayPersones.get(seleccio).getCognom1());
-            dniText.setText(Arrays.arrayPersones.get(seleccio).getDNI());
-            nominaText.setText(((Empleat)Arrays.arrayPersones.get(seleccio)).getNomina());
+                try{
+                    nomText.setText(Arrays.arrayPersones.get(seleccio).getNom());
+                    cognomsText.setText(Arrays.arrayPersones.get(seleccio).getCognom1());
+                    dniText.setText(Arrays.arrayPersones.get(seleccio).getDNI());
+                    nominaText.setText(((Empleat)Arrays.arrayPersones.get(seleccio)).getNomina());
+                }catch (Exception e){
+                    logError("Error al carrgar les dades de un empleat: " + e);
+                }
+            
             }
-            IO.imprimirT("Seleccio: " + seleccio);
           }
 
         return seleccio;
@@ -179,15 +192,20 @@ public class Auxiliar {
         llistaAtraccions.setModel(d1m);
     }
     public static void llistar_assignacio_taula(JTextField textBusqueda, JTable jTable1){
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.setRowCount (0);
-        Iterator<Assignacio> iteratorAssign = Arrays.arrayAssignacio.iterator();
-        while(iteratorAssign.hasNext()){
-            Assignacio assign_aux = iteratorAssign.next();
-            if (assign_aux.getEmpleat().getNom().toLowerCase().contains(textBusqueda.getText().toLowerCase())){
-                    tabla.addRow(new Object[] {assign_aux.getId(),assign_aux.getEmpleat().getNom(),assign_aux.getEmpleat().getCognom1(),assign_aux.getEmpleat().getDNI(),assign_aux.getAtraccio().getNom(),assign_aux.getData()});
-                }
-            }
+        try{
+            DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+            tabla.setRowCount (0);
+            Iterator<Assignacio> iteratorAssign = Arrays.arrayAssignacio.iterator();
+            while(iteratorAssign.hasNext()){
+                Assignacio assign_aux = iteratorAssign.next();
+                if (assign_aux.getEmpleat().getNom().toLowerCase().contains(textBusqueda.getText().toLowerCase())){
+                        tabla.addRow(new Object[] {assign_aux.getId(),assign_aux.getEmpleat().getNom(),assign_aux.getEmpleat().getCognom1(),assign_aux.getEmpleat().getDNI(),assign_aux.getAtraccio().getNom(),assign_aux.getData()});
+                    }
+                }  
+        }catch (Exception e){
+            logError("Error al llistar llistar atraccions en jTable: " + e);
+        }
+        
     }
     
     public static int carregar_dades_assign_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField dataText){
@@ -210,18 +228,23 @@ public class Auxiliar {
                 try{
                     if(element == Arrays.arrayAssignacio.get(i).getId()){
                     seleccio = i;
+                    IO.imprimirTI("Seleccio: " + seleccio);
                     trobat = true;
                 }
                 }catch(Exception e){
                     IO.imprimirTI("Error: " + e);
+                    logError("Error al seleccionar una assignacio a carregar: " + e);
                 }
 
             }
             if (seleccio ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
             else {
-            dataText.setText(Arrays.arrayAssignacio.get(seleccio).getData());
+                try{
+                   dataText.setText(Arrays.arrayAssignacio.get(seleccio).getData()); 
+                }catch (Exception e){
+                    logError("Error al carrgar les dades de una assignacio: " + e);
+                }
             }
-            IO.imprimirTI("Seleccio: " + seleccio);
           }
 
         return seleccio;
@@ -241,6 +264,7 @@ public class Auxiliar {
             aWriter.close();
         }catch(Exception e){
             IO.imprimirT("Error la registrar logs: " + e);
+            logError("Error al registrar logs: " + e);
         }
     }
     public static void logError(String s) {
