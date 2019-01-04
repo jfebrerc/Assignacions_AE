@@ -238,20 +238,6 @@ public class Gestio_assignacio extends javax.swing.JFrame {
 
     private void CARREGARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CARREGARButtonActionPerformed
         seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, dataText);
-        /*Object indiceAssign=JlistAssign.getSelectedValue();
-                IO.imprimirTI("Contingut: "+ (indiceAssign));
-                if (indiceAssign == null){
-                    JOptionPane.showMessageDialog(this, "Selecciona una assignacio");
-                }else {
-                    try {
-                        seleccio = Arrays.arrayAssignacio.indexOf(indiceAssign);
-                        dataText.setText(Arrays.arrayAssignacio.get(seleccio).getData());
-                    }catch (Exception error){
-                        IO.imprimirTI("Error al carregar assignacions: " + error);
-                        seleccio = -1;
-                        dataText.setText("");
-                    }
-                }*/
     }//GEN-LAST:event_CARREGARButtonActionPerformed
 
     private void BUIDARButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUIDARButton1ActionPerformed
@@ -274,7 +260,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                         Auxiliar.log("Assignacio modificada: " + anticEmpleat.getNom() + " | " + anticEmpleat.getCognom1() + " | " + anticEmpleat.getDNI() + " | " + antigaAtraccio.getNom() + " | " + AntigaData + "\nA: " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getCognom1() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getData());
                     } catch (Exception error) {
                         IO.imprimirTI("Error al modificar: " + error);
-                        //Auxiliar.log("Error al modificar empleat: " + error);
+                        Auxiliar.logError("Error al modificar una assignacio: " + error);
                     }
                 }
         /*if (seleccio==-1){
@@ -313,6 +299,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                             Auxiliar.llistar_assignacio_taula(buscarAssign, jTable1);
                         }catch (Exception e){
                             IO.imprimirTI("Error al eliminar: " + e);
+                            Auxiliar.logError("Error al eliminar una assignacio: " + e);
                         }
                         
                     }

@@ -318,6 +318,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 atraccioSeleccionada.setText("");
             }catch (Exception error){
                 IO.imprimirTI("Error al assignar: " + error);
+                Auxiliar.logError("Error al registrar una assignacio: " + error);
             }
         }
     }//GEN-LAST:event_assignarButtonActionPerformed
@@ -328,6 +329,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             elementmodificat = jTable2.getValueAt(jTable2.getSelectedRow(), 0);
         }catch (Exception e){
             IO.imprimirTI("Error seleccio null");
+            Auxiliar.logError("Error al seleccionar una atraccio en assignacio: " + e);
         }
         if (elementmodificat == null){
             JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
@@ -344,6 +346,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 }
                 }catch(Exception e){
                     IO.imprimirTI("Error: " + e);
+                    Auxiliar.logError("Error al buscar la atraccio a seleccionar en registre_assignacio: " + e);
                 }
 
             }
@@ -353,22 +356,11 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                     atraccioSeleccionada.setText("Atracció seleccionada: " + Atraccio.arrayAtraccio.get(seleccio_atraccio).getNom());
                 }catch (Exception error){
                     IO.imprimirTI("Error al seleccionar empleat assignacio: " + error);
+                    Auxiliar.logError("Error al mostrar la atraccio seleccionada en registrar_assignacio: " + error);
                 }
                 
             }
             }
-        /*Object indiceA=llistaAtraccions.getSelectedValue();
-        IO.imprimirTI("Contingut: "+ (indiceA));
-        if (indiceA == null){
-            JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
-        }else {
-            try {
-                atraccioSeleccionada.setText("Atraccio seleccionada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.indexOf(indiceA)).getNom());
-                seleccio_atraccio = Atraccio.arrayAtraccio.indexOf(indiceA);
-            }catch (Exception error){
-                IO.imprimirTI("Error al llistar atraccions a assignacions: " + error);
-            }
-        }*/
     }//GEN-LAST:event_seleccionarAtraccioActionPerformed
 
     private void seleccionarEmpleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarEmpleatActionPerformed
@@ -377,6 +369,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
         }catch (Exception e){
             IO.imprimirTI("Error seleccio null");
+            Auxiliar.logError("Error al seleccionar un empleat en assignacio: " + e);
         }
         if (elementmodificat == null){
             JOptionPane.showMessageDialog(this, "Selecciona un empleat");
@@ -393,6 +386,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 }
                 }catch(Exception e){
                     IO.imprimirTI("Error: " + e);
+                    Auxiliar.logError("Error al buscar el empleat a seleccionar en registre_assignacio: " + e);
                 }
 
             }
@@ -401,23 +395,11 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 try{
                     empleatSeleccionat.setText("Empleat seleccionat: " + Arrays.arrayPersones.get(seleccio_empleat).getNom());
                 }catch (Exception error){
-                    IO.imprimirTI("Error al seleccionar empleat assignacio: " + error);
+                    Auxiliar.logError("Error al mostrar el empleat seleccionat en registrar_assignacio: " + error);
                 }
                 
             }
             }
-        /* Object indiceE=llistaEmpleats.getSelectedValue();
-        IO.imprimirTI("Contingut: "+ (indiceE));
-        if (indiceE == null){
-            JOptionPane.showMessageDialog(this, "Selecciona un empleat");
-        }else {
-            try {
-                empleatSeleccionat.setText("Empleat seleccionat: " + Arrays.arrayPersones.get(Arrays.arrayPersones.indexOf(indiceE)).getNom());
-                seleccio_empleat = Arrays.arrayPersones.indexOf(indiceE);
-            }catch (Exception error){
-                IO.imprimirTI("Error al llistar empleats a assignacions: " + error);
-            }
-        }*/
     }//GEN-LAST:event_seleccionarEmpleatActionPerformed
 
     private void buscarEmpleatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleatsActionPerformed

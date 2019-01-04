@@ -10,6 +10,7 @@ import Classes.Assignacio;
 import Classes.Atraccio;
 import Classes.Empleat;
 import Gestio.Empleats.Menu_empleats;
+import Biblioteques.Auxiliar;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -134,8 +135,8 @@ public class Menu_assignacio extends javax.swing.JFrame {
 
     private void TESTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TESTButtonActionPerformed
         Random rand = new Random();
-        
-        for (int i=0; i<TEST;i++){
+        try{
+            for (int i=0; i<TEST;i++){
             int data1 = rand.nextInt((31 - 1) + 1) + 1;
             int data2 = rand.nextInt((12 - 1) + 1) + 1;
             int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
@@ -144,6 +145,9 @@ public class Menu_assignacio extends javax.swing.JFrame {
             Atraccio.arrayAtraccio.get(i).setAssignat();
         }
         JOptionPane.showMessageDialog(this, "Elements de prova carregats correctament");
+        }catch (Exception e){
+            Auxiliar.logError("Error al carregar els elements de prova del menu d'assignacions: " + e);
+        }
     }//GEN-LAST:event_TESTButtonActionPerformed
 
     /**

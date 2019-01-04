@@ -55,7 +55,7 @@ public class Auxiliar {
         while(iteradorPersones.hasNext()){
             Persona p = iteradorPersones.next();
             String persona_cerca = p.toString().toLowerCase();
-            if (persona_cerca.indexOf(cercaUsuari) != -1){
+            if (p instanceof Empleat && persona_cerca.indexOf(cercaUsuari) != -1){
                 tabla.addRow(new Object[] {p.getId(),p.getNom(),p.getCognom1(),p.getDNI(),((Empleat)p).getNomina()});
                 trobat = true;
             }
