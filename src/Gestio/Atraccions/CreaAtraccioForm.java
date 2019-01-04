@@ -9,6 +9,7 @@ import Classes.Atraccio;
 import javax.swing.JOptionPane;
 import Biblioteques.Auxiliar;
 import Biblioteques.IO;
+import java.awt.Color;
 
 /**
  *
@@ -23,6 +24,11 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Crear Atraccio");
+        try{
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
         
     }
 

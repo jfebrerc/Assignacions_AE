@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Biblioteques.Auxiliar;
+import java.awt.Color;
 import java.io.IOException;
 /**
  *
@@ -26,6 +27,11 @@ public class Registrar_empleat extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Registrar empleats");
+        try{
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
     }
 
     /**

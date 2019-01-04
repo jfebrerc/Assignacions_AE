@@ -6,7 +6,9 @@
 package Gestio.Atraccions;
 
 import Biblioteques.Auxiliar;
+import Biblioteques.IO;
 import Classes.Atraccio;
+import java.awt.Color;
 import java.util.Iterator;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -25,6 +27,11 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Llistar Atraccio");
+        try{
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
         textCercar.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {

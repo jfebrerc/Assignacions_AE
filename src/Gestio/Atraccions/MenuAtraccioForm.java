@@ -13,6 +13,8 @@ import Classes.Persona;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import Biblioteques.Auxiliar;
+import Biblioteques.IO;
+import java.awt.Color;
 
 /**
  *
@@ -28,6 +30,11 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Menu Atraccions");
+        try{
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
     }
 
     /**

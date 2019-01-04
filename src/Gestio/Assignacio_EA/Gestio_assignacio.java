@@ -10,6 +10,7 @@ import Biblioteques.IO;
 import Classes.Empleat;
 import Classes.Persona;
 import Classes.Atraccio;
+import java.awt.Color;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -32,6 +33,11 @@ public class Gestio_assignacio extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Gestionar assignacions");
+        try{
+            jPanel1.setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
         buscarAssign.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {

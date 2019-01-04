@@ -11,6 +11,7 @@ import Classes.Persona;
 import Main.main;
 import Biblioteques.Auxiliar;
 import Biblioteques.IO;
+import java.awt.Color;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,6 +31,11 @@ public class Menu_empleats extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Menu empleats");
+        try{
+            jPanel1.setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
     }
 
     /**

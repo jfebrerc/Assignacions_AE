@@ -10,6 +10,7 @@ import Biblioteques.IO;
 import Classes.Atraccio;
 import Classes.Empleat;
 import Classes.Persona;
+import java.awt.Color;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -32,6 +33,11 @@ public class Gestionar_empleats extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Gestionar empleats");
+        try{
+            jPanel1.setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
         textBusqueda.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {

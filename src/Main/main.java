@@ -5,6 +5,7 @@
  */
 package Main;
 import Biblioteques.Arrays;
+import Biblioteques.IO;
 import Classes.Assignacio;
 import Classes.Atraccio;
 import Classes.Empleat;
@@ -30,6 +31,11 @@ public class main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         //getContentPane().setBackground(Color.RED);
         setTitle("Menu principal");
+        try{
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
     }
 
     /**

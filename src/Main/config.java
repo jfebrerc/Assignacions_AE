@@ -18,11 +18,17 @@ public class config extends javax.swing.JFrame {
     /**
      * Creates new form config
      */
+    public static String path_conf = "E:\\Carpetes\\Desktop\\conf.txt";
     public config() {
         initComponents();
         setLocationRelativeTo(null);
         //getContentPane().setBackground(Color.RED);
         setTitle("Menu principal");
+        try{
+            getContentPane().setBackground(Color.decode(carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
     }
 
     /**
@@ -37,6 +43,7 @@ public class config extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jcolor = new javax.swing.JColorChooser();
         seleccionar = new javax.swing.JButton();
+        enrereButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,20 +56,28 @@ public class config extends javax.swing.JFrame {
             }
         });
 
+        enrereButton.setText("Enrere");
+        enrereButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enrereButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcolor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(seleccionar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(285, 285, 285)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcolor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seleccionar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(enrereButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,7 +88,9 @@ public class config extends javax.swing.JFrame {
                 .addComponent(jcolor, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(seleccionar)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(enrereButton)
+                .addContainerGap())
         );
 
         pack();
@@ -81,39 +98,49 @@ public class config extends javax.swing.JFrame {
     
     private void seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarActionPerformed
         //IO.imprimirTI("Color: " + jcolor.getColor());
-        Color c2 = Color.RED;
+        /*Color c2 = Color.RED;
         try{
             c2 = Color.decode(carregarConf());
         }catch (Exception e){
-            
-        }
+            IO.imprimirTI("Error carregarconf: " + e);
+        }*/
         
-        Color c = jcolor.getColor();
+        int r = jcolor.getColor().getRed();
+        int g = jcolor.getColor().getGreen();
+        int b = jcolor.getColor().getBlue();
+        String hex = String.format("#%02x%02x%02x", r, g, b);  
+        IO.imprimirTI("color getRGB: " + hex);
         try{
-           guardarConf(c);
+           guardarConf(hex);
+           this.getContentPane().setBackground(Color.decode(carregarConf()));
         }catch (Exception e){
             
         }
-        this.getContentPane().setBackground(c2);
+        //this.getContentPane().setBackground(c2);
     }//GEN-LAST:event_seleccionarActionPerformed
-    public void guardarConf(Color c)throws Exception{
-        String color = "";
+
+    private void enrereButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrereButtonActionPerformed
+        this.setVisible(false);
+        main m = new main();
+        m.setVisible(true);
+    }//GEN-LAST:event_enrereButtonActionPerformed
+    public void guardarConf(String color)throws Exception{
          try{
-            color = c.toString();
-            FileWriter saveFile = new FileWriter("C:\\Users\\Usuari\\conf.txt");
+            FileWriter saveFile = new FileWriter(path_conf);
             saveFile.write(color);
+            IO.imprimirTI("Color guardat: " + color);
             saveFile.close();  
          }catch (Exception e){
             IO.imprimirTI("error: " + e);
          } 
     }
     
-    public String carregarConf() throws Exception{
+    public static String carregarConf() throws Exception{
         String color;
-        BufferedReader saveFile= new BufferedReader(new FileReader("C:\\Users\\Usuari\\conf.txt"));
+        BufferedReader saveFile= new BufferedReader(new FileReader(path_conf));
         color = saveFile.readLine(); 
         saveFile.close();
-        IO.imprimirTI(color);
+        IO.imprimirTI("" + color);
         return color;
     }
     /**
@@ -152,6 +179,7 @@ public class config extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton enrereButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JColorChooser jcolor;
     private javax.swing.JButton seleccionar;

@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import Biblioteques.Auxiliar;
 import Biblioteques.IO;
 import Classes.Empleat;
+import java.awt.Color;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -30,6 +31,11 @@ public class EliminarAtraccioForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Eliminar Atraccio");
+        try{
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+        }catch (Exception e){
+            IO.imprimirTI("Error al asignar color: " + e);
+        }
         textCercar.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
