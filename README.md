@@ -17,7 +17,8 @@ Asignacions de empleats a atraccions amb els canvis proposats
 - ~PULIR EL LOG DE MODIFICACIÓ D'EMPLEATS~
 - PATH LOGS
 - ~ARREGLAR BUSQUEDA ASSIGNACIONS.~
-
+- ~LOGS GESTIO~ 
+- ~LOGS ERRORS~
 
 
 -SI DONA TEMPS: Canviar la localització de la array de Atraccions a la classe corresponent.
