@@ -148,6 +148,7 @@ public class main extends javax.swing.JFrame {
 
     private void SORTIRButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SORTIRButtonActionPerformed
         this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_SORTIRButtonActionPerformed
 
     private void TESTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TESTButtonActionPerformed
