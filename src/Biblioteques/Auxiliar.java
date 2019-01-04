@@ -192,20 +192,24 @@ public class Auxiliar {
         llistaAtraccions.setModel(d1m);
     }
     public static void llistar_assignacio_taula(JTextField textBusqueda, JTable jTable1){
+        
         try{
+            String cercaUsuari = textBusqueda.getText().toLowerCase();
+            boolean trobat = false;
             DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
             tabla.setRowCount (0);
             Iterator<Assignacio> iteratorAssign = Arrays.arrayAssignacio.iterator();
             while(iteratorAssign.hasNext()){
                 Assignacio assign_aux = iteratorAssign.next();
-                if (assign_aux.getEmpleat().getNom().toLowerCase().contains(textBusqueda.getText().toLowerCase())){
-                        tabla.addRow(new Object[] {assign_aux.getId(),assign_aux.getEmpleat().getNom(),assign_aux.getEmpleat().getCognom1(),assign_aux.getEmpleat().getDNI(),assign_aux.getAtraccio().getNom(),assign_aux.getData()});
-                    }
-                }  
+                String assignacio_busqueda = assign_aux.toString().toLowerCase();
+                if (assignacio_busqueda.indexOf(cercaUsuari) != -1){
+                    tabla.addRow(new Object[] {assign_aux.getId(),assign_aux.getEmpleat().getNom(),assign_aux.getEmpleat().getCognom1(),assign_aux.getEmpleat().getDNI(),assign_aux.getAtraccio().getNom(),assign_aux.getData()});
+                    trobat = true;
+                }
+            }
         }catch (Exception e){
-            logError("Error al llistar llistar atraccions en jTable: " + e);
-        }
-        
+            logError("Error al llistar llistar assignacions en jTable: " + e);
+        }        
     }
     
     public static int carregar_dades_assign_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField dataText){
