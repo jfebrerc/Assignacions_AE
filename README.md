@@ -19,9 +19,7 @@ Asignacions de empleats a atraccions amb els canvis proposats
 - ~ARREGLAR BUSQUEDA ASSIGNACIONS.~
 - ~LOGS GESTIO~ 
 - ~LOGS ERRORS~
-- Opció de configurar certes coses. Fer un fitxer de configuració inicial on hi hagin algunes opcions com
--- El color de fons
--- Tipus de lletra
+- Opció de configurar certes coses. Fer un fitxer de configuració inicial on hi hagin algunes opcions com: el color de fons, tipus de lletra
 - Igualar el que es pot fer a partir de l'aplicatiu web i java
 
 
