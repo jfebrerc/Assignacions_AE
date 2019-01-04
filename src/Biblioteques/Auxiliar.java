@@ -47,13 +47,17 @@ public class Auxiliar {
         llistaEmpleats.setModel(d1m);
     }
     public static void llistar_empleats_taula(JTextField textBusqueda, JTable jTable1){
+        String cercaUsuari = textBusqueda.getText().toLowerCase();
+        boolean trobat = false;
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         tabla.setRowCount (0);
         Iterator<Persona> iteradorPersones = Arrays.arrayPersones.iterator();
         while(iteradorPersones.hasNext()){
             Persona p = iteradorPersones.next();
-            if (p instanceof Empleat && p.getNom().toLowerCase().contains(textBusqueda.getText().toLowerCase())){
+            String persona_cerca = p.toString().toLowerCase();
+            if (persona_cerca.indexOf(cercaUsuari) != -1){
                 tabla.addRow(new Object[] {p.getId(),p.getNom(),p.getCognom1(),p.getDNI(),((Empleat)p).getNomina()});
+                trobat = true;
             }
         }
     }
