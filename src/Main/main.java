@@ -157,8 +157,7 @@ public class main extends javax.swing.JFrame {
                    int data1 = rand.nextInt((31 - 1) + 1) + 1;
                    int data2 = rand.nextInt((12 - 1) + 1) + 1;
                    int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
-                    Atraccio.arrayAtraccio.add(new Atraccio("NomAtraccio"+(i+1),"TipusAtraccio"+(i+1),String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3),"AlturaMinima"+(i+1),"Accessibilitat"+(i+1),"Express"+(i+1)));
-
+                    Atraccio.arrayAtraccio.add(new Atraccio("NomAtraccio"+(i+1),"TipusAtraccio"+(i+1),String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3),"AlturaMinima"+(i+1),"Accessibilitat"+(i+1),"Express"+(i+1)));       
                 }
         for (int i=0; i<TEST;i++){
                     Arrays.arrayPersones.add(new Empleat("nom"+(i+1), "cognom"+(i+1),"dni"+(i+1),"nomina"+(i+1)));
@@ -170,6 +169,8 @@ public class main extends javax.swing.JFrame {
             int data2 = rand.nextInt((12 - 1) + 1) + 1;
             int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
             Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(i), Atraccio.arrayAtraccio.get(i), String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3)));
+            ((Empleat)Arrays.arrayPersones.get(i)).setAssignat();
+            Atraccio.arrayAtraccio.get(i).setAssignat();
         }
     }//GEN-LAST:event_TESTButtonActionPerformed
 

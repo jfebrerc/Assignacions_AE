@@ -10,10 +10,12 @@ public class Empleat extends Persona { //Comentaris al marge per als atributs
     private String dataContracte;
     private String dataFinalContracte;
     private String nomina;
+    private boolean assignat;
 
     public Empleat(String nomc, String cognom1c, String dnic, String nominac) {
         super(nomc, cognom1c, dnic);
         nomina = nominac;
+        assignat = false;
     }
 
     /** GETTERS */
@@ -35,6 +37,10 @@ public class Empleat extends Persona { //Comentaris al marge per als atributs
     public String getNomina(){
         return nomina;
     }
+    
+    public boolean getAssignat(){
+        return assignat;
+    }
 
     /** SETTERS */
     public void setCodiSS(String s){
@@ -55,12 +61,19 @@ public class Empleat extends Persona { //Comentaris al marge per als atributs
     public void setNomina(String s){
         nomina = s;
     }
+    public void setAssignat(){
+        assignat = true;
+    }
+    
+    public void eliminarAssign(){
+        assignat = false;
+    }
 
     /** METODES */
 
     @Override
     public String toString() {
-        String imprimir = String.format("%s %20s %70s %70s %70s", getId(), getNom(), getCognom1(), getDNI(), getNomina());
+        String imprimir = String.format("%s %20s %70s %70s %70s %70s", getId(), getNom(), getCognom1(), getDNI(), getNomina(), getAssignat());
         return imprimir;
     }
 

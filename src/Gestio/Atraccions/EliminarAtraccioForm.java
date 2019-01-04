@@ -185,14 +185,19 @@ public class EliminarAtraccioForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Selecciona una atraccio");
                 }
                     if(dialogResult == 0) {
-                        try{
+                        if(Atraccio.arrayAtraccio.get(elements[0]).getAssignat()){
+                           JOptionPane.showMessageDialog(this, "No es pot eliminar una atraccio amb empleats");
+                        }else{
+                            try{
                             Auxiliar.log("Atraccio eliminada: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio());
                             IO.imprimirTI("element: " + elements[0]);
                             Atraccio.arrayAtraccio.remove(elements[0]);
                             Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
-                        }catch (Exception e){
-                            IO.imprimirTI("Error al eliminar: " + e);
+                            }catch (Exception e){
+                                IO.imprimirTI("Error al eliminar: " + e);
+                            } 
                         }
+                        
                         
                     }
                  Auxiliar.llistar_atraccions_taula(textCercar, jTable1);

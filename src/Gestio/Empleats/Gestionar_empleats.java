@@ -284,7 +284,10 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Selecciona un empleat");
                 }
                     if(dialogResult == 0) {
-                        try{
+                        if(((Empleat) Arrays.arrayPersones.get(elements[0])).getAssignat()){
+                            JOptionPane.showMessageDialog(this, "Error: no es pot eliminar un empleat assignat a una atraccio");
+                        }else{
+                          try{
                             Auxiliar.log("Empleat eliminat: " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getNom() + " " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getDNI());
                             Arrays.arrayPersones.remove(elements[0]);
                             seleccio = -1;
@@ -295,8 +298,8 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                             Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
                         }catch (Exception e){
                             IO.imprimirTI("Error al eliminar: " + e);
-                        }
-                        
+                        }  
+                        } 
                     }
                  Auxiliar.llistar_empleats_taula(textBusqueda, jTable1);
     }//GEN-LAST:event_ELIMINARButtonActionPerformed

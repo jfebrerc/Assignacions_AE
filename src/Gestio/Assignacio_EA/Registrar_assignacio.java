@@ -299,10 +299,13 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     private void assignarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignarButtonActionPerformed
         if (seleccio_empleat==-1 || seleccio_atraccio==-1 || dataText.toString().isEmpty()){
             JOptionPane.showMessageDialog(this, "Error: Hi ha algun camp per a omplir");
-            IO.imprimirTI("Se ha intentat registrar una assignacio en algun camp buit");
+            IO.imprimirTI("Se ha intentat registrar una assignacio en algun camp buit: " + seleccio_empleat + " | " +seleccio_atraccio);
         }else {
             try {
                 Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), dataText.getText()));
+                ((Empleat)Arrays.arrayPersones.get(seleccio_empleat)).setAssignat();
+                Atraccio.arrayAtraccio.get(seleccio_atraccio).setAssignat();
+                IO.imprimirTI("empleat: " + ((Empleat)Arrays.arrayPersones.get(seleccio_empleat)).toString());
                 IO.imprimirTI("Size: " + Arrays.arrayAssignacio.size());
                 IO.imprimirTI(Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).toString());
                 IO.imprimirTI("Se ha registrat una assignacio");

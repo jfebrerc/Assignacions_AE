@@ -19,6 +19,7 @@ public class Atraccio {
     private String alturamax;              //variable int
     private String accessibilitat;      //variable string
     private String accesexpress;        //variable string
+    private boolean assignat;
     
     private static int totalAtraccions = 0; //variable de classe
     private static int count = 0;
@@ -34,7 +35,7 @@ public class Atraccio {
         alturamin = alturaMin;
         this.accessibilitat = accessibilitat;
         accesexpress = Express;
-        
+        assignat = false;
     }
 
     public static ArrayList<Atraccio> arrayAtraccio = new ArrayList<Atraccio>();
@@ -77,6 +78,10 @@ public class Atraccio {
     public String getAccesExpress(){
         return accesexpress;
     }
+    public boolean getAssignat(){
+        return assignat;
+    }
+    
     
     /*Setters*/
 
@@ -154,6 +159,14 @@ public class Atraccio {
     public void setAccesExpress(String express){
         accesexpress = express;
         
+    }
+    
+    public void setAssignat(){
+        assignat = true;
+    }
+    
+    public void eliminarAssign(){
+        assignat = false;
     }
     
         /* MÈTODES */
