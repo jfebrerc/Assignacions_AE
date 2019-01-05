@@ -8,6 +8,12 @@ package Main;
 import java.awt.Color;
 import Biblioteques.*;
 import java.io.*;
+import java.awt.Font;
+import javax.swing.UIManager;
+import java.awt.Component;
+import java.awt.Container;
+
+
 
 /**
  *
@@ -24,6 +30,8 @@ public class config extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         //getContentPane().setBackground(Color.RED);
         setTitle("Menu principal");
+        //getContentPane().setFont(new Font("Arial", Font.BOLD, 20));
+        //setUIFont(new Font("Arial", Font.BOLD, 20));
         try{
             getContentPane().setBackground(Color.decode(carregarConf()));
         }catch (Exception e){
@@ -116,6 +124,10 @@ public class config extends javax.swing.JFrame {
         }catch (Exception e){
             
         }
+        try{
+            setUIFont(new Font("Arial", Font.BOLD, 20));
+        }
+    catch(Exception e){}
         //this.getContentPane().setBackground(c2);
     }//GEN-LAST:event_seleccionarActionPerformed
 
@@ -142,6 +154,21 @@ public class config extends javax.swing.JFrame {
         saveFile.close();
         IO.imprimirTI("" + color);
         return color;
+    }
+    
+    public  void setUIFont(Font f){
+        Component[] components1=getContentPane().getComponents();
+           
+        for(int i=0;i<components1.length;i++){
+          components1[i].setFont(f);
+ 
+          Container c=(Container)components1[i];
+          Component[] components2=c.getComponents();
+           
+            for(int j=0;j<components2.length;j++){
+                components2[j].setFont(f);
+            }
+        }
     }
     /**
      * @param args the command line arguments
