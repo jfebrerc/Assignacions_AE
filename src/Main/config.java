@@ -12,7 +12,7 @@ import java.awt.Font;
 import javax.swing.UIManager;
 import java.awt.Component;
 import java.awt.Container;
-
+import java.awt.GraphicsEnvironment;
 
 
 /**
@@ -32,10 +32,19 @@ public class config extends javax.swing.JFrame {
         setTitle("Menu principal");
         //getContentPane().setFont(new Font("Arial", Font.BOLD, 20));
         //setUIFont(new Font("Arial", Font.BOLD, 20));
+        String fonts[]  = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+
+        for (int i = 0; i < fonts.length; i++) {
+            System.out.println(fonts[i]);
+            seleccio_font.addItem(fonts[i]);
+        }
         try{
             getContentPane().setBackground(Color.decode(carregarConf()));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
+        }
+        for(int i=6; i<31; i++){
+           seleccio_mida.addItem(Integer.toString(i));
         }
     }
 
@@ -52,6 +61,9 @@ public class config extends javax.swing.JFrame {
         jcolor = new javax.swing.JColorChooser();
         seleccionar = new javax.swing.JButton();
         enrereButton = new javax.swing.JButton();
+        seleccio_font = new javax.swing.JComboBox<>();
+        seleccio_tipus = new javax.swing.JComboBox<>();
+        seleccio_mida = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,20 +83,37 @@ public class config extends javax.swing.JFrame {
             }
         });
 
+        seleccio_font.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+
+        seleccio_tipus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plano", "Negreta", "Cursiva" }));
+
+        seleccio_mida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcolor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(seleccionar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(enrereButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcolor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(seleccionar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(enrereButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(285, 285, 285)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(seleccio_font, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(seleccio_tipus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(seleccio_mida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -94,9 +123,14 @@ public class config extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
                 .addComponent(jcolor, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(seleccio_font, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seleccio_tipus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seleccio_mida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(seleccionar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(enrereButton)
                 .addContainerGap())
         );
@@ -125,9 +159,10 @@ public class config extends javax.swing.JFrame {
             
         }
         try{
-            setUIFont(new Font("Arial", Font.BOLD, 20));
+            setUIFont(new Font(seleccio_font.getSelectedItem().toString(), seleccio_tipus.getSelectedIndex(), Integer.valueOf(seleccio_mida.getSelectedItem().toString())));
         }
     catch(Exception e){}
+        
         //this.getContentPane().setBackground(c2);
     }//GEN-LAST:event_seleccionarActionPerformed
 
@@ -209,6 +244,9 @@ public class config extends javax.swing.JFrame {
     private javax.swing.JButton enrereButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JColorChooser jcolor;
+    private javax.swing.JComboBox<String> seleccio_font;
+    private javax.swing.JComboBox<String> seleccio_mida;
+    private javax.swing.JComboBox<String> seleccio_tipus;
     private javax.swing.JButton seleccionar;
     // End of variables declaration//GEN-END:variables
 }
