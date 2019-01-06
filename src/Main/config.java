@@ -62,6 +62,11 @@ public class config extends javax.swing.JFrame {
         }catch(Exception e){
             IO.imprimirTI("Error al carregar la font: " + e);
         }
+        try{
+           jcolor.setColor(Color.decode(carregarConf()[0]));   
+        }catch (Exception e){
+          IO.imprimirTI("Error al carregar el color al formulari: " + e);
+        }
 
     }
 
