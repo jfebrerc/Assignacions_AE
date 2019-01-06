@@ -25,7 +25,7 @@ public class config extends javax.swing.JFrame {
     /**
      * Creates new form config
      */
-    public static String path_conf = "E:\\Carpetes\\Desktop\\conf.txt";
+    public static String path_conf = Auxiliar.path + "conf.txt";
     public config() {
         initComponents();
         setLocationRelativeTo(null);

@@ -12,7 +12,10 @@ import Classes.Empleat;
 import Gestio.Empleats.Menu_empleats;
 import Biblioteques.Auxiliar;
 import Biblioteques.IO;
+import static Main.config.carregarConf;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -35,6 +38,12 @@ public class Menu_assignacio extends javax.swing.JFrame {
             getContentPane().setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
+        }
+        try{
+            Component[] components1=getContentPane().getComponents();
+            Main.config.setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);            
+        }catch(Exception e){
+            IO.imprimirTI("Error al carregar la font: " + e);
         }
     }
 

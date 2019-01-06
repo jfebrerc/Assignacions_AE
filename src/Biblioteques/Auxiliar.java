@@ -29,6 +29,7 @@ import javax.swing.JOptionPane;
 
 
 public class Auxiliar {
+    public static String path = "E:\\Carpetes\\Desktop\\";
     /** FUNCIO PER A LLISTAR ELS EMPLEATS */
     public static void llistar_empleats(JTextField textBusqueda, JList llistaEmpleats){
         String cerca = textBusqueda.getText();
@@ -262,7 +263,7 @@ public class Auxiliar {
         df.setTimeZone(tz);
         String currentTime = df.format(now);
         try{
-            FileWriter aWriter = new FileWriter("C:\\Users\\Usuari\\log.txt", true);
+            FileWriter aWriter = new FileWriter(path + "log.txt", true);
             aWriter.write(currentTime + " - " + s + "\n");
             aWriter.flush();
             aWriter.close();
@@ -278,7 +279,7 @@ public class Auxiliar {
         df.setTimeZone(tz);
         String currentTime = df.format(now);
         try{
-            FileWriter aWriter = new FileWriter("C:\\Users\\Usuari\\logError.txt", true);
+            FileWriter aWriter = new FileWriter(path + "logError.txt", true);
             aWriter.write(currentTime + " - " + s + "\n");
             aWriter.flush();
             aWriter.close();

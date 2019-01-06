@@ -8,7 +8,10 @@ package Gestio.Atraccions;
 import Biblioteques.Auxiliar;
 import Biblioteques.IO;
 import Classes.Atraccio;
+import static Main.config.carregarConf;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.util.Iterator;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -31,6 +34,12 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
             getContentPane().setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
+        }
+        try{
+            Component[] components1=getContentPane().getComponents();
+            Main.config.setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);            
+        }catch(Exception e){
+            IO.imprimirTI("Error al carregar la font: " + e);
         }
         textCercar.getDocument().addDocumentListener(new DocumentListener() {
             @Override

@@ -12,7 +12,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Biblioteques.Auxiliar;
+import static Main.config.carregarConf;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.io.IOException;
 /**
  *
@@ -31,6 +34,12 @@ public class Registrar_empleat extends javax.swing.JFrame {
             getContentPane().setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
+        }
+        try{
+            Component[] components1=getContentPane().getComponents();
+            Main.config.setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);            
+        }catch(Exception e){
+            IO.imprimirTI("Error al carregar la font: " + e);
         }
     }
 

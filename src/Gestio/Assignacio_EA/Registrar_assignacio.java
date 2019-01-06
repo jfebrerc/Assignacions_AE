@@ -10,7 +10,10 @@ import Biblioteques.IO;
 import Classes.Assignacio;
 import Classes.Atraccio;
 import Classes.Empleat;
+import static Main.config.carregarConf;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -37,6 +40,12 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             jPanel1.setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
+        }
+        try{
+            Component[] components1=getContentPane().getComponents();
+            Main.config.setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);            
+        }catch(Exception e){
+            IO.imprimirTI("Error al carregar la font: " + e);
         }
         buscarEmpleats.getDocument().addDocumentListener(new DocumentListener() {
             @Override
