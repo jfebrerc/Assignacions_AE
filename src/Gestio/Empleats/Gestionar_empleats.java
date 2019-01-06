@@ -43,10 +43,11 @@ public class Gestionar_empleats extends javax.swing.JFrame {
         }
         try{
             Component[] components1=getContentPane().getComponents();
-            Main.config.setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);            
+            Main.config.setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1); 
         }catch(Exception e){
             IO.imprimirTI("Error al carregar la font: " + e);
         }
+        
         textBusqueda.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
