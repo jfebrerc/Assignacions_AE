@@ -34,7 +34,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Gestionar assignacions");
         try{
-            jPanel1.setBackground(Color.decode(Main.config.carregarConf()));
+            jPanel1.setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
         }

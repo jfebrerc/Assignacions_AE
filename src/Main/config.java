@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.GraphicsEnvironment;
+import javax.swing.colorchooser.ColorSelectionModel;
 
 
 /**
@@ -39,13 +40,29 @@ public class config extends javax.swing.JFrame {
             seleccio_font.addItem(fonts[i]);
         }
         try{
-            getContentPane().setBackground(Color.decode(carregarConf()));
+            getContentPane().setBackground(Color.decode(carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
         }
         for(int i=6; i<31; i++){
            seleccio_mida.addItem(Integer.toString(i));
+        }  
+        //seleccio_mida.setSelectedIndex(10);
+        try{
+            seleccio_font.setSelectedItem(carregarConf()[1]);
+            seleccio_tipus.setSelectedIndex(Integer.valueOf(carregarConf()[2]));
+            seleccio_mida.setSelectedItem(carregarConf()[3]);            
+        }catch (Exception e){
+            IO.imprimirTI("Error al carregar conf de fonts: " + e);
         }
+        
+        try{
+            Component[] components1=getContentPane().getComponents();
+            setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);            
+        }catch(Exception e){
+            IO.imprimirTI("Error al carregar la font: " + e);
+        }
+
     }
 
     /**
@@ -154,12 +171,13 @@ public class config extends javax.swing.JFrame {
         IO.imprimirTI("color getRGB: " + hex);
         try{
            guardarConf(hex);
-           this.getContentPane().setBackground(Color.decode(carregarConf()));
+           this.getContentPane().setBackground(Color.decode(carregarConf()[0]));
         }catch (Exception e){
             
         }
         try{
-            setUIFont(new Font(seleccio_font.getSelectedItem().toString(), seleccio_tipus.getSelectedIndex(), Integer.valueOf(seleccio_mida.getSelectedItem().toString())));
+            Component[] components1=getContentPane().getComponents();
+            setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);
         }
     catch(Exception e){}
         
@@ -173,8 +191,12 @@ public class config extends javax.swing.JFrame {
     }//GEN-LAST:event_enrereButtonActionPerformed
     public void guardarConf(String color)throws Exception{
          try{
+            int a = Integer.valueOf(seleccio_mida.getSelectedItem().toString());
             FileWriter saveFile = new FileWriter(path_conf);
-            saveFile.write(color);
+            saveFile.write(color+"\n");
+            saveFile.write(seleccio_font.getSelectedItem().toString()+"\n");
+            saveFile.write(Integer.toString(seleccio_tipus.getSelectedIndex())+"\n");
+            saveFile.write(Integer.toString(a));
             IO.imprimirTI("Color guardat: " + color);
             saveFile.close();  
          }catch (Exception e){
@@ -182,17 +204,22 @@ public class config extends javax.swing.JFrame {
          } 
     }
     
-    public static String carregarConf() throws Exception{
-        String color;
+    public static String [] carregarConf() throws Exception{
         BufferedReader saveFile= new BufferedReader(new FileReader(path_conf));
-        color = saveFile.readLine(); 
+        String color = saveFile.readLine(); 
+        String lletra = saveFile.readLine();
+        String tipus_lletra = saveFile.readLine();
+        String mida_lletra = saveFile.readLine();
+        
+        String configuracio [] = {color, lletra, tipus_lletra, mida_lletra};
+        IO.imprimirTI("Lletra: " + lletra);
         saveFile.close();
         IO.imprimirTI("" + color);
-        return color;
+        return configuracio;
     }
     
-    public  void setUIFont(Font f){
-        Component[] components1=getContentPane().getComponents();
+    public static void setUIFont(Font f, Component[] components1){
+        //Component[] components1=getContentPane().getComponents();
            
         for(int i=0;i<components1.length;i++){
           components1[i].setFont(f);

@@ -28,7 +28,7 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Llistar Atraccio");
         try{
-            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
         }

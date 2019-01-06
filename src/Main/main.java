@@ -11,7 +11,10 @@ import Classes.Atraccio;
 import Classes.Empleat;
 import Classes.Persona;
 import Gestio.Atraccions.MenuAtraccioForm;
+import static Main.config.carregarConf;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,9 +35,15 @@ public class main extends javax.swing.JFrame {
         //getContentPane().setBackground(Color.RED);
         setTitle("Menu principal");
         try{
-            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
+        }
+        try{
+            Component[] components1=getContentPane().getComponents();
+            Main.config.setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);            
+        }catch(Exception e){
+            IO.imprimirTI("Error al carregar la font: " + e);
         }
     }
 

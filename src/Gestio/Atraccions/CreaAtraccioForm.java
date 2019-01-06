@@ -25,7 +25,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Crear Atraccio");
         try{
-            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
         }

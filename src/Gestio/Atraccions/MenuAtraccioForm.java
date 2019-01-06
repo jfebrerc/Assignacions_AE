@@ -31,7 +31,7 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Menu Atraccions");
         try{
-            getContentPane().setBackground(Color.decode(Main.config.carregarConf()));
+            getContentPane().setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
         }

@@ -32,7 +32,7 @@ public class Menu_empleats extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Menu empleats");
         try{
-            jPanel1.setBackground(Color.decode(Main.config.carregarConf()));
+            jPanel1.setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
             IO.imprimirTI("Error al asignar color: " + e);
         }
