@@ -37,7 +37,7 @@ public class config extends javax.swing.JFrame {
         String fonts[]  = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 
         for (int i = 0; i < fonts.length; i++) {
-            System.out.println(fonts[i]);
+            //System.out.println(fonts[i]);
             seleccio_font.addItem(fonts[i]);
         }
         try{
@@ -201,7 +201,7 @@ public class config extends javax.swing.JFrame {
             saveFile.write(seleccio_font.getSelectedItem().toString()+"\n");
             saveFile.write(Integer.toString(seleccio_tipus.getSelectedIndex())+"\n");
             saveFile.write(Integer.toString(a));
-            IO.imprimirTI("Color guardat: " + color);
+            //IO.imprimirTI("Color guardat: " + color);
             saveFile.close();  
          }catch (Exception e){
             IO.imprimirTI("error: " + e);
@@ -216,9 +216,9 @@ public class config extends javax.swing.JFrame {
         String mida_lletra = saveFile.readLine();
         
         String configuracio [] = {color, lletra, tipus_lletra, mida_lletra};
-        IO.imprimirTI("Lletra: " + lletra);
+        //IO.imprimirTI("Lletra: " + lletra);
         saveFile.close();
-        IO.imprimirTI("" + color);
+        //IO.imprimirTI("" + color);
         return configuracio;
     }
     
