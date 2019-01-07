@@ -42,7 +42,7 @@ public class Gestionar_empleats extends javax.swing.JFrame {
             IO.imprimirTI("Error al asignar color: " + e);
         }
         try{
-            Component[] components1=getContentPane().getComponents();
+            Component[] components1=this.getContentPane().getComponents();
             Main.config.setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1); 
         }catch(Exception e){
             IO.imprimirTI("Error al carregar la font: " + e);
@@ -102,6 +102,7 @@ public class Gestionar_empleats extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTIONAR EMPLEATS");
 
         textBusqueda.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +223,7 @@ public class Gestionar_empleats extends javax.swing.JFrame {
                                         .addComponent(ELIMINARButton)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ENREREButton)
-                                .addGap(0, 377, Short.MAX_VALUE)))
+                                .addGap(0, 412, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -267,13 +268,11 @@ public class Gestionar_empleats extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, Short.MAX_VALUE)
         );
 
         pack();

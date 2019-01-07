@@ -67,6 +67,7 @@ public class Registrar_empleat extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ALTA EMPLEATS");
 
         jLabel2.setText("Nom");

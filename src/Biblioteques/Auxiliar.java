@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 
 
 public class Auxiliar {
-    public static String path = "E:\\Carpetes\\Desktop\\";
+    public static String path = "C:\\Users\\Usuari\\Desktop\\";
     /** FUNCIO PER A LLISTAR ELS EMPLEATS */
     public static void llistar_empleats(JTextField textBusqueda, JList llistaEmpleats){
         String cerca = textBusqueda.getText();

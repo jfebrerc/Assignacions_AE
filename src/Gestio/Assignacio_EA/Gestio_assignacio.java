@@ -95,6 +95,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTIÓ ASSIGNACIONS");
 
         BUIDARButton.setText("BUIDAR");

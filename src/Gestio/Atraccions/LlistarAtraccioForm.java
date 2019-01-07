@@ -101,6 +101,7 @@ public class LlistarAtraccioForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Llistat d'atraccions");
 
         Enrrere.setText("Enrrere");

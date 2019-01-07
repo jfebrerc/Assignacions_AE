@@ -65,6 +65,7 @@ public class Menu_empleats extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GESTIO EMPLEATS");
 
         registrarEmpleatButton.setText("Registrar empleat");

@@ -116,6 +116,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("REGISTRAR ASSIGINACIÓ");
 
         jLabel2.setText("Empleats");

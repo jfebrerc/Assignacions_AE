@@ -5,7 +5,7 @@ Asignacions de empleats a atraccions amb els canvis proposats
 #TODO_EMPLEATS
 - ~COL·LECCIONS --> ARRAYLIST, ITERADORS, ETC...~
 - EXCEPCIONS --> (BUSCAR INFORMACIÓ, CLASSIFICACIÓ, QUINES HI HAN, ~US~, ETC...)
-- FITXERS --> MEMÒRIA PERMANENT, LOGS, "CONFIGURACIÓ", INFORMES(TOTS ELS EMPLEATS DE BARCELONA, ETC...) (APLICAR DE MOMENT LOGS EN AQUEST APARTAT,  Atraccions: ~Gestio~ + ~Errors~ || Assignacio: ~Gestio~ + ~Errors~ || Empleats: ~Gestio~ + ~Errors~.)
+- FITXERS --> MEMÒRIA PERMANENT, LOGS, "~CONFIGURACIÓ~", INFORMES(TOTS ELS EMPLEATS DE BARCELONA, ETC...) (APLICAR DE MOMENT LOGS EN AQUEST APARTAT,  Atraccions: ~Gestio~ + ~Errors~ || Assignacio: ~Gestio~ + ~Errors~ || Empleats: ~Gestio~ + ~Errors~.)
 - ~CANVIAR TOTS ELS JLIST PER JTABLES~
 - APLICAR FORMAT ADIENT A LES DIFERENTS FINESTRES
 - ~CONTROL D'ERRORS A LA PART DE ATRACCIONS~
@@ -15,12 +15,12 @@ Asignacions de empleats a atraccions amb els canvis proposats
 - ~NO PERMETRE ELIMINAR UN EMPLEAT O UNA ATRACCIÓ QUE ESTIGUEN ASSIGNADES~
 - ~AGREGAR FILTRO PER MES ATRIBUTS A PART DEL NOM~
 - ~PULIR EL LOG DE MODIFICACIÓ D'EMPLEATS~
-- PATH LOGS
+- ~PATH LOGS~
 - ~ARREGLAR BUSQUEDA ASSIGNACIONS.~
 - ~LOGS GESTIO~ 
 - ~LOGS ERRORS~
-- Opció de configurar certes coses. Fer un fitxer de configuració inicial on hi hagin algunes opcions com: el color de fons, tipus de lletra
-- Igualar el que es pot fer a partir de l'aplicatiu web i java
+- ~Opció de configurar certes coses. Fer un fitxer de configuració inicial on hi hagin algunes opcions com: el color de fons, tipus de lletra~
+- Igualar el que es pot fer a partir de l'aplicatiu web i java (agregar els atributs restants).
 
 
 -SI DONA TEMPS: Canviar la localització de la array de Atraccions a la classe corresponent.

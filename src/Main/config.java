@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.GraphicsEnvironment;
+import javax.swing.JOptionPane;
 import javax.swing.colorchooser.ColorSelectionModel;
 
 
@@ -91,7 +92,7 @@ public class config extends javax.swing.JFrame {
 
         jLabel1.setText("CONFIGURACIO");
 
-        seleccionar.setText("Seleccionar");
+        seleccionar.setText("Guardar");
         seleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seleccionarActionPerformed(evt);
@@ -177,14 +178,12 @@ public class config extends javax.swing.JFrame {
         try{
            guardarConf(hex);
            this.getContentPane().setBackground(Color.decode(carregarConf()[0]));
+           Component[] components1=getContentPane().getComponents();
+           setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);
+           JOptionPane.showMessageDialog(this, "Configuracio guardada correctament");
         }catch (Exception e){
             
         }
-        try{
-            Component[] components1=getContentPane().getComponents();
-            setUIFont(new Font(carregarConf()[1], Integer.valueOf(carregarConf()[2]), Integer.valueOf(carregarConf()[3])), components1);
-        }
-    catch(Exception e){}
         
         //this.getContentPane().setBackground(c2);
     }//GEN-LAST:event_seleccionarActionPerformed
