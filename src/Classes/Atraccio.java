@@ -1,7 +1,12 @@
 package Classes;
 
+import Biblioteques.Auxiliar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.TimeZone;
 
 /**
  *Declararem els atributs i crearem els getters i els seters amb els seus tipus de dades corresponents.
@@ -20,6 +25,7 @@ public class Atraccio {
     private String accessibilitat;      //variable string
     private String accesexpress;        //variable string
     private boolean assignat;
+    private String data_creacio_registre;
     
     private static int totalAtraccions = 0; //variable de classe
     private static int count = 0;
@@ -36,6 +42,7 @@ public class Atraccio {
         this.accessibilitat = accessibilitat;
         accesexpress = Express;
         assignat = false;
+        data_creacio_registre = Auxiliar.dataActual();
     }
 
     public static ArrayList<Atraccio> arrayAtraccio = new ArrayList<Atraccio>();
@@ -80,6 +87,10 @@ public class Atraccio {
     }
     public boolean getAssignat(){
         return assignat;
+    }
+    
+    public String getDataCreacioRegistre(){
+        return data_creacio_registre;
     }
     
     
@@ -182,7 +193,7 @@ public class Atraccio {
     
     @Override
     public String toString() {
-        String dadesAtraccio = String.format("%s %27s %30s %30s %39s %41s %47s",idA, nom, tipusAtraccio, dataInauguracio, alturamin, accessibilitat, accesexpress);
+        String dadesAtraccio = String.format("%s %27s %30s %30s %39s %41s %47s %s",idA, nom, tipusAtraccio, dataInauguracio, alturamin, accessibilitat, accesexpress, data_creacio_registre);
         return dadesAtraccio;
     }
     

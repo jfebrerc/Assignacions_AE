@@ -257,11 +257,7 @@ public class Auxiliar {
 
 
     public static void log(String s) {
-        TimeZone tz = TimeZone.getTimeZone("CET"); // or PST, MID, etc ...
-        Date now = new Date();
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
-        df.setTimeZone(tz);
-        String currentTime = df.format(now);
+        String currentTime = dataActual();
         try{
             FileWriter aWriter = new FileWriter(path + "log.txt", true);
             aWriter.write(currentTime + " - " + s + "\n");
@@ -273,11 +269,7 @@ public class Auxiliar {
         }
     }
     public static void logError(String s) {
-        TimeZone tz = TimeZone.getTimeZone("CET"); // or PST, MID, etc ...
-        Date now = new Date();
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
-        df.setTimeZone(tz);
-        String currentTime = df.format(now);
+        String currentTime = dataActual();
         try{
             FileWriter aWriter = new FileWriter(path + "logError.txt", true);
             aWriter.write(currentTime + " - " + s + "\n");
@@ -286,5 +278,14 @@ public class Auxiliar {
         }catch(Exception e){
             IO.imprimirT("Error la registrar logs: " + e);
         }
+    }
+    
+    public static String dataActual(){
+        TimeZone tz = TimeZone.getTimeZone("CET"); // or PST, MID, etc ...
+        Date now = new Date();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
+        df.setTimeZone(tz);
+        String currentTime = df.format(now);
+        return currentTime;
     }
 }

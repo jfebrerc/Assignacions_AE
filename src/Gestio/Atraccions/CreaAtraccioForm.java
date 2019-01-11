@@ -237,7 +237,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
 
                 Atraccio.arrayAtraccio.add(new Atraccio(nomAtraccio.getText(),tipusAtraccio.getText(),dataInnauguracio.getText(),alturaMin.getText(),accessibilitat.getText(),Express.getText()));
                 JOptionPane.showMessageDialog(this, "Atraccio registrada correctament");
-                Auxiliar.log("Atraccio registrada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getNom() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccesExpress());
+                Auxiliar.log("Atraccio registrada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getNom() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccesExpress() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getDataCreacioRegistre());
                 this.setVisible(false);
                 MenuAtraccioForm menuA = new MenuAtraccioForm();
                 menuA.setVisible(true);
