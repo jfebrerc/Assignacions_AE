@@ -26,31 +26,31 @@ Asignacions de empleats a atraccions amb els canvis proposats
 -SI DONA TEMPS: Canviar la localització de la array de Atraccions a la classe corresponent.
 
 - EMPLEAT:
-	codi_seg_social
-	IBAN
-	especialitat
-	carrec
-	data_inici_contracte
-	data_fi_contracte
-	horari
+	-codi_seg_social
+	-IBAN
+	-especialitat
+	-carrec
+	-data_inici_contracte
+	-data_fi_contracte
+	-horari
 
 - PERSONA:
-	cognom2
-	email
-	password
-	data_naixement
-	adreca
-	ciutat
-	provincia
-	codi_postal
-	tipus_document
-	numero_document
-	sexe
-	telefon
-	rol
-	actiu
-	data_creacio_registre
+	-cognom2
+	-email
+	-password
+	-data_naixement
+	-adreca
+	-ciutat
+	-provincia
+	-codi_postal
+	-tipus_document
+	-numero_document
+	-sexe
+	-telefon
+	-rol
+	-actiu
+	-data_creacio_registre
  
 - ATRACCIONS
-	data_creacio_registre
+	-data_creacio_registre
 	
