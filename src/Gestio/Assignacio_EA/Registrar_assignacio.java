@@ -331,7 +331,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 IO.imprimirTI("Size: " + Arrays.arrayAssignacio.size());
                 IO.imprimirTI(Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).toString());
                 IO.imprimirTI("Se ha registrat una assignacio");
-                Auxiliar.log("Assignació registrada: " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getNom() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getCognom1() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getDNI() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getAtraccio().getNom() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getDataInici() + " | " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getDataFi() + " | " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getDataCreacioRegistre());
+                Auxiliar.log("Assignació registrada: " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getCognom1() + " | " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getDNI() + " --> " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getAtraccio().getNom() + " | " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getDataInici() + " | " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getDataFi());
                 JOptionPane.showMessageDialog(this, "Assignacio creada correctament");
                 seleccio_empleat = -1;
                 seleccio_atraccio = -1;

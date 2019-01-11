@@ -281,11 +281,12 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                         Persona anticEmpleat = Arrays.arrayAssignacio.get(seleccio).getEmpleat();
                         Atraccio antigaAtraccio = Arrays.arrayAssignacio.get(seleccio).getAtraccio();
                         String AntigaData = Arrays.arrayAssignacio.get(seleccio).getDataInici();
+                        String AntigaDataFi = Arrays.arrayAssignacio.get(seleccio).getDataFi();
                         Arrays.arrayAssignacio.get(seleccio).setData(dataText.getText());
                         Arrays.arrayAssignacio.get(seleccio).setDataFi(data2.getText());
                         Auxiliar.llistar_assignacio_taula(buscarAssign, jTable1);
                         JOptionPane.showMessageDialog(this, "Assignació " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI()  + " --> " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() +" modificada correctament");
-                        Auxiliar.log("Assignacio modificada: " + anticEmpleat.getNom() + " | " + anticEmpleat.getCognom1() + " | " + anticEmpleat.getDNI() + " | " + antigaAtraccio.getNom() + " | " + AntigaData + "\nA: " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getCognom1() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getDataInici());
+                        Auxiliar.log("Assignacio modificada: " + anticEmpleat.getNom() + " | " + anticEmpleat.getCognom1() + " | " + anticEmpleat.getDNI() + " | " + antigaAtraccio.getNom() + " | " + AntigaData + " | " + AntigaDataFi + "\nA: " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getCognom1() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getDataInici() + " | " + Arrays.arrayAssignacio.get(seleccio).getDataFi());
                     } catch (Exception error) {
                         IO.imprimirTI("Error al modificar: " + error);
                         Auxiliar.logError("Error al modificar una assignacio: " + error);
@@ -318,7 +319,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                     if(dialogResult == 0) {
                         try{
                             //Auxiliar.log("Empleat eliminat: " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getNom() + " " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getDNI());
-                            Auxiliar.log("Assignacio eliminada: " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getCognom1()  + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(elements[0]).getDataInici() + " --> " + Arrays.arrayAssignacio.get(elements[0]).getAtraccio().getNom());
+                            Auxiliar.log("Assignacio eliminada: " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getCognom1()  + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(elements[0]).getDataInici() + " | " + Arrays.arrayAssignacio.get(elements[0]).getDataFi() + " --> " + Arrays.arrayAssignacio.get(elements[0]).getAtraccio().getNom());
                             Arrays.arrayAssignacio.get(elements[0]).getEmpleat().eliminarAssign();
                             Arrays.arrayAssignacio.get(elements[0]).getAtraccio().eliminarAssign();
                             Arrays.arrayAssignacio.remove(elements[0]);
