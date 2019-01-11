@@ -48,9 +48,14 @@ Asignacions de empleats a atraccions amb els canvis proposats
 	- sexe
 	- telefon
 	- rol
-	- actiu
+	- actiu		
 	- data_creacio_registre
+	- hash
  
 - ATRACCIONS
-	-data_creacio_registre
+	- data_creacio_registre
 	
+- ASSIGNACIONS
+	- data_creacio_registre
+	- data_inici_assign
+	- data_fi assign	
