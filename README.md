@@ -21,6 +21,7 @@ Asignacions de empleats a atraccions amb els canvis proposats
 - ~LOGS ERRORS~
 - ~Opció de configurar certes coses. Fer un fitxer de configuració inicial on hi hagin algunes opcions com: el color de fons, tipus de lletra~
 - Igualar el que es pot fer a partir de l'aplicatiu web i java (agregar els atributs restants).
+- Afegir JDate
 
 
 -SI DONA TEMPS: Canviar la localització de la array de Atraccions a la classe corresponent.
