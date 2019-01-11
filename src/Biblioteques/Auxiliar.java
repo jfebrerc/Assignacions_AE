@@ -259,7 +259,7 @@ public class Auxiliar {
     public static void log(String s) {
         TimeZone tz = TimeZone.getTimeZone("CET"); // or PST, MID, etc ...
         Date now = new Date();
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
         df.setTimeZone(tz);
         String currentTime = df.format(now);
         try{
@@ -275,7 +275,7 @@ public class Auxiliar {
     public static void logError(String s) {
         TimeZone tz = TimeZone.getTimeZone("CET"); // or PST, MID, etc ...
         Date now = new Date();
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy kk:mm:ss");
         df.setTimeZone(tz);
         String currentTime = df.format(now);
         try{
