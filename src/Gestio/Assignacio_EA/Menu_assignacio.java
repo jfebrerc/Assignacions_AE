@@ -153,15 +153,8 @@ public class Menu_assignacio extends javax.swing.JFrame {
     private void TESTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TESTButtonActionPerformed
         Random rand = new Random();
         try{
-            for (int i=0; i<TEST;i++){
-            int data1 = rand.nextInt((31 - 1) + 1) + 1;
-            int data2 = rand.nextInt((12 - 1) + 1) + 1;
-            int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
-            Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(i), Atraccio.arrayAtraccio.get(i), String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3)));
-            ((Empleat)Arrays.arrayPersones.get(i)).setAssignat();
-            Atraccio.arrayAtraccio.get(i).setAssignat();
-        }
-        JOptionPane.showMessageDialog(this, "Elements de prova carregats correctament");
+            Auxiliar.generarAssignacions();
+            JOptionPane.showMessageDialog(this, "Elements de prova carregats correctament");
         }catch (Exception e){
             Auxiliar.logError("Error al carregar els elements de prova del menu d'assignacions: " + e);
         }

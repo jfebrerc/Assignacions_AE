@@ -23,6 +23,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.TimeZone;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
@@ -30,6 +31,7 @@ import javax.swing.JOptionPane;
 
 public class Auxiliar {
     public static String path = "E:\\Carpetes\\Desktop\\";
+    public static final int TEST = 100;
     /** FUNCIO PER A LLISTAR ELS EMPLEATS */
     public static void llistar_empleats(JTextField textBusqueda, JList llistaEmpleats){
         String cerca = textBusqueda.getText();
@@ -204,7 +206,7 @@ public class Auxiliar {
                 Assignacio assign_aux = iteratorAssign.next();
                 String assignacio_busqueda = assign_aux.toString().toLowerCase();
                 if (assignacio_busqueda.indexOf(cercaUsuari) != -1){
-                    tabla.addRow(new Object[] {assign_aux.getId(),assign_aux.getEmpleat().getNom(),assign_aux.getEmpleat().getCognom1(),assign_aux.getEmpleat().getDNI(),assign_aux.getAtraccio().getNom(),assign_aux.getData()});
+                    tabla.addRow(new Object[] {assign_aux.getId(),assign_aux.getEmpleat().getNom(),assign_aux.getEmpleat().getCognom1(),assign_aux.getEmpleat().getDNI(),assign_aux.getAtraccio().getNom(),assign_aux.getDataInici(),assign_aux.getDataFi()});
                     trobat = true;
                 }
             }
@@ -245,7 +247,7 @@ public class Auxiliar {
             if (seleccio ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
             else {
                 try{
-                   dataText.setText(Arrays.arrayAssignacio.get(seleccio).getData()); 
+                   dataText.setText(Arrays.arrayAssignacio.get(seleccio).getDataInici()); 
                 }catch (Exception e){
                     logError("Error al carrgar les dades de una assignacio: " + e);
                 }
@@ -287,5 +289,33 @@ public class Auxiliar {
         df.setTimeZone(tz);
         String currentTime = df.format(now);
         return currentTime;
+    }
+    
+    public static void generarAtraccions(){
+        Random rand = new Random(); 
+        for (int i=0; i<TEST;i++){
+            int data1 = rand.nextInt((31 - 1) + 1) + 1;
+            int data2 = rand.nextInt((12 - 1) + 1) + 1;
+            int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
+            Atraccio.arrayAtraccio.add(new Atraccio("NomAtraccio"+(i+1),"TipusAtraccio"+(i+1),String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3),"AlturaMinima"+(i+1),"Accessibilitat"+(i+1),"Express"+(i+1)));       
+        }
+    }
+    
+    public static void generarEmpleats(){
+        for (int i=0; i<TEST;i++){
+            Arrays.arrayPersones.add(new Empleat("nom"+(i+1), "cognom"+(i+1),"dni"+(i+1),"nomina"+(i+1)));
+        }
+    }
+    
+    public static void generarAssignacions(){
+        Random rand = new Random();
+        for (int i=0; i<(TEST-50);i++){
+            int data1 = rand.nextInt((31 - 1) + 1) + 1;
+            int data2 = rand.nextInt((12 - 1) + 1) + 1;
+            int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
+            Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(i), Atraccio.arrayAtraccio.get(i), String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3), String.valueOf(data3) + "/" +  String.valueOf(data1) + "/" + String.valueOf(data2)));
+            ((Empleat)Arrays.arrayPersones.get(i)).setAssignat();
+            Atraccio.arrayAtraccio.get(i).setAssignat();
+        }
     }
 }

@@ -5,6 +5,7 @@
  */
 package Main;
 import Biblioteques.Arrays;
+import Biblioteques.Auxiliar;
 import Biblioteques.IO;
 import Classes.Assignacio;
 import Classes.Atraccio;
@@ -25,7 +26,6 @@ import java.util.Random;
  * @author Usuari
  */
 public class main extends javax.swing.JFrame {
-    public final int TEST = 100;
     /**
      * Creates new form main
      */
@@ -183,25 +183,13 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_SORTIRButtonActionPerformed
 
     private void TESTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TESTButtonActionPerformed
-        Random rand = new Random(); 
-        for (int i=0; i<TEST;i++){
-                   int data1 = rand.nextInt((31 - 1) + 1) + 1;
-                   int data2 = rand.nextInt((12 - 1) + 1) + 1;
-                   int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
-                    Atraccio.arrayAtraccio.add(new Atraccio("NomAtraccio"+(i+1),"TipusAtraccio"+(i+1),String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3),"AlturaMinima"+(i+1),"Accessibilitat"+(i+1),"Express"+(i+1)));       
-                }
-        for (int i=0; i<TEST;i++){
-                    Arrays.arrayPersones.add(new Empleat("nom"+(i+1), "cognom"+(i+1),"dni"+(i+1),"nomina"+(i+1)));
-                }
-                JOptionPane.showMessageDialog(this, "Elements de prova carregats correctament");
-                
-        for (int i=0; i<(TEST-50);i++){
-            int data1 = rand.nextInt((31 - 1) + 1) + 1;
-            int data2 = rand.nextInt((12 - 1) + 1) + 1;
-            int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
-            Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(i), Atraccio.arrayAtraccio.get(i), String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3)));
-            ((Empleat)Arrays.arrayPersones.get(i)).setAssignat();
-            Atraccio.arrayAtraccio.get(i).setAssignat();
+        try{
+            Auxiliar.generarAtraccions();
+            Auxiliar.generarEmpleats();
+            Auxiliar.generarAssignacions();
+            JOptionPane.showMessageDialog(this, "Elements de prova carregats correctament");
+        }catch (Exception e){
+            IO.imprimirTI("Error al carregar elements de prova a main: " + e);
         }
     }//GEN-LAST:event_TESTButtonActionPerformed
 

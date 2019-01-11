@@ -53,9 +53,9 @@ Asignacions de empleats a atraccions amb els canvis proposats
 	- hash
  
 - ATRACCIONS
-	- data_creacio_registre
+	- ~data_creacio_registre~
 	
 - ASSIGNACIONS
-	- data_creacio_registre
+	- ~data_creacio_registre~
 	- data_inici_assign
 	- data_fi assign	

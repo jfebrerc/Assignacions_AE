@@ -108,6 +108,8 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        data2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -143,7 +145,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Data:");
+        jLabel4.setText("Data inici:");
 
         assignarButton.setText("Assignar");
         assignarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -201,16 +203,22 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     );
     jScrollPane1.setViewportView(jTable2);
 
+    jLabel5.setText("Data fi: ");
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addContainerGap(944, Short.MAX_VALUE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel4)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(27, 27, 27)
+            .addGap(45, 45, 45)
+            .addComponent(jLabel5)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
             .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(26, 26, 26)
             .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,7 +248,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(604, 604, 604)
             .addComponent(jLabel1)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(673, Short.MAX_VALUE))
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(jScrollPane1)
@@ -270,17 +278,15 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(21, 21, 21))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap())))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap())
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -318,15 +324,15 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             IO.imprimirTI("Se ha intentat registrar una assignacio en algun camp buit: " + seleccio_empleat + " | " +seleccio_atraccio);
         }else {
             try {
-                Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), dataText.getText()));
+                Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), dataText.getText(), data2.getText()));
                 ((Empleat)Arrays.arrayPersones.get(seleccio_empleat)).setAssignat();
                 Atraccio.arrayAtraccio.get(seleccio_atraccio).setAssignat();
                 IO.imprimirTI("empleat: " + ((Empleat)Arrays.arrayPersones.get(seleccio_empleat)).toString());
                 IO.imprimirTI("Size: " + Arrays.arrayAssignacio.size());
                 IO.imprimirTI(Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).toString());
                 IO.imprimirTI("Se ha registrat una assignacio");
+                Auxiliar.log("Assignació registrada: " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getNom() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getCognom1() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getDNI() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getAtraccio().getNom() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getDataInici() + " | " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getDataFi() + " | " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getDataCreacioRegistre());
                 JOptionPane.showMessageDialog(this, "Assignacio creada correctament");
-                Auxiliar.log("Assignació registrada: " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getNom() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getCognom1() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getEmpleat().getDNI() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getAtraccio().getNom() + " " + Arrays.arrayAssignacio.get(Arrays.arrayAssignacio.size()-1).getData());
                 seleccio_empleat = -1;
                 seleccio_atraccio = -1;
                 dataText.setText("");
@@ -463,12 +469,14 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     private javax.swing.JTextField buscarAtraccions;
     private javax.swing.JTextField buscarEmpleats;
     private javax.swing.JButton cancelarButton;
+    private javax.swing.JTextField data2;
     private javax.swing.JTextField dataText;
     private javax.swing.JLabel empleatSeleccionat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;

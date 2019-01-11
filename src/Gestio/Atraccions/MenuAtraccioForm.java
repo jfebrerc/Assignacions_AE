@@ -202,18 +202,8 @@ public class MenuAtraccioForm extends javax.swing.JFrame {
 
     private void testButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testButtonActionPerformed
         try{
-          Random rand = new Random(); 
-          for (int i=0; i<ATRACCIONS_TEST;i++){
-                   int data1 = rand.nextInt((31 - 1) + 1) + 1;
-                   int data2 = rand.nextInt((12 - 1) + 1) + 1;
-                   int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
-                    Atraccio.arrayAtraccio.add(new Atraccio("NomAtraccio"+(i+1),"TipusAtraccio"+(i+1),String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3),"AlturaMinima"+(i+1),"Accessibilitat"+(i+1),"Express"+(i+1)));
-
-                }
-                for (Atraccio a : Atraccio.arrayAtraccio){
-                    System.out.println(a);
-                }
-                JOptionPane.showMessageDialog(this, "Atraccions de prova carregades correctament");  
+          Auxiliar.generarAtraccions();
+          JOptionPane.showMessageDialog(this, "Atraccions de prova carregades correctament");  
         }catch (Exception e){
             Auxiliar.logError("Error al carregar elements de prova en MenuAtraccioForm: " + e);
         }

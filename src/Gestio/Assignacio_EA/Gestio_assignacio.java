@@ -87,6 +87,8 @@ public class Gestio_assignacio extends javax.swing.JFrame {
         ENREREButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        data2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -119,7 +121,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Data:");
+        jLabel2.setText("Data inici:");
 
         MODIFICARButton.setText("MODIFICAR");
         MODIFICARButton.addActionListener(new java.awt.event.ActionListener() {
@@ -147,11 +149,11 @@ public class Gestio_assignacio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nom empleat", "Cognom empleat", "DNI", "Atracció", "Data inauguració"
+                "ID", "Nom empleat", "Cognom empleat", "DNI", "Atracció", "Data inici", "Data fi"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -166,6 +168,8 @@ public class Gestio_assignacio extends javax.swing.JFrame {
     });
     jScrollPane2.setViewportView(jTable1);
 
+    jLabel3.setText("Data fi:");
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
@@ -175,10 +179,15 @@ public class Gestio_assignacio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane2)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGap(22, 22, 22)
                     .addComponent(jLabel2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(53, 53, 53)
+                    .addComponent(jLabel3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(MODIFICARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(BUIDARButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,7 +227,9 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                 .addComponent(ENREREButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel2)
                 .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(ELIMINARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ELIMINARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
+                .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap())
     );
 
@@ -268,11 +279,12 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                         //String anticNom=Arrays.arrayPersones.get(seleccio).getNom();
                         Persona anticEmpleat = Arrays.arrayAssignacio.get(seleccio).getEmpleat();
                         Atraccio antigaAtraccio = Arrays.arrayAssignacio.get(seleccio).getAtraccio();
-                        String AntigaData = Arrays.arrayAssignacio.get(seleccio).getData();
+                        String AntigaData = Arrays.arrayAssignacio.get(seleccio).getDataInici();
                         Arrays.arrayAssignacio.get(seleccio).setData(dataText.getText());
+                        Arrays.arrayAssignacio.get(seleccio).setDataFi(data2.getText());
                         Auxiliar.llistar_assignacio_taula(buscarAssign, jTable1);
                         JOptionPane.showMessageDialog(this, "Assignació " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI()  + " --> " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() +" modificada correctament");
-                        Auxiliar.log("Assignacio modificada: " + anticEmpleat.getNom() + " | " + anticEmpleat.getCognom1() + " | " + anticEmpleat.getDNI() + " | " + antigaAtraccio.getNom() + " | " + AntigaData + "\nA: " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getCognom1() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getData());
+                        Auxiliar.log("Assignacio modificada: " + anticEmpleat.getNom() + " | " + anticEmpleat.getCognom1() + " | " + anticEmpleat.getDNI() + " | " + antigaAtraccio.getNom() + " | " + AntigaData + "\nA: " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getCognom1() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getDataInici());
                     } catch (Exception error) {
                         IO.imprimirTI("Error al modificar: " + error);
                         Auxiliar.logError("Error al modificar una assignacio: " + error);
@@ -305,7 +317,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                     if(dialogResult == 0) {
                         try{
                             //Auxiliar.log("Empleat eliminat: " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getNom() + " " + ((Empleat) Arrays.arrayPersones.get(elements[0])).getDNI());
-                            Auxiliar.log("Assignacio eliminada: " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getCognom1()  + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(elements[0]).getData() + " --> " + Arrays.arrayAssignacio.get(elements[0]).getAtraccio().getNom());
+                            Auxiliar.log("Assignacio eliminada: " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getCognom1()  + " | " + Arrays.arrayAssignacio.get(elements[0]).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(elements[0]).getDataInici() + " --> " + Arrays.arrayAssignacio.get(elements[0]).getAtraccio().getNom());
                             Arrays.arrayAssignacio.get(elements[0]).getEmpleat().eliminarAssign();
                             Arrays.arrayAssignacio.get(elements[0]).getAtraccio().eliminarAssign();
                             Arrays.arrayAssignacio.remove(elements[0]);
@@ -384,9 +396,11 @@ public class Gestio_assignacio extends javax.swing.JFrame {
     private javax.swing.JButton ENREREButton;
     private javax.swing.JButton MODIFICARButton;
     private javax.swing.JTextField buscarAssign;
+    private javax.swing.JTextField data2;
     private javax.swing.JTextField dataText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
