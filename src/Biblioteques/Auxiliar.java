@@ -215,7 +215,7 @@ public class Auxiliar {
         }        
     }
     
-    public static int carregar_dades_assign_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField dataText){
+    public static int carregar_dades_assign_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField dataText, JTextField dataFi){
         //int elements [];
         //frame.getContentPane().add(carregar);
         //elements = jTable1.getSelectedRows();
@@ -248,6 +248,7 @@ public class Auxiliar {
             else {
                 try{
                    dataText.setText(Arrays.arrayAssignacio.get(seleccio).getDataInici()); 
+                   dataFi.setText(Arrays.arrayAssignacio.get(seleccio).getDataFi());
                 }catch (Exception e){
                     logError("Error al carrgar les dades de una assignacio: " + e);
                 }

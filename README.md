@@ -57,5 +57,5 @@ Asignacions de empleats a atraccions amb els canvis proposats
 	
 - ASSIGNACIONS
 	- ~data_creacio_registre~
-	- data_inici_assign
-	- data_fi assign	
+	- ~data_inici_assign~
+	- ~data_fi assign~

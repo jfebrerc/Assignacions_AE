@@ -263,12 +263,13 @@ public class Gestio_assignacio extends javax.swing.JFrame {
     }//GEN-LAST:event_BUIDARButtonActionPerformed
 
     private void CARREGARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CARREGARButtonActionPerformed
-        seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, dataText);
+        seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, dataText, data2);
     }//GEN-LAST:event_CARREGARButtonActionPerformed
 
     private void BUIDARButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUIDARButton1ActionPerformed
         seleccio = -1;
         dataText.setText("");
+        data2.setText("");
     }//GEN-LAST:event_BUIDARButton1ActionPerformed
 
     private void MODIFICARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MODIFICARButtonActionPerformed
@@ -323,6 +324,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                             Arrays.arrayAssignacio.remove(elements[0]);
                             seleccio = -1;
                             dataText.setText("");
+                            data2.setText("");
                             Auxiliar.llistar_assignacio_taula(buscarAssign, jTable1);
                         }catch (Exception e){
                             IO.imprimirTI("Error al eliminar: " + e);
@@ -349,7 +351,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         if(evt.getClickCount()==2 && evt.getButton() == MouseEvent.BUTTON1){
-            seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, dataText);
+            seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, dataText, data2);
         }
     }//GEN-LAST:event_jTable1MouseClicked
 

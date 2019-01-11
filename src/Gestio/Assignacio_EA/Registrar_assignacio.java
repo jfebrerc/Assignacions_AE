@@ -338,6 +338,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 dataText.setText("");
                 empleatSeleccionat.setText("");
                 atraccioSeleccionada.setText("");
+                data2.setText("");
             }catch (Exception error){
                 IO.imprimirTI("Error al assignar: " + error);
                 Auxiliar.logError("Error al registrar una assignacio: " + error);
