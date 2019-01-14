@@ -336,7 +336,7 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
                 Atraccio.arrayAtraccio.get(elements[0]).setAccesExpress(Express.getText());
                 Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
                 Auxiliar.log("Atraccio modificada: " + anticNom + " | " + anticTipus + " | " + anticDataI + " | " + anticAlturamin + " | " + anticAcces + " | " + anticExpress + "\nA: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress());
-                JOptionPane.showMessageDialog(this, "Empleat modificat correctament");
+                JOptionPane.showMessageDialog(this, "Atraccio modificada correctament");
             }catch (Exception e){
                 IO.imprimirTI("Error al modificar atraccio: " + e);
                 Auxiliar.logError("Error al modificar atraccio: " + e);

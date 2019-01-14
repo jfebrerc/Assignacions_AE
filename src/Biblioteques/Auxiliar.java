@@ -15,6 +15,7 @@ import Classes.Assignacio;
 import Classes.Atraccio;
 import Classes.Empleat;
 import Classes.Persona;
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.io.FileWriter;
@@ -215,7 +216,7 @@ public class Auxiliar {
         }        
     }
     
-    public static int carregar_dades_assign_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField dataText, JTextField dataFi){
+    public static int carregar_dades_assign_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JDateChooser data1, JDateChooser data3){
         //int elements [];
         //frame.getContentPane().add(carregar);
         //elements = jTable1.getSelectedRows();
@@ -247,8 +248,9 @@ public class Auxiliar {
             if (seleccio ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
             else {
                 try{
-                   dataText.setText(Arrays.arrayAssignacio.get(seleccio).getDataInici()); 
-                   dataFi.setText(Arrays.arrayAssignacio.get(seleccio).getDataFi());
+                   data1.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(Arrays.arrayAssignacio.get(seleccio).getDataInici()));
+                   //dataText.setText(Arrays.arrayAssignacio.get(seleccio).getDataInici()); 
+                   data3.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(Arrays.arrayAssignacio.get(seleccio).getDataFi()));
                 }catch (Exception e){
                     logError("Error al carrgar les dades de una assignacio: " + e);
                 }
@@ -314,9 +316,52 @@ public class Auxiliar {
             int data1 = rand.nextInt((31 - 1) + 1) + 1;
             int data2 = rand.nextInt((12 - 1) + 1) + 1;
             int data3 = rand.nextInt((3000 - 1000) + 1) + 1;
-            Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(i), Atraccio.arrayAtraccio.get(i), String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3), String.valueOf(data3) + "/" +  String.valueOf(data1) + "/" + String.valueOf(data2)));
+            int data4 = rand.nextInt((31 - 1) + 1) + 1;
+            int data5 = rand.nextInt((12 - 1) + 1) + 1;
+            int data6 = rand.nextInt((3000 - 1000) + 1) + 1;
+            Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(i), Atraccio.arrayAtraccio.get(i), String.valueOf(data1) + "/" + String.valueOf(data2) + "/" + String.valueOf(data3), String.valueOf(data4) + "/" +  String.valueOf(data5) + "/" + String.valueOf(data6)));
             ((Empleat)Arrays.arrayPersones.get(i)).setAssignat();
             Atraccio.arrayAtraccio.get(i).setAssignat();
         }
+    }
+    
+    public int seleccionarEmpleatAssignacio(int seleccio_empleat, JTable jTable1, ){
+        Object elementmodificat = null;
+        try{
+            elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+        }catch (Exception e){
+            IO.imprimirTI("Error seleccio null");
+            Auxiliar.logError("Error al seleccionar un empleat en assignacio: " + e);
+        }
+        if (elementmodificat == null){
+            JOptionPane.showMessageDialog(this, "Selecciona un empleat");
+        }else{
+            int element = (int)elementmodificat;
+            IO.imprimirTI("Seleccio: " + element);
+            seleccio_empleat = -1;
+            boolean trobat = false;
+            for (int i = 0; i<Arrays.arrayPersones.size() && trobat == false; i++){
+                try{
+                    if(element == Arrays.arrayPersones.get(i).getId()){
+                        seleccio_empleat = i;
+                        trobat = true;
+                    }
+                }catch(Exception e){
+                    IO.imprimirTI("Error: " + e);
+                    Auxiliar.logError("Error al buscar el empleat a seleccionar en registre_assignacio: " + e);
+                }
+
+            }
+            if (seleccio_empleat ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
+            else {
+                try{
+                    empleatSeleccionat.setText("Empleat seleccionat: " + Arrays.arrayPersones.get(seleccio_empleat).getNom());
+                }catch (Exception error){
+                    Auxiliar.logError("Error al mostrar el empleat seleccionat en registrar_assignacio: " + error);
+                }
+
+            }
+        }
+        return seleccio_empleat;
     }
 }

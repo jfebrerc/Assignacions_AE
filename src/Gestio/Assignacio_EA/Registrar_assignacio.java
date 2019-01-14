@@ -22,6 +22,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author Usuari
@@ -36,6 +39,8 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Registrar assignacio");
+        data1.setDateFormatString("dd/MM/yyyy");
+        data2.setDateFormatString("dd/MM/yyyy");
         try{
             jPanel1.setBackground(Color.decode(Main.config.carregarConf()[0]));
         }catch (Exception e){
@@ -99,7 +104,6 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         buscarAtraccions = new javax.swing.JTextField();
         seleccionarAtraccio = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        dataText = new javax.swing.JTextField();
         assignarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
         empleatSeleccionat = new javax.swing.JLabel();
@@ -108,8 +112,9 @@ public class Registrar_assignacio extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        data2 = new javax.swing.JTextField();
+        data1 = new com.toedter.calendar.JDateChooser();
+        data2 = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -203,7 +208,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     );
     jScrollPane1.setViewportView(jTable2);
 
-    jLabel5.setText("Data fi: ");
+    jLabel6.setText("Data fi:");
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -213,12 +218,12 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel4)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(45, 45, 45)
-            .addComponent(jLabel5)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(data1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(29, 29, 29)
+            .addComponent(jLabel6)
             .addGap(18, 18, 18)
+            .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(100, 100, 100)
             .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(26, 26, 26)
             .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,23 +274,29 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel3)
-            .addGap(1, 1, 1)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(atraccioSeleccionada))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(jLabel3)
+                    .addGap(1, 1, 1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buscarAtraccions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(seleccionarAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(atraccioSeleccionada))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(assignarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(data1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addContainerGap())
     );
 
@@ -319,12 +330,19 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void assignarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignarButtonActionPerformed
-        if (seleccio_empleat==-1 || seleccio_atraccio==-1 || dataText.toString().isEmpty()){
+        if (seleccio_empleat==-1 || seleccio_atraccio==-1 || data1.toString().isEmpty()){
             JOptionPane.showMessageDialog(this, "Error: Hi ha algun camp per a omplir");
             IO.imprimirTI("Se ha intentat registrar una assignacio en algun camp buit: " + seleccio_empleat + " | " +seleccio_atraccio);
         }else {
             try {
-                Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), dataText.getText(), data2.getText()));
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                Date time = data1.getCalendar().getTime();  
+                String data1Text = df.format(time);
+                
+                Date time2 = data2.getCalendar().getTime();  
+                String data2Text = df.format(time2);
+                
+                Arrays.arrayAssignacio.add(new Assignacio((Empleat) Arrays.arrayPersones.get(seleccio_empleat), Atraccio.arrayAtraccio.get(seleccio_atraccio), data1Text, data2Text));
                 ((Empleat)Arrays.arrayPersones.get(seleccio_empleat)).setAssignat();
                 Atraccio.arrayAtraccio.get(seleccio_atraccio).setAssignat();
                 IO.imprimirTI("empleat: " + ((Empleat)Arrays.arrayPersones.get(seleccio_empleat)).toString());
@@ -335,10 +353,10 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Assignacio creada correctament");
                 seleccio_empleat = -1;
                 seleccio_atraccio = -1;
-                dataText.setText("");
+                data1.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
                 empleatSeleccionat.setText("");
                 atraccioSeleccionada.setText("");
-                data2.setText("");
+                data2.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
             }catch (Exception error){
                 IO.imprimirTI("Error al assignar: " + error);
                 Auxiliar.logError("Error al registrar una assignacio: " + error);
@@ -364,9 +382,9 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             for (int i = 0; i<Atraccio.arrayAtraccio.size() && trobat == false; i++){
                 try{
                     if(element.equals(Atraccio.arrayAtraccio.get(i).getIdA())){
-                    seleccio_atraccio = i;
-                    trobat = true;
-                }
+                        seleccio_atraccio = i;
+                        trobat = true;
+                    }
                 }catch(Exception e){
                     IO.imprimirTI("Error: " + e);
                     Auxiliar.logError("Error al buscar la atraccio a seleccionar en registre_assignacio: " + e);
@@ -381,9 +399,9 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                     IO.imprimirTI("Error al seleccionar empleat assignacio: " + error);
                     Auxiliar.logError("Error al mostrar la atraccio seleccionada en registrar_assignacio: " + error);
                 }
-                
+
             }
-            }
+        }
     }//GEN-LAST:event_seleccionarAtraccioActionPerformed
 
     private void seleccionarEmpleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarEmpleatActionPerformed
@@ -404,9 +422,9 @@ public class Registrar_assignacio extends javax.swing.JFrame {
             for (int i = 0; i<Arrays.arrayPersones.size() && trobat == false; i++){
                 try{
                     if(element == Arrays.arrayPersones.get(i).getId()){
-                    seleccio_empleat = i;
-                    trobat = true;
-                }
+                        seleccio_empleat = i;
+                        trobat = true;
+                    }
                 }catch(Exception e){
                     IO.imprimirTI("Error: " + e);
                     Auxiliar.logError("Error al buscar el empleat a seleccionar en registre_assignacio: " + e);
@@ -420,9 +438,9 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 }catch (Exception error){
                     Auxiliar.logError("Error al mostrar el empleat seleccionat en registrar_assignacio: " + error);
                 }
-                
+
             }
-            }
+        }
     }//GEN-LAST:event_seleccionarEmpleatActionPerformed
 
     private void buscarEmpleatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleatsActionPerformed
@@ -470,14 +488,14 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     private javax.swing.JTextField buscarAtraccions;
     private javax.swing.JTextField buscarEmpleats;
     private javax.swing.JButton cancelarButton;
-    private javax.swing.JTextField data2;
-    private javax.swing.JTextField dataText;
+    private com.toedter.calendar.JDateChooser data1;
+    private com.toedter.calendar.JDateChooser data2;
     private javax.swing.JLabel empleatSeleccionat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
