@@ -358,6 +358,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 atraccioSeleccionada.setText("");
                 data2.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
             }catch (Exception error){
+                JOptionPane.showMessageDialog(this, "Error: falta algun camp a omplir");
                 IO.imprimirTI("Error al assignar: " + error);
                 Auxiliar.logError("Error al registrar una assignacio: " + error);
             }
@@ -365,7 +366,8 @@ public class Registrar_assignacio extends javax.swing.JFrame {
     }//GEN-LAST:event_assignarButtonActionPerformed
 
     private void seleccionarAtraccioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarAtraccioActionPerformed
-        Object elementmodificat = null;
+        seleccio_atraccio = Auxiliar.seleccionarAtraccioAssignacio(seleccio_atraccio, jTable2, this, atraccioSeleccionada);
+        /*Object elementmodificat = null;
         try{
             elementmodificat = jTable2.getValueAt(jTable2.getSelectedRow(), 0);
         }catch (Exception e){
@@ -401,11 +403,12 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 }
 
             }
-        }
+        }*/
     }//GEN-LAST:event_seleccionarAtraccioActionPerformed
 
     private void seleccionarEmpleatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarEmpleatActionPerformed
-        Object elementmodificat = null;
+        seleccio_empleat = Auxiliar.seleccionarEmpleatAssignacio(seleccio_empleat, jTable1, this, empleatSeleccionat);
+        /*Object elementmodificat = null;
         try{
             elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
         }catch (Exception e){
@@ -440,7 +443,7 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 }
 
             }
-        }
+        }*/
     }//GEN-LAST:event_seleccionarEmpleatActionPerformed
 
     private void buscarEmpleatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarEmpleatsActionPerformed

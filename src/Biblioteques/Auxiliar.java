@@ -325,7 +325,7 @@ public class Auxiliar {
         }
     }
     
-    public int seleccionarEmpleatAssignacio(int seleccio_empleat, JTable jTable1, ){
+    public static int seleccionarEmpleatAssignacio(int seleccio_empleat, JTable jTable1, JFrame frame, JLabel empleatSeleccionat){
         Object elementmodificat = null;
         try{
             elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
@@ -334,7 +334,7 @@ public class Auxiliar {
             Auxiliar.logError("Error al seleccionar un empleat en assignacio: " + e);
         }
         if (elementmodificat == null){
-            JOptionPane.showMessageDialog(this, "Selecciona un empleat");
+            JOptionPane.showMessageDialog(frame, "Selecciona un empleat");
         }else{
             int element = (int)elementmodificat;
             IO.imprimirTI("Seleccio: " + element);
@@ -363,5 +363,45 @@ public class Auxiliar {
             }
         }
         return seleccio_empleat;
+    }
+        public static int seleccionarAtraccioAssignacio(int seleccio_atraccio, JTable jTable2, JFrame frame, JLabel atraccioSeleccionada){
+        Object elementmodificat = null;
+        try{
+            elementmodificat = jTable2.getValueAt(jTable2.getSelectedRow(), 0);
+        }catch (Exception e){
+            IO.imprimirTI("Error seleccio null");
+            Auxiliar.logError("Error al seleccionar una atraccio en assignacio: " + e);
+        }
+        if (elementmodificat == null){
+            JOptionPane.showMessageDialog(frame, "Selecciona una atraccio");
+        }else{
+            String element = (String)elementmodificat;
+            IO.imprimirTI("Seleccio: " + element);
+            seleccio_atraccio = -1;
+            boolean trobat = false;
+            for (int i = 0; i<Atraccio.arrayAtraccio.size() && trobat == false; i++){
+                try{
+                    if(element.equals(Atraccio.arrayAtraccio.get(i).getIdA())){
+                        seleccio_atraccio = i;
+                        trobat = true;
+                    }
+                }catch(Exception e){
+                    IO.imprimirTI("Error: " + e);
+                    Auxiliar.logError("Error al buscar la atraccio a seleccionar en registre_assignacio: " + e);
+                }
+
+            }
+            if (seleccio_atraccio ==-1) JOptionPane.showMessageDialog(null, "No s'ha pogut seleccionar");
+            else {
+                try{
+                    atraccioSeleccionada.setText("Atracció seleccionada: " + Atraccio.arrayAtraccio.get(seleccio_atraccio).getNom());
+                }catch (Exception error){
+                    IO.imprimirTI("Error al seleccionar empleat assignacio: " + error);
+                    Auxiliar.logError("Error al mostrar la atraccio seleccionada en registrar_assignacio: " + error);
+                }
+
+            }
+        }
+        return seleccio_atraccio;
     }
 }
