@@ -279,8 +279,10 @@ public class Gestio_assignacio extends javax.swing.JFrame {
     private void BUIDARButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUIDARButton1ActionPerformed
         seleccio = -1;
         try{
-            data1.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
-            data3.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
+            //data1.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
+            data1.setCalendar(null);
+            data3.setCalendar(null);
+            //data3.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
         }catch (Exception e){
             IO.imprimirTI("Petadeta.jarrrrr: " + e);
         }

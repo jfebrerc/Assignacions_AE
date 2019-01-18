@@ -353,10 +353,10 @@ public class Registrar_assignacio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Assignacio creada correctament");
                 seleccio_empleat = -1;
                 seleccio_atraccio = -1;
-                data1.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
+                data1.setCalendar(null);
                 empleatSeleccionat.setText("");
                 atraccioSeleccionada.setText("");
-                data2.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
+                data2.setCalendar(null);
             }catch (Exception error){
                 JOptionPane.showMessageDialog(this, "Error: falta algun camp a omplir");
                 IO.imprimirTI("Error al assignar: " + error);

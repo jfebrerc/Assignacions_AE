@@ -133,7 +133,7 @@ public class Auxiliar {
             JOptionPane.showMessageDialog(frame, "Selecciona un empleat");
         }else{
             int element = (int)elementmodificat;
-            IO.imprimirTI("Seleccio: " + element);
+            //IO.imprimirTI("Seleccio: " + element);
             seleccio = -1;
             boolean trobat = false;
             for (int i = 0; i<Arrays.arrayPersones.size() && trobat == false; i++){
