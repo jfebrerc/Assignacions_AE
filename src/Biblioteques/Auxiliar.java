@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
 
 
 public class Auxiliar {
-    public static String path = "/home/manel/Documentos/M-03-Gestio-Atraccions/styles";
+    public static String path = "E:\\Carpetes\\Desktop\\";
     public static final int TEST = 100;
     /** FUNCIO PER A LLISTAR ELS EMPLEATS */
     public static void llistar_empleats(JTextField textBusqueda, JList llistaEmpleats){
