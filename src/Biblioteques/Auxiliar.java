@@ -30,7 +30,7 @@ import javax.swing.JOptionPane;
 
 
 public class Auxiliar {
-    public static String path = "E:\\Carpetes\\Desktop\\";
+    public static String path = "/home/manel/Documentos/M-03-Gestio-Atraccions/styles";
     public static final int TEST = 100;
     /** FUNCIO PER A LLISTAR ELS EMPLEATS */
     public static void llistar_empleats(JTextField textBusqueda, JList llistaEmpleats){
@@ -60,7 +60,8 @@ public class Auxiliar {
                 Persona p = iteradorPersones.next();
                 String persona_cerca = p.toString().toLowerCase();
                 if (p instanceof Empleat && persona_cerca.indexOf(cercaUsuari) != -1){
-                    tabla.addRow(new Object[] {p.getId(),p.getNom(),p.getCognom1(),p.getDNI(),((Empleat)p).getNomina()});
+                    tabla.addRow(new Object[] {p.getId(),p.getNom(),p.getCognom1(),p.getCognom2(),p.getSexe(),p.getTipusDocument(),p.getDNI(),p.getDataNaixement(),p.getCodiPostal(),p.getProvincia(),
+                    p.getCiutat(),p.getAdreca(),p.getEmail(),p.getTelefon(),((Empleat)p).getNomina()});
                     trobat = true;
                 }
             }
@@ -118,7 +119,9 @@ public class Auxiliar {
         }
         return seleccio;
     }
-    public static int carregar_dades_empleats_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField nomText, JTextField cognomsText, JTextField dniText, JTextField nominaText){
+    public static int carregar_dades_empleats_taula(JButton carregar, int seleccio, JFrame frame, JTable jTable1, JTextField nomText, JTextField cognomsText,JTextField segonCognom,
+            JComboBox sexe,JComboBox tipDocument,JTextField dniText,JTextField  dataNaixement,JTextField codiPostal,JTextField provincia,JTextField ciutat,JTextField adreca,JTextField  email,
+            JTextField telefon, JTextField nominaText){
         Object elementmodificat = null;
         try{
             elementmodificat = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
@@ -150,7 +153,17 @@ public class Auxiliar {
                 try{
                     nomText.setText(Arrays.arrayPersones.get(seleccio).getNom());
                     cognomsText.setText(Arrays.arrayPersones.get(seleccio).getCognom1());
+                    segonCognom.setText(Arrays.arrayPersones.get(seleccio).getCognom2());
+                    sexe.setSelectedItem(Arrays.arrayPersones.get(seleccio).getSexe());
+                    tipDocument.setSelectedItem(Arrays.arrayPersones.get(seleccio).getTipusDocument());
                     dniText.setText(Arrays.arrayPersones.get(seleccio).getDNI());
+                    dataNaixement.setText(Arrays.arrayPersones.get(seleccio).getDataNaixement());
+                    codiPostal.setText(Arrays.arrayPersones.get(seleccio).getCodiPostal());
+                    provincia.setText(Arrays.arrayPersones.get(seleccio).getProvincia());
+                    ciutat.setText(Arrays.arrayPersones.get(seleccio).getCiutat());
+                    adreca.setText(Arrays.arrayPersones.get(seleccio).getAdreca());
+                    email.setText(Arrays.arrayPersones.get(seleccio).getEmail());
+                    telefon.setText(Arrays.arrayPersones.get(seleccio).getTelefon());
                     nominaText.setText(((Empleat)Arrays.arrayPersones.get(seleccio)).getNomina());
                 }catch (Exception e){
                     logError("Error al carrgar les dades de un empleat: " + e);
@@ -304,7 +317,9 @@ public class Auxiliar {
     
     public static void generarEmpleats(){
         for (int i=0; i<TEST;i++){
-            Arrays.arrayPersones.add(new Empleat("nom"+(i+1), "cognom"+(i+1),"dni"+(i+1),"nomina"+(i+1)));
+            Arrays.arrayPersones.add(new Empleat("nom"+(i+1),"cognom"+(i+1),"cognom2"+(i+1),"dni"+(i+1),"passw"+(i+1),"email"+(i+1),"dataNaixement"+(i+1),"adreça"+(i+1), 
+                    "ciutat"+(i+1),"provincia"+(i+1),"codiPostal"+(i+1),"tipDoc"+(i+1),"sexe"+(i+1),"telefon"+(i+1),"idRol"+(i+1),"dataCreacio"+(i+1),"hash"+(i+1),
+                    "nomina"+(i+1),"iban"+(i+1),"horari"+(i+1)));
         }
     }
     
