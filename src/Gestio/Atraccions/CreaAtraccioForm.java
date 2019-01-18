@@ -13,6 +13,9 @@ import static Main.config.carregarConf;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -38,6 +41,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
         }catch(Exception e){
             IO.imprimirTI("Error al carregar la font: " + e);
         }
+        data.setDateFormatString("dd/MM/yyyy");
         
     }
 
@@ -53,7 +57,6 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         nomAtraccio = new javax.swing.JTextField();
         tipusAtraccio = new javax.swing.JTextField();
-        dataInnauguracio = new javax.swing.JTextField();
         alturaMin = new javax.swing.JTextField();
         accessibilitat = new javax.swing.JTextField();
         Express = new javax.swing.JTextField();
@@ -66,6 +69,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        data = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,12 +86,6 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
         tipusAtraccio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipusAtraccioActionPerformed(evt);
-            }
-        });
-
-        dataInnauguracio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataInnauguracioActionPerformed(evt);
             }
         });
 
@@ -142,34 +140,39 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
 
         jLabel8.setText("Access  Express");
 
+        data.setMaximumSize(new java.awt.Dimension(22, 2147483647));
+        data.setMinimumSize(new java.awt.Dimension(22, 29));
+        data.setPreferredSize(new java.awt.Dimension(22, 29));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8))
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipusAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(alturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dataInnauguracio, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(144, Short.MAX_VALUE))
+                            .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nomAtraccio, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                                .addComponent(tipusAtraccio, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                                .addComponent(accessibilitat, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                                .addComponent(alturaMin, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(291, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(CrearButton)
@@ -187,7 +190,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(nomAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -195,11 +198,13 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tipusAtraccio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(dataInnauguracio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel5))
+                    .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(alturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -223,19 +228,24 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
     
     
     private void CrearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearButtonActionPerformed
-        if (nomAtraccio.getText().isEmpty() || tipusAtraccio.getText().isEmpty() || dataInnauguracio.getText().isEmpty() || alturaMin.getText().isEmpty() || accessibilitat.getText().isEmpty() || Express.getText().isEmpty()){
+        if (nomAtraccio.getText().isEmpty() || tipusAtraccio.getText().isEmpty() || data.toString().isEmpty() || alturaMin.getText().isEmpty() || accessibilitat.getText().isEmpty() || Express.getText().isEmpty()){
                     JOptionPane.showMessageDialog(this, "Error: Hi ha algun camp per a omplir");
                     IO.imprimirTI("Se ha intentat registrar una  en algun camp buit");
                 }else {
             try{
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 nomAtraccio.getText();   
                 tipusAtraccio.getText();
-                dataInnauguracio.getText();
+                //dataInnauguracio.getText();
                 alturaMin.getText();
                 accessibilitat.getText();
                 Express.getText();
-
-                Atraccio.arrayAtraccio.add(new Atraccio(nomAtraccio.getText(),tipusAtraccio.getText(),dataInnauguracio.getText(),alturaMin.getText(),accessibilitat.getText(),Express.getText()));
+                
+                Date time = data.getCalendar().getTime();  
+                String data2 = df.format(time);
+                IO.imprimirTI("" + data2);
+                
+                Atraccio.arrayAtraccio.add(new Atraccio(nomAtraccio.getText(),tipusAtraccio.getText(),data2,alturaMin.getText(),accessibilitat.getText(),Express.getText()));
                 JOptionPane.showMessageDialog(this, "Atraccio registrada correctament");
                 Auxiliar.log("Atraccio registrada: " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getNom() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getAccesExpress() + " | " + Atraccio.arrayAtraccio.get(Atraccio.arrayAtraccio.size()-1).getDataCreacioRegistre());
                 this.setVisible(false);
@@ -245,6 +255,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
                 //log error
                 IO.imprimirTI("Error al registrar atraccio: " + e);
                 Auxiliar.logError("Error al registrar una atraccio: " + e);
+                JOptionPane.showMessageDialog(this, "Error: Hi ha algun camp incorrecte");
             }
         }
         
@@ -253,7 +264,11 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
         nomAtraccio.setText("");
         tipusAtraccio.setText("");
-        dataInnauguracio.setText("");
+        try{
+          data.getCalendar().setTime(new SimpleDateFormat("dd/MM/yyyy").parse(""));  
+        }catch(Exception e){
+            IO.imprimirTI("petadeta.jar: " + e);
+        }
         alturaMin.setText("");
         accessibilitat.setText("");
         Express.setText("");
@@ -267,10 +282,6 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
     private void tipusAtraccioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipusAtraccioActionPerformed
      
     }//GEN-LAST:event_tipusAtraccioActionPerformed
-
-    private void dataInnauguracioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataInnauguracioActionPerformed
-        
-    }//GEN-LAST:event_dataInnauguracioActionPerformed
 
     private void alturaMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alturaMinActionPerformed
         
@@ -332,7 +343,7 @@ public class CreaAtraccioForm extends javax.swing.JFrame {
     private javax.swing.JTextField Express;
     private javax.swing.JTextField accessibilitat;
     private javax.swing.JTextField alturaMin;
-    private javax.swing.JTextField dataInnauguracio;
+    private com.toedter.calendar.JDateChooser data;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

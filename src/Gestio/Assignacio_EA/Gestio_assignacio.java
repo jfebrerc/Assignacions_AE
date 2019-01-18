@@ -23,6 +23,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author Usuari
@@ -47,6 +50,8 @@ public class Gestio_assignacio extends javax.swing.JFrame {
         }catch(Exception e){
             IO.imprimirTI("Error al carregar la font: " + e);
         }
+        data1.setDateFormatString("dd/MM/yyyy");
+        data3.setDateFormatString("dd/MM/yyyy");
         buscarAssign.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -81,14 +86,14 @@ public class Gestio_assignacio extends javax.swing.JFrame {
         CARREGARButton = new javax.swing.JButton();
         ELIMINARButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        dataText = new javax.swing.JTextField();
         MODIFICARButton = new javax.swing.JButton();
         BUIDARButton1 = new javax.swing.JButton();
         ENREREButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        data2 = new javax.swing.JTextField();
+        data1 = new com.toedter.calendar.JDateChooser();
+        data3 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -182,11 +187,11 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                     .addGap(22, 22, 22)
                     .addComponent(jLabel2)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(53, 53, 53)
+                    .addComponent(data1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(58, 58, 58)
                     .addComponent(jLabel3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(data3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(MODIFICARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -221,16 +226,21 @@ public class Gestio_assignacio extends javax.swing.JFrame {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
             .addGap(18, 18, 18)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(BUIDARButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(MODIFICARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(ENREREButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel2)
-                .addComponent(dataText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(ELIMINARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel3)
-                .addComponent(data2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(BUIDARButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(MODIFICARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ENREREButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(ELIMINARButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addContainerGap())
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(data3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(data1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(19, 19, 19))))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,13 +273,18 @@ public class Gestio_assignacio extends javax.swing.JFrame {
     }//GEN-LAST:event_BUIDARButtonActionPerformed
 
     private void CARREGARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CARREGARButtonActionPerformed
-        seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, dataText, data2);
+        seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, data1, data3);
     }//GEN-LAST:event_CARREGARButtonActionPerformed
 
     private void BUIDARButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUIDARButton1ActionPerformed
         seleccio = -1;
-        dataText.setText("");
-        data2.setText("");
+        try{
+            data1.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
+            data3.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
+        }catch (Exception e){
+            IO.imprimirTI("Petadeta.jarrrrr: " + e);
+        }
+        
     }//GEN-LAST:event_BUIDARButton1ActionPerformed
 
     private void MODIFICARButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MODIFICARButtonActionPerformed
@@ -277,13 +292,20 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Carrega una assignació per a modificar");
                 }else {
                     try {
+                        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                        Date time = data1.getCalendar().getTime();  
+                        String data1Text = df.format(time);
+                        
+                        Date time2 = data3.getCalendar().getTime();  
+                        String data3Text = df.format(time2);
+                        
                         //String anticNom=Arrays.arrayPersones.get(seleccio).getNom();
                         Persona anticEmpleat = Arrays.arrayAssignacio.get(seleccio).getEmpleat();
                         Atraccio antigaAtraccio = Arrays.arrayAssignacio.get(seleccio).getAtraccio();
                         String AntigaData = Arrays.arrayAssignacio.get(seleccio).getDataInici();
                         String AntigaDataFi = Arrays.arrayAssignacio.get(seleccio).getDataFi();
-                        Arrays.arrayAssignacio.get(seleccio).setData(dataText.getText());
-                        Arrays.arrayAssignacio.get(seleccio).setDataFi(data2.getText());
+                        Arrays.arrayAssignacio.get(seleccio).setData(data1Text);
+                        Arrays.arrayAssignacio.get(seleccio).setDataFi(data3Text);
                         Auxiliar.llistar_assignacio_taula(buscarAssign, jTable1);
                         JOptionPane.showMessageDialog(this, "Assignació " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI()  + " --> " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() +" modificada correctament");
                         Auxiliar.log("Assignacio modificada: " + anticEmpleat.getNom() + " | " + anticEmpleat.getCognom1() + " | " + anticEmpleat.getDNI() + " | " + antigaAtraccio.getNom() + " | " + AntigaData + " | " + AntigaDataFi + "\nA: " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getCognom1() + " | " + Arrays.arrayAssignacio.get(seleccio).getEmpleat().getDNI() + " | " + Arrays.arrayAssignacio.get(seleccio).getAtraccio().getNom() + " | " + Arrays.arrayAssignacio.get(seleccio).getDataInici() + " | " + Arrays.arrayAssignacio.get(seleccio).getDataFi());
@@ -324,8 +346,8 @@ public class Gestio_assignacio extends javax.swing.JFrame {
                             Arrays.arrayAssignacio.get(elements[0]).getAtraccio().eliminarAssign();
                             Arrays.arrayAssignacio.remove(elements[0]);
                             seleccio = -1;
-                            dataText.setText("");
-                            data2.setText("");
+                            data1.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
+                            data3.setDate(new SimpleDateFormat("dd/MM/yyyy").parse("11/11/1111"));
                             Auxiliar.llistar_assignacio_taula(buscarAssign, jTable1);
                         }catch (Exception e){
                             IO.imprimirTI("Error al eliminar: " + e);
@@ -352,7 +374,7 @@ public class Gestio_assignacio extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         if(evt.getClickCount()==2 && evt.getButton() == MouseEvent.BUTTON1){
-            seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, dataText, data2);
+            seleccio = Auxiliar.carregar_dades_assign_taula(CARREGARButton, seleccio, this, jTable1, data1, data3);
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -399,8 +421,8 @@ public class Gestio_assignacio extends javax.swing.JFrame {
     private javax.swing.JButton ENREREButton;
     private javax.swing.JButton MODIFICARButton;
     private javax.swing.JTextField buscarAssign;
-    private javax.swing.JTextField data2;
-    private javax.swing.JTextField dataText;
+    private com.toedter.calendar.JDateChooser data1;
+    private com.toedter.calendar.JDateChooser data3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

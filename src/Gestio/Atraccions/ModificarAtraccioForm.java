@@ -15,6 +15,9 @@ import static Main.config.carregarConf;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -44,6 +47,7 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
         }catch(Exception e){
             IO.imprimirTI("Error al carregar la font: " + e);
         }
+        data.setDateFormatString("dd/MM/yyyy");
         textCercar.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -78,7 +82,6 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
         Tipus = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        DataIn = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         AlturaMin = new javax.swing.JTextField();
@@ -91,6 +94,7 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
         Carregar = new javax.swing.JButton();
         textCercar = new javax.swing.JTextField();
         cercarButton = new javax.swing.JButton();
+        data = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -186,18 +190,18 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Tipus, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(DataIn, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addGap(39, 39, 39)
-                                    .addComponent(Accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Tipus, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                                        .addComponent(data, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(textCercar, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -236,10 +240,10 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(Tipus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(DataIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AlturaMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -247,7 +251,7 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Accessibilitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Express, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
@@ -289,10 +293,11 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
             else {
             Nom.setText(Atraccio.arrayAtraccio.get(posicio).getNom());
             Tipus.setText(Atraccio.arrayAtraccio.get(posicio).getTipusAtraccio());
-            DataIn.setText(Atraccio.arrayAtraccio.get(posicio).getDataInauguracio());
+            //DataIn.setText(Atraccio.arrayAtraccio.get(posicio).getDataInauguracio());
             AlturaMin.setText(Atraccio.arrayAtraccio.get(posicio).getAlturaMin());
             Accessibilitat.setText(Atraccio.arrayAtraccio.get(posicio).getAccessibilitat());
             Express.setText(Atraccio.arrayAtraccio.get(posicio).getAccesExpress());
+            data.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(Atraccio.arrayAtraccio.get(posicio).getDataInauguracio()));
         }
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Selecciona una atraccio");
@@ -312,21 +317,26 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Carrega una atraccio");
         }else{
             try{
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 String anticNom = Atraccio.arrayAtraccio.get(elements[0]).getNom();
                 String anticTipus = Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio();
                 String anticDataI = Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio();
                 String anticAlturamin = Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin();
                 String anticAcces = Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat();
                 String anticExpress = Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress();
-
+                
+                Date time = data.getCalendar().getTime();  
+                String data2 = df.format(time);
+                
                 Atraccio.arrayAtraccio.get(elements[0]).setNom(Nom.getText());
                 Atraccio.arrayAtraccio.get(elements[0]).setTipuisAtraccio(Tipus.getText());
-                Atraccio.arrayAtraccio.get(elements[0]).setDataInnauguracio(DataIn.getText());
+                Atraccio.arrayAtraccio.get(elements[0]).setDataInnauguracio(data2);
                 Atraccio.arrayAtraccio.get(elements[0]).setAlturaMin(AlturaMin.getText());
                 Atraccio.arrayAtraccio.get(elements[0]).setAccessibilitat(Accessibilitat.getText());
                 Atraccio.arrayAtraccio.get(elements[0]).setAccesExpress(Express.getText());
                 Auxiliar.llistar_atraccions_taula(textCercar, jTable1);
                 Auxiliar.log("Atraccio modificada: " + anticNom + " | " + anticTipus + " | " + anticDataI + " | " + anticAlturamin + " | " + anticAcces + " | " + anticExpress + "\nA: " + Atraccio.arrayAtraccio.get(elements[0]).getNom() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getTipusAtraccio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getDataInauguracio() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAlturaMin() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccessibilitat() + " | " + Atraccio.arrayAtraccio.get(elements[0]).getAccesExpress());
+                JOptionPane.showMessageDialog(this, "Atraccio modificada correctament");
             }catch (Exception e){
                 IO.imprimirTI("Error al modificar atraccio: " + e);
                 Auxiliar.logError("Error al modificar atraccio: " + e);
@@ -380,13 +390,13 @@ public class ModificarAtraccioForm extends javax.swing.JFrame {
     private javax.swing.JTextField Accessibilitat;
     private javax.swing.JTextField AlturaMin;
     private javax.swing.JButton Carregar;
-    private javax.swing.JTextField DataIn;
     private javax.swing.JButton Enrrere;
     private javax.swing.JTextField Express;
     private javax.swing.JButton Modifica;
     private javax.swing.JTextField Nom;
     private javax.swing.JTextField Tipus;
     private javax.swing.JButton cercarButton;
+    private com.toedter.calendar.JDateChooser data;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
